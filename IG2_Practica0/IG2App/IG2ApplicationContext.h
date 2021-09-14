@@ -52,9 +52,9 @@ namespace OgreBites
 		*/
 		Ogre::RenderWindow* getRenderWindow() const { return mWindow.render; }
 
-		Ogre::Root* getRoot() const { return mRoot;	}
+		Ogre::Root* getRoot() const { return mRoot; }
 
-		Ogre::OverlaySystem* getOverlaySystem() const {	return mOverlaySystem; }
+		Ogre::OverlaySystem* getOverlaySystem() const { return mOverlaySystem; }
 
 		/**
 		This function initializes the render system and resources.
@@ -67,7 +67,7 @@ namespace OgreBites
 		void closeApp();
 
 		// callback interface copied from various listeners to be used by ApplicationContext
-		virtual bool frameStarted(const Ogre::FrameEvent& evt) { pollEvents(); return true;	}
+		virtual bool frameStarted(const Ogre::FrameEvent& evt) { pollEvents(); return true; }
 		virtual bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 		virtual bool frameEnded(const Ogre::FrameEvent& evt) { return true; }
 		virtual void windowMoved(Ogre::RenderWindow* rw) {}
@@ -113,7 +113,7 @@ namespace OgreBites
 		/**
 		When input is grabbed the mouse is confined to the window.
 		*/
-		void setWindowGrab(bool grab);  
+		void setWindowGrab(bool grab);
 
 		/**
 		Finds context-wide resource groups. I load paths from a config file here,
@@ -163,16 +163,16 @@ namespace OgreBites
 
 		Ogre::FileSystemLayer* mFSLayer; // File system abstraction layer
 		Ogre::OverlaySystem* mOverlaySystem;  // Overlay system
-		
+
 		std::set<InputListener*> mInputListeners;
 
 		bool mFirstRun;
 		Ogre::String mAppName;
 		Ogre::String mSolutionPath;    // IG2: variable para hacer las rutas relativas al directorio de la solución
-		
+
 		Ogre::String mRTShaderLibPath;
-		Ogre::RTShader::ShaderGenerator * mShaderGenerator; // The Shader generator instance.
-		SGTechniqueResolverListener * mMaterialMgrListener; // Shader generator material manager listener.
+		Ogre::RTShader::ShaderGenerator* mShaderGenerator; // The Shader generator instance.
+		SGTechniqueResolverListener* mMaterialMgrListener; // Shader generator material manager listener.
 
 	};
 }
