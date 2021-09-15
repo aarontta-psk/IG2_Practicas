@@ -14,6 +14,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		getRoot()->queueEndRendering();
 	}
+	else if (evt.keysym.sym == SDLK_g)
+	{
+		mClockNode->roll(Ogre::Degree(3));
+	}
 	//else if (evt.keysym.sym == SDLK_???)
 
 	return true;
