@@ -4,6 +4,7 @@
 #include <OgreInput.h>
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
+#include <iostream>
 
 using namespace Ogre;
 
@@ -91,16 +92,29 @@ void IG2App::setupScene(void)
 
   // finally something to render
 
-  Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+  //COMENTARIO SOBRE FORMAS DE CREAR LAS ESFERAS
+  //Ogre::Entity* ent = mSM->createEntity("sphere.mesh");
+  //Ogre::Entity* ent = mSM->createEntity("Sphere", Ogre::SceneManager::PT_SPHERE);
 
-  mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
-  mSinbadNode->attachObject(ent);
+  //Create nodes
 
-  //mSinbadNode->setPosition(400, 100, -300);
-  mSinbadNode->setScale(20, 20, 20);
-  //mSinbadNode->yaw(Ogre::Degree(-45));
-  //mSinbadNode->showBoundingBox(true);
-  //mSinbadNode->setVisible(false);
+  //Fields
+  const int numHourNodes = 12;
+  const int radius = 750;
+  const int angleStep = 360 / numHourNodes;
+
+  mHourNode = new Ogre::SceneNode * [numHourNodes];
+  mClockNode = mSM->getRootSceneNode()->createChildSceneNode("nClock");
+  mClockNode->setScale(0.4, 0.4, 0.4); //Era o esto o echar la camara hacia atras y esto es mas facil
+
+  for (int i = 0; i < numHourNodes; i++)
+  {
+	  float angle = Ogre::Math::DegreesToRadians(i * angleStep);
+	  std::string nodeName = "Hora " + std::to_string(i);
+	  mHourNode[i] = mClockNode->createChildSceneNode(nodeName);
+	  mHourNode[i]->attachObject(mSM->createEntity("sphere.mesh"));
+	  mHourNode[i]->setPosition(Ogre::Math::Sin(angle) * radius, Ogre::Math::Cos(angle) * radius, 0);
+  }
 
   //------------------------------------------------------------------------
 
