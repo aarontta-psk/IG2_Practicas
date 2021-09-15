@@ -122,6 +122,7 @@ namespace OgreBites {
 
 	bool IG2ApplicationContext::oneTimeConfig()
 	{
+		//mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
 		if (!mRoot->restoreConfig()) 
 		{
 			return mRoot->showConfigDialog(OgreBites::getNativeConfigDialog());
