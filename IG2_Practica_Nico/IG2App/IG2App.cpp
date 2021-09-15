@@ -84,20 +84,27 @@ void IG2App::setupScene(void)
   //mLightNode = mCamNode->createChildSceneNode("nLuz");
   mLightNode->attachObject(luz);
 
-  mLightNode->setDirection(Ogre::Vector3(-1, 0, 0));  //vec3.normalise();
+  mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
   //lightNode->setPosition(0, 0, 1000);
  
   //------------------------------------------------------------------------
 
   // finally something to render
 
-  //Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
-  Ogre::Entity* ent = mSM->createEntity("ogrehead.mesh");
+  Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh");
+  Ogre::Entity* romanBathLower = mSM->createEntity("RomanBathLower.mesh");
+  Ogre::Entity* romanBathUpper = mSM->createEntity("RomanBathUpper.mesh");
+  Ogre::Entity* columns = mSM->createEntity("Columns.mesh");
+  //Ogre::Entity* ent = mSM->createEntity("ogrehead.mesh");
 
   mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
+  mRomanNode = mSM->getRootSceneNode()->createChildSceneNode("mRoman");
   mSinbadNode->attachObject(ent);
+  mRomanNode->attachObject(romanBathLower);
+  mRomanNode->attachObject(romanBathUpper);
+  mRomanNode->attachObject(columns);
 
-  //mSinbadNode->setPosition(400, 100, -300);
+  mSinbadNode->setPosition(0, 20, 0);
   mSinbadNode->setScale(20, 20, 20);
   //mSinbadNode->yaw(Ogre::Degree(-45));
   //mSinbadNode->showBoundingBox(true);
