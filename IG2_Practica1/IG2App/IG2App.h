@@ -25,6 +25,9 @@ protected:
   OgreBites::TrayManager* mTrayMgr = nullptr;    
   Ogre::SceneNode* mLightNode = nullptr;
   Ogre::SceneNode* mCamNode = nullptr;
+  Ogre::SceneNode* mClockHours = nullptr;
+  Ogre::SceneNode* mClockMinutes = nullptr;
+  Ogre::SceneNode* mClockSeconds = nullptr;
   Ogre::SceneNode* mClockNode = nullptr;
   Ogre::SceneNode** mHourNode = nullptr;
   Ogre::SceneNode* mSinbadNode = nullptr;

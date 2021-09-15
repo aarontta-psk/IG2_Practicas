@@ -120,11 +120,38 @@ void IG2App::setupScene(void)
 
 	//--- Apartado 2 ---
 	//Cambiar de tamaño los nodos de las horas pares
-	for (int i = 0; i < numHourNodes; i += 2)
-	{
-		std::string nodeName = "Hora " + std::to_string(i);
-		mSM->getSceneNode(nodeName)->setScale(0.5, 0.5, 0.5);
-	}
+	//for (int i = 0; i < numHourNodes; i += 2)
+	//{
+	//	std::string nodeName = "Hora " + std::to_string(i);
+	//	mSM->getSceneNode(nodeName)->setScale(0.5, 0.5, 0.5);
+	//}
+
+	//--- Apartado 3 ---
+
+	//Hay algunos numeros cableados, pero esta cableado
+	//en funcion del radio del reloj, si se cambia el radio, todo sigue bien
+
+	mClockHours = mClockNode->createChildSceneNode("nHoras");
+	mClockMinutes = mClockNode->createChildSceneNode("nMinutes");
+	mClockSeconds = mClockNode->createChildSceneNode("nSeconds");
+
+	mClockHours->attachObject(mSM->createEntity("cube.mesh"));
+	mClockMinutes->attachObject(mSM->createEntity("cube.mesh"));
+	mClockSeconds->attachObject(mSM->createEntity("cube.mesh"));
+
+	int clockCubeScale = radius / 107; //107 es el numero que queda bien, no tiene otra explicacion
+	mClockHours->setScale(clockCubeScale * 0.7f, clockCubeScale / 10.0f, 1);
+	mClockMinutes->setScale(clockCubeScale, clockCubeScale / 18.0f, 1);
+	mClockSeconds->setScale(clockCubeScale, clockCubeScale / 36.0f, 1);
+
+	float displacementX = radius / 4.0f;
+	float displacementY = radius / 3.25f;
+	mClockHours->setPosition(displacementX, 0, 0);
+	mClockMinutes->setPosition(0, displacementY, 0);
+	mClockSeconds->setPosition(0, -displacementY, 0);
+
+	mClockMinutes->roll(Ogre::Degree(90));
+	mClockSeconds->roll(Ogre::Degree(90));
 
 	//------------------------------------------------------------------------
 
