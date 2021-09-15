@@ -91,16 +91,31 @@ void IG2App::setupScene(void)
 
 	// finally something to render
 
-	Ogre::Entity* ent = mSM->createEntity("Sword.mesh"); //object mesh
+	Ogre::Entity* ent = mSM->createEntity("Sinbad.mesh"); //object mesh
 
 	mSinbadNode = mSM->getRootSceneNode()->createChildSceneNode("nSinbad");
 	mSinbadNode->attachObject(ent);
 
-	//mSinbadNode->setPosition(400, 100, -300);
+	mSinbadNode->setPosition(0, 30, 0);
 	mSinbadNode->setScale(20, 20, 20);
 	//mSinbadNode->yaw(Ogre::Degree(-90));
 	//mSinbadNode->showBoundingBox(true);
 	//mSinbadNode->setVisible(false);
+
+	Ogre::Entity* ent2 = mSM->createEntity("RomanBathLower.mesh"); //object mesh
+
+	mRomanLowerNode = mSM->getRootSceneNode()->createChildSceneNode("nRomanLowerNode");
+	mRomanLowerNode->attachObject(ent2);
+
+	Ogre::Entity* ent3 = mSM->createEntity("RomanBathUpper.mesh"); //object mesh
+
+	mRomanUpperNode = mSM->getRootSceneNode()->createChildSceneNode("nRomanUpperNode");
+	mRomanUpperNode->attachObject(ent3);
+
+	Ogre::Entity* ent4 = mSM->createEntity("Columns.mesh"); //object mesh
+
+	mRomanColumnsNode = mSM->getRootSceneNode()->createChildSceneNode("nRomanColumnsNode");
+	mRomanColumnsNode->attachObject(ent4);
 
 	//------------------------------------------------------------------------
 
