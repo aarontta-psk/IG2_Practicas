@@ -81,6 +81,8 @@ namespace OgreBites {
 
 		mRoot = new Ogre::Root(pluginsPath, mFSLayer->getWritablePath("ogre.cfg"), mFSLayer->getWritablePath("ogre.log"));
 
+		//mRoot->showConfigDialog(OgreBites::getNativeConfigDialog()); //config box
+
 		mOverlaySystem = new Ogre::OverlaySystem();
 	}
 
