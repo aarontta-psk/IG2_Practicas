@@ -163,11 +163,13 @@ void IG2App::setupScene(void)
 	float displacementY = radius / 3.25f;
 	mClockHours->setPosition(displacementX, 0, 0);
 	mClockMinutes->setPosition(0, displacementY, 0);
-	mClockSeconds->setPosition(0, -displacementY, 0);
+	//mClockSeconds->setPosition(0, -displacementY, 0); //-- Apartado 3 --
+	mClockSeconds->setPosition(-displacementX * 1.1, -displacementY, 0); //-- Apartado 6 --
 
 	// Rotation
 	mClockMinutes->roll(Ogre::Degree(90));
-	mClockSeconds->roll(Ogre::Degree(90));
+	//mClockSeconds->roll(Ogre::Degree(90)); //-- Apartado 3 --
+	mClockSeconds->roll(Ogre::Degree(45)); //-- Apartado 6 --
 
 	//------------------------------------------------------------------------
 
