@@ -14,9 +14,15 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		getRoot()->queueEndRendering();
 	}
+	//--- Apartado 4 ---
 	else if (evt.keysym.sym == SDLK_g)
 	{
 		mClockNode->roll(Ogre::Degree(3));
+	}
+	//--- Apartado 5 ---
+	else if (evt.keysym.sym == SDLK_h)
+	{
+		mSphereNode->roll(Ogre::Degree(3));
 	}
 	//else if (evt.keysym.sym == SDLK_???)
 
@@ -96,7 +102,7 @@ void IG2App::setupScene(void)
 
 	// finally something to render
 
-	//COMENTARIO SOBRE FORMAS DE CREAR LAS ESFERAS
+	// COMENTARIO SOBRE FORMAS DE CREAR LAS ESFERAS
 	//Ogre::Entity* ent = mSM->createEntity("sphere.mesh");
 	//Ogre::Entity* ent = mSM->createEntity("Sphere", Ogre::SceneManager::PT_SPHERE);
 
@@ -104,36 +110,39 @@ void IG2App::setupScene(void)
 
 	//--- Apartado 1 ---
 
-	//Fields
+	// Fields
 	const int numHourNodes = 12;
 	const int radius = 750;
-	const int angleStep = 360 / numHourNodes;
+	const double angleStep = 360.0 / numHourNodes;
 
-	mHourNode = new Ogre::SceneNode * [numHourNodes];
 	mClockNode = mSM->getRootSceneNode()->createChildSceneNode("nClock");
-	mClockNode->setScale(0.4, 0.4, 0.4); //Era o esto o echar la camara hacia atras y esto es mas facil
+	mClockNode->setScale(0.4, 0.4, 0.4); // Era o esto o echar la camara hacia atras y esto es mas facil
+
+	mSphereNode = mClockNode->createChildSceneNode("nSphere");
+
+	mHourNode = new Ogre::SceneNode*[numHourNodes];
 
 	for (int i = 0; i < numHourNodes; i++)
 	{
 		float angle = Ogre::Math::DegreesToRadians(i * angleStep);
 		std::string nodeName = "Hora " + std::to_string(i);
-		mHourNode[i] = mClockNode->createChildSceneNode(nodeName);
+		mHourNode[i] = mSphereNode->createChildSceneNode(nodeName);
 		mHourNode[i]->attachObject(mSM->createEntity("sphere.mesh"));
 		mHourNode[i]->setPosition(Ogre::Math::Sin(angle) * radius, Ogre::Math::Cos(angle) * radius, 0);
 	}
 
 	//--- Apartado 2 ---
-	//Cambiar de tamaño los nodos de las horas pares
-	//for (int i = 0; i < numHourNodes; i += 2)
-	//{
-	//	std::string nodeName = "Hora " + std::to_string(i);
-	//	mSM->getSceneNode(nodeName)->setScale(0.5, 0.5, 0.5);
-	//}
+	// Cambiar de tamaño los nodos de las horas pares
+	for (int i = 0; i < numHourNodes; i += 2)
+	{
+		std::string nodeName = "Hora " + std::to_string(i);
+		mSM->getSceneNode(nodeName)->setScale(0.5, 0.5, 0.5);
+	}
 
 	//--- Apartado 3 ---
 
-	//Hay algunos numeros cableados, pero esta cableado
-	//en funcion del radio del reloj, si se cambia el radio, todo sigue bien
+	// Hay algunos numeros cableados, pero esta cableado
+	// en funcion del radio del reloj, si se cambia el radio, todo sigue bien
 
 	mClockHours = mClockNode->createChildSceneNode("nHoras");
 	mClockMinutes = mClockNode->createChildSceneNode("nMinutes");
@@ -143,17 +152,20 @@ void IG2App::setupScene(void)
 	mClockMinutes->attachObject(mSM->createEntity("cube.mesh"));
 	mClockSeconds->attachObject(mSM->createEntity("cube.mesh"));
 
-	int clockCubeScale = radius / 107; //107 es el numero que queda bien, no tiene otra explicacion
+	// Scale
+	double clockCubeScale = radius / 107; // 107 es el numero que queda bien, no tiene otra explicacion
 	mClockHours->setScale(clockCubeScale * 0.7f, clockCubeScale / 10.0f, 1);
 	mClockMinutes->setScale(clockCubeScale, clockCubeScale / 18.0f, 1);
 	mClockSeconds->setScale(clockCubeScale, clockCubeScale / 36.0f, 1);
 
+	// Position
 	float displacementX = radius / 4.0f;
 	float displacementY = radius / 3.25f;
 	mClockHours->setPosition(displacementX, 0, 0);
 	mClockMinutes->setPosition(0, displacementY, 0);
 	mClockSeconds->setPosition(0, -displacementY, 0);
 
+	// Rotation
 	mClockMinutes->roll(Ogre::Degree(90));
 	mClockSeconds->roll(Ogre::Degree(90));
 
