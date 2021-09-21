@@ -181,9 +181,10 @@ void IG2App::setupScene(void)
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
 	// --- Apartado 7 ---
-	//Aspa aspa = Aspa(mSM);
+	//Aspa aspa = Aspa(mSM->getRootSceneNode(), mSM);
 
 	// --- Apartado 8 ---
-	AspasMolino aspaMolino = AspasMolino(mSM, 12);
+	AspasMolino* aspaMolino = new AspasMolino(mSM->getRootSceneNode(), mSM, 12);
+	addInputListener(aspaMolino);
 }
 

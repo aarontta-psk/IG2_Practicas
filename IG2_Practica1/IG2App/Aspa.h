@@ -7,7 +7,7 @@ using namespace Ogre;
 class Aspa : public OgreBites::InputListener
 {
 public:
-	Aspa(SceneManager* mSM);
+	Aspa(SceneNode* node, SceneManager* mSM);
 	~Aspa();
 	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
@@ -15,15 +15,12 @@ private:
 	SceneNode* mNode;
 	SceneNode* tableroNode;
 	SceneNode* adornoNode;
-	SceneManager* mSM;
 };
 
-Aspa::Aspa(SceneManager* mSM)
+Aspa::Aspa(SceneNode* node, SceneManager* mSM)
 {
-	this->mSM = mSM;
-
 	//Creacion
-	mNode = mSM->getRootSceneNode()->createChildSceneNode();
+	mNode = node->createChildSceneNode();
 	tableroNode = mNode->createChildSceneNode();
 	adornoNode = mNode->createChildSceneNode();
 
