@@ -5,6 +5,7 @@
 #include <SDL_keycode.h>
 #include <OgreMeshManager.h>
 #include <iostream>
+#include "Aspa.h"
 
 using namespace Ogre;
 
@@ -116,11 +117,12 @@ void IG2App::setupScene(void)
 	const double angleStep = 360.0 / numHourNodes;
 
 	mClockNode = mSM->getRootSceneNode()->createChildSceneNode("nClock");
-	mClockNode->setScale(0.4, 0.4, 0.4); // Era o esto o echar la camara hacia atras y esto es mas facil
+	mClockNode->setScale(0, 0, 0); // Era o esto o echar la camara hacia atras y esto es mas facil
+	//mClockNode->setScale(0.4, 0.4, 0.4); // Era o esto o echar la camara hacia atras y esto es mas facil
 
 	mSphereNode = mClockNode->createChildSceneNode("nSphere");
 
-	mHourNode = new Ogre::SceneNode*[numHourNodes];
+	mHourNode = new Ogre::SceneNode * [numHourNodes];
 
 	for (int i = 0; i < numHourNodes; i++)
 	{
@@ -177,10 +179,8 @@ void IG2App::setupScene(void)
 	addInputListener(mCamMgr);
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
-	//mCamMgr->setTarget(mSinbadNode);  
-	//mCamMgr->setYawPitchDist(Radian(0), Degree(30), 100);
-
-	//------------------------------------------------------------------------
+	// --- Apartado 7 ---
+	Aspa aspa = Aspa(mSM);
 
 }
 
