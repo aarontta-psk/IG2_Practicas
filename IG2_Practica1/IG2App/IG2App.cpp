@@ -6,6 +6,7 @@
 #include <OgreMeshManager.h>
 #include <iostream>
 #include "Aspa.h"
+#include "AspasMolino.h"
 
 using namespace Ogre;
 
@@ -180,7 +181,9 @@ void IG2App::setupScene(void)
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
 	// --- Apartado 7 ---
-	Aspa aspa = Aspa(mSM);
+	//Aspa aspa = Aspa(mSM);
 
+	// --- Apartado 8 ---
+	AspasMolino aspaMolino = AspasMolino(mSM, 12);
 }
 
