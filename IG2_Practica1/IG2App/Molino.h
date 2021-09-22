@@ -18,6 +18,7 @@ private:
 	SceneNode* mNode;
 	SceneNode* mEsferaTecho;
 	SceneNode* mCilindroCuerpo;
+	SceneNode* mAspasNode;
 	AspasMolino* mAspas;
 };
 
@@ -27,10 +28,12 @@ Molino::Molino(SceneNode* node, SceneManager* mSM, int numAspas)
 	mNode = node->createChildSceneNode();
 	mEsferaTecho = mNode->createChildSceneNode();
 	mCilindroCuerpo = mNode->createChildSceneNode();
+	mAspasNode = mNode->createChildSceneNode();
 
 	mEsferaTecho->attachObject(mSM->createEntity("sphere.mesh"));
 	mCilindroCuerpo->attachObject(mSM->createEntity("Barrel.mesh"));
-	mAspas = new AspasMolino(mNode, mSM, numAspas);
+	mAspas = new AspasMolino(mNode, mSM, numAspas);           // E L ( G R A N ) T R U C O
+	//mAspas = new AspasMolino(mAspasNode, mSM, numAspas);    // nodo fantasma
 
 	//Escalas
 	mAspas->getNode()->setScale(0.7, 0.7, 0.7);
@@ -52,6 +55,13 @@ Molino::~Molino() //No se si hay que hacer algo aqui
 bool Molino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	mAspas->keyPressed(evt);
+	if (evt.keysym.sym == SDLK_h) {
+		mAspas->getNode()->translate(0, -200, -168, SceneNode::TS_LOCAL);
+		mAspas->getNode()->yaw(Degree(2)); // E L ( G R A N ) T R U C O
+		mAspas->getNode()->translate(0, 200, 168, SceneNode::TS_LOCAL);
+
+		//mAspasNode->yaw(Degree(2));  
+	}
 	return true;
 }
 
