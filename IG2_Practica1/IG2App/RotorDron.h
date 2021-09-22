@@ -52,7 +52,7 @@ RotorDron::~RotorDron() //No se si hay que hacer algo aqui
 
 bool RotorDron::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	//mAspas->keyPressed(evt); //Lo comento para poder descomentarlo luego lmao
+	mAspas->keyPressed(evt); //Lo comento para poder descomentarlo luego lmao
 	return true;
 }
 
