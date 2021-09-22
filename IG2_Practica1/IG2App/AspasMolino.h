@@ -12,7 +12,7 @@ class AspasMolino : public OgreBites::InputListener
 public:
 	AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas);
 	~AspasMolino();
-	const SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
+	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
@@ -21,6 +21,7 @@ private:
 	SceneNode* cilindroCentralNode;
 	SceneNode* aspasNode;
 	Aspa** arrayAspas;
+	int numAspas;
 };
 
 AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas)
@@ -42,17 +43,15 @@ AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas)
 	{
 		arrayAspas[i] = new Aspa(aspasNode, mSM);
 		arrayAspas[i]->getNode()->roll(Degree(i * angleStep));
-		arrayAspas[i]->getNode()->translate(200, 0, 0, SceneNode::TS_LOCAL);
-		//aspasNode->addChild(arrayAspas[i]->getNode());
+		arrayAspas[i]->getNode()->translate(200, 0, 0, SceneNode::TS_LOCAL); //El (gran) truco
 	}
 
+	this->numAspas = numAspas;
 }
 
 AspasMolino::~AspasMolino() //No se si hay que hacer algo aqui
 {
-	/*delete mNode;
-	delete tableroNode;
-	delete adornoNode;*/
+	delete[] arrayAspas;
 }
 
 bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)

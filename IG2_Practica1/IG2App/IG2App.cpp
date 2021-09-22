@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Aspa.h"
 #include "AspasMolino.h"
+#include "Molino.h"
 
 using namespace Ogre;
 
@@ -184,7 +185,12 @@ void IG2App::setupScene(void)
 	//Aspa aspa = Aspa(mSM->getRootSceneNode(), mSM);
 
 	// --- Apartado 8 ---
-	AspasMolino* aspaMolino = new AspasMolino(mSM->getRootSceneNode(), mSM, 12);
-	addInputListener(aspaMolino);
+	//AspasMolino* aspaMolino = new AspasMolino(mSM->getRootSceneNode(), mSM, 12);
+	//addInputListener(aspaMolino);
+
+	// -- Apartado 9 ---
+	Molino* molino = new Molino(mSM->getRootSceneNode(), mSM, 6);
+	addInputListener(molino);
+
 }
 
