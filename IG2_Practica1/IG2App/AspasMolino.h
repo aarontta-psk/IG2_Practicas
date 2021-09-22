@@ -12,6 +12,7 @@ class AspasMolino : public OgreBites::InputListener
 public:
 	AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas);
 	~AspasMolino();
+	void SetAdornosVisibility(bool isVisible);
 	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
@@ -52,6 +53,12 @@ AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas)
 AspasMolino::~AspasMolino() //No se si hay que hacer algo aqui
 {
 	delete[] arrayAspas;
+}
+
+inline void AspasMolino::SetAdornosVisibility(bool isVisible)
+{
+	for (int i = 0; i < numAspas; i++)
+		arrayAspas[i]->SetAdornoVisible(isVisible);
 }
 
 bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)

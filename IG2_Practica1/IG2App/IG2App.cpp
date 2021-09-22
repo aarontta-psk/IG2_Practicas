@@ -8,6 +8,7 @@
 #include "Aspa.h"
 #include "AspasMolino.h"
 #include "Molino.h"
+#include "RotorDron.h"
 
 using namespace Ogre;
 
@@ -189,8 +190,12 @@ void IG2App::setupScene(void)
 	//addInputListener(aspaMolino);
 
 	// -- Apartado 9 ---
-	Molino* molino = new Molino(mSM->getRootSceneNode(), mSM, 6);
-	addInputListener(molino);
+	//Molino* molino = new Molino(mSM->getRootSceneNode(), mSM, 6);
+	//addInputListener(molino);
+
+	// -- Apartado 9 ---
+	RotorDron* rotorDron = new RotorDron(mSM->getRootSceneNode(), mSM, 6);
+	addInputListener(rotorDron);
 
 }
 

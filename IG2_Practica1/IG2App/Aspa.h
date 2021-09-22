@@ -8,6 +8,7 @@ class Aspa : public OgreBites::InputListener
 {
 public:
 	Aspa(SceneNode* node, SceneManager* mSM);
+	void SetAdornoVisible(bool visibility);
 	~Aspa();
 	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
@@ -33,6 +34,11 @@ Aspa::Aspa(SceneNode* node, SceneManager* mSM)
 	adornoNode->setPosition(130, 0, 12); //Desplazar derecha y traer al frente
 
 	adornoNode->setInheritOrientation(false);
+}
+
+inline void Aspa::SetAdornoVisible(bool isVisible)
+{
+	adornoNode->setVisible(isVisible);
 }
 
 Aspa::~Aspa() //No se si hay que hacer algo aqui

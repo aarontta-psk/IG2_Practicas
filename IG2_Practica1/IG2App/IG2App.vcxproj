@@ -124,6 +124,7 @@
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Molino.h" />
+    <ClInclude Include="RotorDron.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IG2ApplicationContext.cpp" />
