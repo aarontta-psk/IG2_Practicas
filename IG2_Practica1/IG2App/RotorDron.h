@@ -36,12 +36,12 @@ RotorDron::RotorDron(SceneNode* node, SceneManager* mSM, int numAspas)
 
 	//Escalas
 	float sphereScale = 2;
-	float helicesScale = 0.55f;
+	float helicesScale = 0.75f;
 	mEsferaNode->setScale(sphereScale, sphereScale, sphereScale);
 	mHelicesNode->setScale(helicesScale, helicesScale, helicesScale);
 
 	//Posiciones
-	mAspas->getNode()->setPosition(0, 365, 0);
+	mAspas->getNode()->setPosition(0, 260, 0);
 	mAspas->getNode()->pitch(Degree(90));
 }
 
@@ -52,7 +52,7 @@ RotorDron::~RotorDron() //No se si hay que hacer algo aqui
 
 bool RotorDron::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	mAspas->keyPressed(evt); //Lo comento para poder descomentarlo luego lmao
+	mAspas->keyPressed(evt); // --- Apartado 14 ---
 	return true;
 }
 
