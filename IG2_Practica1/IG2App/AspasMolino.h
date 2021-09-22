@@ -60,5 +60,9 @@ bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		aspasNode->roll(Degree(2));
 	}
+	else if (evt.keysym.sym == SDLK_c)
+	{
+		cilindroCentralNode->translate(0, -1, 0, SceneNode::TS_LOCAL); // --- Apartado 11 ---
+	}
 	return true;
 }
