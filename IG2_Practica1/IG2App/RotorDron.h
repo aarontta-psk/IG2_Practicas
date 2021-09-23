@@ -8,9 +8,9 @@ using namespace Ogre;
 class RotorDron : public OgreBites::InputListener
 {
 public:
-	RotorDron(SceneNode* node, SceneManager* mSM, int numAspas);
+	RotorDron(SceneNode* node, SceneManager* mSM, int numAspas, double rotation = 2);
 	~RotorDron();
-	const SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
+	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
@@ -23,15 +23,17 @@ private:
 	int numAspas;
 };
 
-RotorDron::RotorDron(SceneNode* node, SceneManager* mSM, int numAspas)
+RotorDron::RotorDron(SceneNode* node, SceneManager* mSM, int nAspas, double rotation)
 {
+	numAspas = nAspas;
+
 	//Creacion
 	mNode = node->createChildSceneNode();
 	mEsferaNode = mNode->createChildSceneNode();
 	mHelicesNode = mNode->createChildSceneNode();
 
 	mEsferaNode->attachObject(mSM->createEntity("sphere.mesh"));
-	mAspas = new AspasMolino(mHelicesNode, mSM, numAspas);
+	mAspas = new AspasMolino(mHelicesNode, mSM, numAspas, rotation);
 	mAspas->SetAdornosVisibility(false);
 
 	//Escalas

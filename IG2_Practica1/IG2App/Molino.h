@@ -10,7 +10,7 @@ class Molino : public OgreBites::InputListener
 public:
 	Molino(SceneNode* node, SceneManager* mSM, int numAspas);
 	~Molino();
-	const SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
+	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 

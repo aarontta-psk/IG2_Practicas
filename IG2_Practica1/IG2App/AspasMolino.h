@@ -10,7 +10,7 @@ using namespace Ogre;
 class AspasMolino : public OgreBites::InputListener
 {
 public:
-	AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas);
+	AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas, double rotation = 2);
 	~AspasMolino();
 	void SetAdornosVisibility(bool isVisible);
 	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
@@ -23,9 +23,10 @@ private:
 	SceneNode* aspasNode;
 	Aspa** arrayAspas;
 	int numAspas;
+	double rot;
 };
 
-AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas)
+AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas, double rotation)
 {
 	//Creacion
 	mNode = node->createChildSceneNode();
@@ -48,6 +49,7 @@ AspasMolino::AspasMolino(SceneNode* node, SceneManager* mSM, int numAspas)
 	}
 
 	this->numAspas = numAspas;
+	rot = rotation;
 }
 
 AspasMolino::~AspasMolino() //No se si hay que hacer algo aqui
@@ -65,7 +67,7 @@ bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_g)
 	{
-		aspasNode->roll(Degree(2));
+		aspasNode->roll(Degree(rot));
 	}
 	else if (evt.keysym.sym == SDLK_c)
 	{
