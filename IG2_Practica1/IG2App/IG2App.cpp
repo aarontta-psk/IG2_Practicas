@@ -123,7 +123,7 @@ void IG2App::setupScene(void)
 
 	mClockNode = mSM->getRootSceneNode()->createChildSceneNode("nClock");
 	mClockNode->setScale(0, 0, 0); // Era o esto o echar la camara hacia atras y esto es mas facil
-	//mClockNode->setScale(0.4, 0.4, 0.4); // Era o esto o echar la camara hacia atras y esto es mas facil
+	mClockNode->setVisible(false); // Para verlo, poner a true
 
 	mSphereNode = mClockNode->createChildSceneNode("nSphere");
 
@@ -185,26 +185,26 @@ void IG2App::setupScene(void)
 	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
 	// --- Apartado 7 ---
-	//Aspa aspa = Aspa(mSM->getRootSceneNode(), mSM);
+	//Aspa aspa = Aspa(mSM->getRootSceneNode());
 
 	// --- Apartado 8 ---
-	//AspasMolino* aspaMolino = new AspasMolino(mSM->getRootSceneNode(), mSM, 12);
+	//AspasMolino* aspaMolino = new AspasMolino(mSM->getRootSceneNode(), 12);
 	//addInputListener(aspaMolino);
 
-	// -- Apartado 9 ---
-	//Molino* molino = new Molino(mSM->getRootSceneNode(), mSM, 6);
+	// -- Apartado 10 ---
+	//Molino* molino = new Molino(mSM->getRootSceneNode(), 6);
 	//addInputListener(molino);
 
 	// -- Apartado 13 ---
-	//RotorDron* rotorDron = new RotorDron(mSM->getRootSceneNode(), mSM, 6);
+	//RotorDron* rotorDron = new RotorDron(mSM->getRootSceneNode(), 6);
 	//addInputListener(rotorDron);
 
 	// -- Apartado 15 ---
-	//BrazoDron* brazoDron = new BrazoDron(mSM->getRootSceneNode(), mSM, 6);
+	//BrazoDron* brazoDron = new BrazoDron(mSM->getRootSceneNode(), 6);
 	//addInputListener(brazoDron);
 
 	// -- Apartado 16 ---
-	Dron* dron = new Dron(mSM->getRootSceneNode(), mSM, 12, 8);
+	Dron* dron = new Dron(mSM->getRootSceneNode(), 12, 8);
 	addInputListener(dron);
 }
 

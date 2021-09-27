@@ -1,60 +1,24 @@
-#pragma once
+#ifndef ROTORDRON_H_
+#define ROTORDRON_H_
 
-#include "IG2App.h"
+#include "EntityIG.h"
 #include "AspasMolino.h"
 
 using namespace Ogre;
 
-class RotorDron : public OgreBites::InputListener
+class RotorDron : public EntityIG
 {
 public:
-	RotorDron(SceneNode* node, SceneManager* mSM, int numAspas, double rotation = 2);
+	RotorDron(SceneNode* node,int numAspas, double rotation = 2);
 	~RotorDron();
-	SceneNode* getNode() { return mNode; } //Para poder trasladar desde fuera, pero sin cambiar el nodo en sí
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 
 private:
-	SceneNode* mNode;
 	SceneNode* mEsferaNode;
 	SceneNode* mHelicesNode;
 	AspasMolino* mAspas;
 
 	int numAspas;
 };
-
-RotorDron::RotorDron(SceneNode* node, SceneManager* mSM, int nAspas, double rotation)
-{
-	numAspas = nAspas;
-
-	//Creacion
-	mNode = node->createChildSceneNode();
-	mEsferaNode = mNode->createChildSceneNode();
-	mHelicesNode = mNode->createChildSceneNode();
-
-	mEsferaNode->attachObject(mSM->createEntity("sphere.mesh"));
-	mAspas = new AspasMolino(mHelicesNode, mSM, numAspas, rotation);
-	mAspas->SetAdornosVisibility(false);
-
-	//Escalas
-	float sphereScale = 2;
-	float helicesScale = 0.75f;
-	mEsferaNode->setScale(sphereScale, sphereScale, sphereScale);
-	mHelicesNode->setScale(helicesScale, helicesScale, helicesScale);
-
-	//Posiciones
-	mAspas->getNode()->setPosition(0, 260, 0);
-	mAspas->getNode()->pitch(Degree(90));
-}
-
-RotorDron::~RotorDron() //No se si hay que hacer algo aqui
-{
-	delete mAspas;
-}
-
-bool RotorDron::keyPressed(const OgreBites::KeyboardEvent& evt)
-{
-	mAspas->keyPressed(evt); // --- Apartado 14 ---
-	return true;
-}
-
+#endif
