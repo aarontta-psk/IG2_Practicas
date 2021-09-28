@@ -4,7 +4,7 @@
 #include <OgreInput.h>
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
-#include <SDL.h> 
+#include <SDL_keycode.h>
 
 using namespace Ogre;
 

@@ -2,6 +2,7 @@
 #define __IG2App_H__
 
 #include "IG2ApplicationContext.h"
+
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreTrays.h>
