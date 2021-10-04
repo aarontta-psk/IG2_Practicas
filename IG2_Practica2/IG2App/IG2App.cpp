@@ -88,7 +88,7 @@ void IG2App::setupScene(void)
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.7, 0.8, 0.9));
+	vp->setBackgroundColour(Ogre::ColourValue(0.2, 0.2, 0.2));
 
 	//------------------------------------------------------------------------
 
@@ -207,7 +207,19 @@ void IG2App::setupScene(void)
 	//addInputListener(brazoDron);
 
 	// -- Apartado 16 ---
-	Dron* dron = new Dron(mSM->getRootSceneNode(), 12, 8);
-	addInputListener(dron);
+	//Dron* dron = new Dron(mSM->getRootSceneNode(), 12, 8);
+	//addInputListener(dron);
+
+	// -- Apartado 17 ---
+	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
+	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
+	planetaNode->setScale(5, 5, 5);
+
+	ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
+	Dron* dron2 = new Dron(ficticioDronNode, 12, 8);
+	dron2->getNode()->setScale(0.2, 0.2, 0.2);
+	dron2->getNode()->translate(0, 540, 0);
+
+	addInputListener(dron2);
 }
 

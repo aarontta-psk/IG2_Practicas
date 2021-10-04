@@ -25,6 +25,8 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntityIG(node)
 		arrayBrazos[i]->getNode()->setScale(0.8, 0.8, 0.8);
 	}
 
+	arrayBrazos[0]->getNode()->setScale(1.2, 1.2, 1.2);
+
 	mSphereNode->attachObject(mSM->createEntity("sphere.mesh"));
 	mSphereNode->setScale(2, 2, 2);
 

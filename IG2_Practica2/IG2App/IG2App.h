@@ -30,6 +30,8 @@ protected:
 	Ogre::SceneNode* mClockSeconds = nullptr;
 	Ogre::SceneNode* mClockNode = nullptr;
 	Ogre::SceneNode* mSphereNode = nullptr;
+	Ogre::SceneNode* planetaNode = nullptr;
+	Ogre::SceneNode* ficticioDronNode = nullptr;
 	Ogre::SceneNode** mHourNode = nullptr;
 	Ogre::SceneNode* mSinbadNode = nullptr;
 	OgreBites::CameraMan* mCamMgr = nullptr;
