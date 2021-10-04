@@ -26,10 +26,13 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		mClockNode->roll(Ogre::Degree(3));
 	}
-	//--- Apartado 5 ---
 	else if (evt.keysym.sym == SDLK_h)
 	{
-		mSphereNode->roll(Ogre::Degree(3));
+		//--- Apartado 5 ---
+		//mSphereNode->roll(Ogre::Degree(3));
+
+		// -- Apartado 18 ---
+		ficticioDronNode->roll(Ogre::Degree(-3));
 	}
 	//else if (evt.keysym.sym == SDLK_???)
 
