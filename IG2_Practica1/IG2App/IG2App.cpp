@@ -123,8 +123,7 @@ void IG2App::setupScene(void)
 	const double angleStep = 360.0 / numHourNodes;
 
 	mClockNode = mSM->getRootSceneNode()->createChildSceneNode("nClock");
-	mClockNode->setScale(0, 0, 0); // Era o esto o echar la camara hacia atras y esto es mas facil
-	mClockNode->setVisible(false); // Para verlo, poner a true
+	mClockNode->setScale(0.4, 0.4, 0.4);
 
 	mSphereNode = mClockNode->createChildSceneNode("nSphere");
 
@@ -178,6 +177,9 @@ void IG2App::setupScene(void)
 	mClockMinutes->roll(Ogre::Degree(90));
 	//mClockSeconds->roll(Ogre::Degree(90)); //-- Apartado 3 --
 	mClockSeconds->roll(Ogre::Degree(45)); //-- Apartado 6 --
+
+	// PONER EN TRUE PARA VER EJERCICIOS DEL 1 AL 6
+	mClockNode->setVisible(false);
 
 	//------------------------------------------------------------------------
 
