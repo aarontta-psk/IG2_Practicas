@@ -32,11 +32,19 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		//mSphereNode->roll(Ogre::Degree(3));
 
 		// -- Apartado 18 ---
-		ficticioDronNode->roll(Ogre::Degree(-3));
+		//ficticioDronNode->roll(Ogre::Degree(-3));
+
+		// -- Apartado 20 ---
+		dron->getNode()->translate(0, -540, 0, SceneNode::TS_LOCAL);
+		dron->getNode()->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
+		dron->getNode()->translate(0, 540, 0, SceneNode::TS_LOCAL);
 	}
 	else if (evt.keysym.sym == SDLK_j) {
 		// -- Apartado 19 ---
-		ficticioDronNode->yaw(Ogre::Degree(-3));
+		//ficticioDronNode->yaw(Ogre::Degree(-3));
+
+		// -- Apartado 20 ---
+		dron->getNode()->yaw(Ogre::Degree(-3), SceneNode::TS_LOCAL);
 	}
 	//else if (evt.keysym.sym == SDLK_???)
 
@@ -223,10 +231,10 @@ void IG2App::setupScene(void)
 	planetaNode->setScale(5, 5, 5);
 
 	ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
-	Dron* dron2 = new Dron(ficticioDronNode, 12, 8);
-	dron2->getNode()->setScale(0.2, 0.2, 0.2);
-	dron2->getNode()->translate(0, 540, 0);
+	dron = new Dron(ficticioDronNode, 12, 8);
+	dron->getNode()->setScale(0.2, 0.2, 0.2);
+	dron->getNode()->translate(0, 540, 0);
 
-	addInputListener(dron2);
+	addInputListener(dron);
 }
 

@@ -8,6 +8,8 @@
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
 
+class Dron;
+
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
 {
 public:
@@ -32,6 +34,7 @@ protected:
 	Ogre::SceneNode* mSphereNode = nullptr;
 	Ogre::SceneNode* planetaNode = nullptr;
 	Ogre::SceneNode* ficticioDronNode = nullptr;
+	Dron* dron = nullptr;
 	Ogre::SceneNode** mHourNode = nullptr;
 	Ogre::SceneNode* mSinbadNode = nullptr;
 	OgreBites::CameraMan* mCamMgr = nullptr;
