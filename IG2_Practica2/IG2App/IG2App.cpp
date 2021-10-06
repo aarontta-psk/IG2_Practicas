@@ -226,15 +226,23 @@ void IG2App::setupScene(void)
 	//addInputListener(dron);
 
 	// -- Apartado 17 ---
-	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
-	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
-	planetaNode->setScale(5, 5, 5);
+	//planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
+	//planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
+	//planetaNode->setScale(5, 5, 5);
+	//
+	//ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
+	//dron = new Dron(ficticioDronNode, 12, 8);
+	//dron->getNode()->setScale(0.2, 0.2, 0.2);
+	//dron->getNode()->translate(0, 540, 0);
+	//
+	//addInputListener(dron);
 
-	ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
-	dron = new Dron(ficticioDronNode, 12, 8);
-	dron->getNode()->setScale(0.2, 0.2, 0.2);
-	dron->getNode()->translate(0, 540, 0);
-
-	addInputListener(dron);
+	// -- Apartado 23 ---
+	MeshManager::getSingleton().createPlane("mPlane1080x800",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
+	planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
 }
 
