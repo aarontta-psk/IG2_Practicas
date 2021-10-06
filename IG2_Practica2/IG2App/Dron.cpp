@@ -1,6 +1,6 @@
 #include "Dron.h"
 
-Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntityIG(node)
+Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();

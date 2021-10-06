@@ -1,12 +1,12 @@
 #ifndef ASPASMOLINO_H_
 #define ASPASMOLINO_H_
 
-#include "EntityIG.h"
+#include "EntidadIG.h"
 #include "Aspa.h"
 
 using namespace Ogre;
 
-class AspasMolino : public EntityIG
+class AspasMolino : public EntidadIG
 {
 public:
 	AspasMolino(SceneNode* node, int numAspas, double rotation = 2);

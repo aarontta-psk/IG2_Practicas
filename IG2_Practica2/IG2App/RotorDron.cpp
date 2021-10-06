@@ -1,6 +1,6 @@
 #include "RotorDron.h"
 
-RotorDron::RotorDron(SceneNode* node, int nAspas, double rotation) :EntityIG(node)
+RotorDron::RotorDron(SceneNode* node, int nAspas, double rotation) :EntidadIG(node)
 {
 	//Creacion
 	mEsferaNode = mNode->createChildSceneNode();

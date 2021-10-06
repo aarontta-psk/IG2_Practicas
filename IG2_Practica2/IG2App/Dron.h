@@ -1,12 +1,12 @@
 #ifndef DRON_H_
 #define DRON_H_
 
-#include "EntityIG.h"
+#include "EntidadIG.h"
 #include "BrazoDron.h"
 
 using namespace Ogre;
 
-class Dron : public EntityIG
+class Dron : public EntidadIG
 {
 public:
 	Dron(SceneNode* node, int numAspas, int nBrazos);

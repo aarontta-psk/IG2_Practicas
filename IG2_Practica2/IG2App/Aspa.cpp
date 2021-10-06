@@ -1,6 +1,6 @@
 #include "Aspa.h"
 
-Aspa::Aspa(SceneNode* node) : EntityIG(node)
+Aspa::Aspa(SceneNode* node) : EntidadIG(node)
 {
 	//Creacion
 	tableroNode = mNode->createChildSceneNode();

@@ -218,7 +218,7 @@ void IG2App::setupScene(void)
 	//addInputListener(rotorDron);
 
 	// -- Apartado 15 ---
-	//BrazoDron* brazoDron = new BrazoDron(mSM->getRootSceneNode(), 6);
+	//BrazoDron* brazoDron = new BrazoDron(mSM->getRootSceneN-+-ode(), 6);
 	//addInputListener(brazoDron);
 
 	// -- Apartado 16 ---

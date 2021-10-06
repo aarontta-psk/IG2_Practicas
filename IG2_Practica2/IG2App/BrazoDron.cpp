@@ -1,6 +1,6 @@
 #include "BrazoDron.h"
 
-BrazoDron::BrazoDron(SceneNode* node, int nAspas, double rotation) : EntityIG(node)
+BrazoDron::BrazoDron(SceneNode* node, int nAspas, double rotation) : EntidadIG(node)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();
