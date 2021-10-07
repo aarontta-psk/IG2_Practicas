@@ -12,6 +12,7 @@
 #include "RotorDron.h"
 #include "BrazoDron.h"
 #include "Dron.h"
+#include "Avion.h"
 
 using namespace Ogre;
 
@@ -154,7 +155,7 @@ void IG2App::setupScene(void)
 	}
 
 	//--- Apartado 2 ---
-	// Cambiar de tamaño los nodos de las horas pares
+	// Cambiar de tamaï¿½o los nodos de las horas pares
 	for (int i = 0; i < numHourNodes; i += 2)
 	{
 		std::string nodeName = "Hora " + std::to_string(i);
