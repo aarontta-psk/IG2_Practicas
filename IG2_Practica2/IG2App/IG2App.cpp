@@ -240,6 +240,7 @@ void IG2App::setupScene(void)
 
 	//Apartado 21
 	Avion* avion = new Avion(mSM->getRootSceneNode());
+	addInputListener(avion);
 
 	// -- Apartado 23 ---
 	//MeshManager::getSingleton().createPlane("mPlane1080x800",

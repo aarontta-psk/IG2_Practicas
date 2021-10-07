@@ -8,6 +8,7 @@ class Avion : public EntidadIG
 {
 public:
 	Avion(SceneNode* node);
+	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 private:
 	SceneNode* mCuerpoNode;
 	SceneNode* mAlaINode;

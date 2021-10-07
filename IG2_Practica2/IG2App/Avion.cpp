@@ -1,5 +1,6 @@
 #include "Avion.h"
 #include "AspasMolino.h"
+#include <iostream>
 
 Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 {
@@ -42,5 +43,11 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
 	mAlaDNode->translate( alasOffset, 0, 0);
+}
 
+inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	mHeliceDNode->keyPressed(evt);
+	mHeliceINode->keyPressed(evt);
+	return true;
 }
