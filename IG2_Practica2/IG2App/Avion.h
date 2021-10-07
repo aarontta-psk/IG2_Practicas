@@ -3,8 +3,8 @@
 
 class AspasMolino;
 
-#include "EntityIG.h"
-class Avion : public EntityIG
+#include "EntidadIG.h"
+class Avion : public EntidadIG
 {
 public:
 	Avion(SceneNode* node);

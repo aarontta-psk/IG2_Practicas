@@ -238,12 +238,15 @@ void IG2App::setupScene(void)
 	//
 	//addInputListener(dron);
 
+	//Apartado 21
+	Avion* avion = new Avion(mSM->getRootSceneNode());
+
 	// -- Apartado 23 ---
-	MeshManager::getSingleton().createPlane("mPlane1080x800",
-		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-		Plane(Vector3::UNIT_Y, 0),
-		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
-	planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
-	planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
+	//MeshManager::getSingleton().createPlane("mPlane1080x800",
+	//	ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+	//	Plane(Vector3::UNIT_Y, 0),
+	//	1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	//planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
+	//planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
 }
 
