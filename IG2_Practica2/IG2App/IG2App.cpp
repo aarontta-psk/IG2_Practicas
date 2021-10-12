@@ -13,6 +13,7 @@
 #include "BrazoDron.h"
 #include "Dron.h"
 #include "Avion.h"
+#include "Plano.h"
 
 using namespace Ogre;
 
@@ -249,5 +250,10 @@ void IG2App::setupScene(void)
 	//	1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	//planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
 	//planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
+
+	// -- Apartado 26 --
+	Plano* plane = new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 }
 

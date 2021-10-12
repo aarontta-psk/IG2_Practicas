@@ -129,6 +129,7 @@
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Molino.h" />
+    <ClInclude Include="Plano.h" />
     <ClInclude Include="RotorDron.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />
     <ClCompile Include="Molino.cpp" />
+    <ClCompile Include="Plano.cpp" />
     <ClCompile Include="RotorDron.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
