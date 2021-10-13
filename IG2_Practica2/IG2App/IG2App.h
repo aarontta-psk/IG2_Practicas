@@ -8,7 +8,9 @@
 #include <OgreTrays.h>
 #include <OgreCameraMan.h>
 
-class Dron;
+#include <vector>
+
+class EntidadIG;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
 {
@@ -25,6 +27,7 @@ protected:
 
 	Ogre::SceneManager* mSM = nullptr;
 	OgreBites::TrayManager* mTrayMgr = nullptr;
+
 	Ogre::SceneNode* mLightNode = nullptr;
 	Ogre::SceneNode* mCamNode = nullptr;
 	Ogre::SceneNode* mClockHours = nullptr;
@@ -35,10 +38,14 @@ protected:
 	Ogre::SceneNode* planetaNode = nullptr;
 	Ogre::SceneNode* ficticioDronNode = nullptr;
 	Ogre::SceneNode* planeNode = nullptr;
-	Dron* dron = nullptr;
+	Ogre::SceneNode* ficticioAvionNode = nullptr;
+
 	Ogre::SceneNode** mHourNode = nullptr;
 	Ogre::SceneNode* mSinbadNode = nullptr;
+
 	OgreBites::CameraMan* mCamMgr = nullptr;
+
+	std::vector<EntidadIG*> vEntities;
 };
 
 #endif

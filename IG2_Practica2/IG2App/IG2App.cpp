@@ -37,16 +37,16 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		//ficticioDronNode->roll(Ogre::Degree(-3));
 
 		// -- Apartado 20 ---
-		dron->getNode()->translate(0, -540, 0, SceneNode::TS_LOCAL);
-		dron->getNode()->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
-		dron->getNode()->translate(0, 540, 0, SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->translate(0, -540, 0, SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->translate(0, 540, 0, SceneNode::TS_LOCAL);
 	}
 	else if (evt.keysym.sym == SDLK_j) {
 		// -- Apartado 19 ---
 		//ficticioDronNode->yaw(Ogre::Degree(-3));
 
 		// -- Apartado 20 ---
-		dron->getNode()->yaw(Ogre::Degree(-3), SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->yaw(Ogre::Degree(-3), SceneNode::TS_LOCAL);
 	}
 	//else if (evt.keysym.sym == SDLK_???)
 
@@ -62,6 +62,10 @@ void IG2App::shutdown()
 
 	delete mTrayMgr;  mTrayMgr = nullptr;
 	delete mCamMgr; mCamMgr = nullptr;
+
+	for (size_t i = 0; i < vEntities.size(); i++)
+		delete vEntities[i]; 
+	vEntities.clear();
 
 	// do not forget to call the base 
 	IG2ApplicationContext::shutdown();
@@ -240,8 +244,8 @@ void IG2App::setupScene(void)
 	//addInputListener(dron);
 
 	//Apartado 21
-	Avion* avion = new Avion(mSM->getRootSceneNode());
-	addInputListener(avion);
+	//Avion* avion = new Avion(mSM->getRootSceneNode());
+	//addInputListener(avion);
 
 	// -- Apartado 23 ---
 	//MeshManager::getSingleton().createPlane("mPlane1080x800",
@@ -252,8 +256,26 @@ void IG2App::setupScene(void)
 	//planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
 
 	// -- Apartado 26 --
-	Plano* plane = new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
+	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
+	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
+	planetaNode->setScale(3, 3, 3);
+
+	ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
+	vEntities.push_back(new Dron(ficticioDronNode, 12, 8));
+	vEntities[0]->getNode()->setScale(0.07, 0.07, 0.07);
+	vEntities[0]->getNode()->translate(0, 315, 0);
+	ficticioDronNode->roll(Ogre::Degree(-40));
+
+	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
+	vEntities.push_back(new Avion(ficticioAvionNode));
+	vEntities[1]->getNode()->setScale(0.15, 0.15, 0.15);
+	vEntities[1]->getNode()->translate(0, 330, 0);
+
+	vEntities.push_back(new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
 		Plane(Vector3::UNIT_Y, 0),
-		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z));
+	vEntities[2]->getNode()->pitch(Ogre::Degree(90));
+	vEntities[2]->getNode()->translate(0, 0, -1000);
+	vEntities[2]->getNode()->setScale(2, 2, 2);
 }
 
