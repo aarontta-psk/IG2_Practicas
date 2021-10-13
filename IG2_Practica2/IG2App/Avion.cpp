@@ -43,6 +43,18 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
 	mAlaDNode->translate( alasOffset, 0, 0);
+
+	light = mSM->createLight();
+
+	lightNode = mSM->createSceneNode();
+	mNode->addChild(lightNode);
+	lightNode->attachObject(light);
+
+	light->setType(Light::LT_SPOTLIGHT);
+	light->setDirection(Vector3(0, -1, 0));
+	light->setSpotlightInnerAngle(Degree(0));
+	light->setSpotlightOuterAngle(Degree(45));
+	light->setSpotlightFalloff(0.0f);
 }
 
 inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)

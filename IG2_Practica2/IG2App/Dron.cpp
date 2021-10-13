@@ -11,10 +11,6 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
 	for (int i = 0; i < nBrazos; i++)
 	{
 		mBrazosNodes[i] = mNode->createChildSceneNode();
-		//if (i % 2 == 0) { // WIP first idea
-		//	mBrazosNodes[i]->setOrientation(mBrazosNodes[i]->getOrientation().Inverse());
-		//	mBrazosNodes[i]->setScale(-1, 1, -1);
-		//}
 
 		arrayBrazos[i] = new BrazoDron(mBrazosNodes[i], nAspas, (i % 2 == 0) ? 2 : -2); // posible cambio
 
@@ -29,6 +25,18 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
 
 	mSphereNode->attachObject(mSM->createEntity("sphere.mesh"));
 	mSphereNode->setScale(2, 2, 2);
+
+	light = mSM->createLight();
+
+	lightNode = mSM->createSceneNode();
+	mNode->addChild(lightNode);
+	lightNode->attachObject(light);
+
+	light->setType(Light::LT_SPOTLIGHT);
+	light->setDirection(Vector3(0, -1, 0));
+	light->setSpotlightInnerAngle(Degree(0));
+	light->setSpotlightOuterAngle(Degree(45));
+	light->setSpotlightFalloff(0.0f);
 
 	numAspas = nAspas; numBrazos = nBrazos;
 }

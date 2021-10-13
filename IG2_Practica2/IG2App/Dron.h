@@ -19,6 +19,9 @@ private:
 	SceneNode** mBrazosNodes;
 	BrazoDron** arrayBrazos;
 
+	SceneNode* lightNode;
+	Light* light;
+
 	int numAspas, numBrazos;
 };
 #endif

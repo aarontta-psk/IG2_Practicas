@@ -37,9 +37,9 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		//ficticioDronNode->roll(Ogre::Degree(-3));
 
 		// -- Apartado 20 ---
-		vEntities[0]->getNode()->translate(0, -540, 0, SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->translate(0, -315, 0, SceneNode::TS_LOCAL);
 		vEntities[0]->getNode()->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
-		vEntities[0]->getNode()->translate(0, 540, 0, SceneNode::TS_LOCAL);
+		vEntities[0]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
 	}
 	else if (evt.keysym.sym == SDLK_j) {
 		// -- Apartado 19 ---
@@ -63,9 +63,9 @@ void IG2App::shutdown()
 	delete mTrayMgr;  mTrayMgr = nullptr;
 	delete mCamMgr; mCamMgr = nullptr;
 
-	for (size_t i = 0; i < vEntities.size(); i++)
+	/*for (size_t i = 0; i < vEntities.size(); i++)
 		delete vEntities[i]; 
-	vEntities.clear();
+	vEntities.clear();*/
 
 	// do not forget to call the base 
 	IG2ApplicationContext::shutdown();
