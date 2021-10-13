@@ -6,7 +6,9 @@ AspasMolino::AspasMolino(SceneNode* node, int numAspas, double rotation) : Entid
 	cilindroCentralNode = mNode->createChildSceneNode();
 	aspasNode = mNode->createChildSceneNode();
 
-	cilindroCentralNode->attachObject(mSM->createEntity("Barrel.mesh"));
+	Entity* cilindro = mSM->createEntity("Barrel.mesh");
+	cilindro->setMaterialName("Practica1/Brown");
+	cilindroCentralNode->attachObject(cilindro);
 	cilindroCentralNode->pitch(Degree(90));
 	int scale = 20; //Mas comodo de cambiar asi
 	cilindroCentralNode->setScale(scale, scale * 0.2f, scale);

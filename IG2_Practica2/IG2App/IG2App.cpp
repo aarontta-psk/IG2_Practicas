@@ -123,7 +123,7 @@ void IG2App::setupScene(void)
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 
-	mLightNode->setDirection(Ogre::Vector3(0, 0, -1));  //vec3.normalise();
+	mLightNode->setDirection(Ogre::Vector3(0, -0.2, -0.8));  //vec3.normalise();
 	//lightNode->setPosition(0, 0, 1000);
 
 	//------------------------------------------------------------------------

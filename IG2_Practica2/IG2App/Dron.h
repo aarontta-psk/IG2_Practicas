@@ -10,7 +10,7 @@ class Dron : public EntidadIG
 {
 public:
 	Dron(SceneNode* node, int numAspas, int nBrazos);
-	~Dron();
+	virtual ~Dron();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 

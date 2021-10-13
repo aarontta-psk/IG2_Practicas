@@ -12,7 +12,9 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	mFrenteNode = mNode->createChildSceneNode();
 	mPilotoNode = mNode->createChildSceneNode();
 
-	mCuerpoNode->attachObject(mSM->createEntity("sphere.mesh"));
+	Entity* sphere = mSM->createEntity("sphere.mesh");
+	sphere->setMaterialName("Practica1/Red");
+	mCuerpoNode->attachObject(sphere);
 	mCuerpoNode->setScale(2, 2, 2);
 
 	float helicesScale = 0.25f;
@@ -24,21 +26,30 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	mHeliceINode->getNode()->translate(-helicesOffsetX, 0, helicesOffseZ);
 	mHeliceDNode->getNode()->translate( helicesOffsetX, 0, helicesOffseZ);
 
-	mFrenteNode->attachObject(mSM->createEntity("Barrel.mesh"));
+	Entity* cilindro = mSM->createEntity("Barrel.mesh");
+	cilindro->setMaterialName("Practica1/Brown");
+	mFrenteNode->attachObject(cilindro);
 	mFrenteNode->translate(0, 0, 175);
 	mFrenteNode->setScale(Vector3(20.f));
 	mFrenteNode->pitch(Degree(90));
 
-	mPilotoNode->attachObject(mSM->createEntity("ninja.mesh"));
+	Entity* ninja = mSM->createEntity("ninja.mesh");
+	ninja->setMaterialName("Practica1/Yellow");
+	mPilotoNode->attachObject(ninja);
 	mPilotoNode->translate(0, 200, 0);
 	mPilotoNode->yaw(Degree(180));
 
-	float alasScaleX = 8.0f;
+	float alasScaleX = 4.0f;
 	float alasScaleY = 0.4f;
 	float alasScaleZ = 1.5f;
-	float alasOffset = 150.0f;
-	mAlaINode->attachObject(mSM->createEntity("cube.mesh"));
-	mAlaDNode->attachObject(mSM->createEntity("cube.mesh"));
+	float alasOffset = 300.0f;
+	Entity* ala = mSM->createEntity("cube.mesh");
+	ala->setMaterialName("Practica1/Alas");
+	mAlaINode->attachObject(ala);
+
+	ala = mSM->createEntity("cube.mesh");
+	ala->setMaterialName("Practica1/Alas");
+	mAlaDNode->attachObject(ala);
 	mAlaINode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
@@ -54,7 +65,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	light->setDirection(Vector3(0, -1, 0));
 	light->setSpotlightInnerAngle(Degree(0));
 	light->setSpotlightOuterAngle(Degree(45));
-	light->setSpotlightFalloff(0.0f);
+	light->setSpotlightFalloff(1.0f);
 }
 
 inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)

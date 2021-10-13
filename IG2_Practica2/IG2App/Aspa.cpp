@@ -6,8 +6,13 @@ Aspa::Aspa(SceneNode* node) : EntidadIG(node)
 	tableroNode = mNode->createChildSceneNode();
 	adornoNode = mNode->createChildSceneNode();
 
-	tableroNode->attachObject(mSM->createEntity("cube.mesh"));
-	adornoNode->attachObject(mSM->createEntity("Barrel.mesh"));
+	Entity* cube = mSM->createEntity("cube.mesh");
+	cube->setMaterialName("Practica1/Aspa");
+	tableroNode->attachObject(cube);
+
+	Entity* adorno = mSM->createEntity("Barrel.mesh");
+	adorno->setMaterialName("Practica1/Red");
+	adornoNode->attachObject(adorno);
 
 	//Posicion y escala
 	tableroNode->setScale(3, 0.5, 0.05); //Numeros cableados, no queda otra :(
