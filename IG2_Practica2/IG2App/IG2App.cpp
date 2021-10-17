@@ -264,12 +264,14 @@ void IG2App::setupScene(void)
 	vEntities.push_back(new Dron(ficticioDronNode, 12, 8));
 	vEntities[0]->getNode()->setScale(0.07, 0.07, 0.07);
 	vEntities[0]->getNode()->translate(0, 315, 0);
+	addInputListener(vEntities[0]);
 	ficticioDronNode->roll(Ogre::Degree(-40));
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode));
 	vEntities[1]->getNode()->setScale(0.15, 0.15, 0.15);
 	vEntities[1]->getNode()->translate(0, 330, 0);
+	addInputListener(vEntities[1]);
 
 	vEntities.push_back(new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
 		Plane(Vector3::UNIT_Y, 0),

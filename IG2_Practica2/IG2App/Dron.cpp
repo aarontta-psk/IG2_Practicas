@@ -1,6 +1,6 @@
 #include "Dron.h"
 
-Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
+Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(State::MOVING)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();
@@ -31,7 +31,7 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
 	lightNode = mSM->createSceneNode();
 	mNode->addChild(lightNode);
 	lightNode->attachObject(light);
-	
+
 	light->setType(Light::LT_SPOTLIGHT);
 	light->setDirection(Vector3(0, -1, 0));
 	light->setSpotlightInnerAngle(Degree(0));
@@ -39,6 +39,8 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node)
 	light->setSpotlightFalloff(1.0f);
 
 	numAspas = nAspas; numBrazos = nBrazos;
+
+	myTimer = new Timer();
 }
 
 Dron::~Dron()
@@ -50,6 +52,8 @@ Dron::~Dron()
 	for (int i = 0; i < numBrazos; ++i)
 		delete arrayBrazos[i];
 	delete[] arrayBrazos;
+
+	delete myTimer;
 }
 
 bool Dron::keyPressed(const OgreBites::KeyboardEvent& evt)
@@ -58,4 +62,39 @@ bool Dron::keyPressed(const OgreBites::KeyboardEvent& evt)
 		arrayBrazos[i]->keyPressed(evt);
 
 	return true;
+}
+
+void Dron::frameRendered(const Ogre::FrameEvent& evt)
+{
+	SceneNode* parentNode = mNode->getParentSceneNode();
+
+	switch (state) {
+	case State::MOVING: {
+		if (myTimer->getMilliseconds() >= 2000) {
+			state = (State)(rand() % 2 + 1);
+			myTimer->reset();
+		}
+		else
+			parentNode->roll(Ogre::Degree(-1));
+		break;
+	}
+	case State::ROTATING_LEFT: {
+		if (myTimer->getMilliseconds() >= 1500) {
+			state = State::MOVING;
+			myTimer->reset();
+		}
+		else
+			parentNode->yaw(Ogre::Degree(1));
+		break;
+	}
+	case State::ROTATING_RIGHT: {
+		if (myTimer->getMilliseconds() >= 1500) {
+			state = State::MOVING;
+			myTimer->reset();
+		}
+		else
+			parentNode->yaw(Ogre::Degree(-1));
+		break;
+	}
+	}
 }
