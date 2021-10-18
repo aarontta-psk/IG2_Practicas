@@ -2,7 +2,7 @@
 #include "AspasMolino.h"
 #include <iostream>
 
-Avion::Avion(SceneNode* node) : EntidadIG(node, "")
+Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
 	mAlaINode = mNode->createChildSceneNode();
@@ -66,6 +66,8 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, "")
 	light->setSpotlightInnerAngle(Degree(0));
 	light->setSpotlightOuterAngle(Degree(45));
 	light->setSpotlightFalloff(1.0f);
+	
+	myTimer = new Timer();
 }
 
 inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
@@ -73,4 +75,38 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 	mHeliceDNode->keyPressed(evt);
 	mHeliceINode->keyPressed(evt);
 	return true;
+}
+
+void Avion::frameRendered(const Ogre::FrameEvent& evt)
+{
+	SceneNode* parentNode = mNode->getParentSceneNode();
+
+	switch (state) {
+	case State::MOVING: {
+		if (myTimer->getMilliseconds() >= 2000) {
+			state = (State)(rand() % 2 + 1);
+			myTimer->reset();
+		}
+		break;
+	}
+	case State::ROTATING_LEFT: {
+		if (myTimer->getMilliseconds() >= 1500) {
+			state = State::MOVING;
+			myTimer->reset();
+		}
+		else
+			parentNode->yaw(Ogre::Degree(1));
+		break;
+	}
+	case State::ROTATING_RIGHT: {
+		if (myTimer->getMilliseconds() >= 1500) {
+			state = State::MOVING;
+			myTimer->reset();
+		}
+		else
+			parentNode->yaw(Ogre::Degree(-1));
+		break;
+	}
+	}
+	parentNode->pitch(Ogre::Degree(1));
 }
