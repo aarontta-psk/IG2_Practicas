@@ -64,7 +64,7 @@ void IG2App::shutdown()
 	delete mCamMgr; mCamMgr = nullptr;
 
 	/*for (size_t i = 0; i < vEntities.size(); i++)
-		delete vEntities[i]; 
+		delete vEntities[i];
 	vEntities.clear();*/
 
 	// do not forget to call the base 
@@ -260,24 +260,26 @@ void IG2App::setupScene(void)
 	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
 	planetaNode->setScale(3, 3, 3);
 
-	ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
-	vEntities.push_back(new Dron(ficticioDronNode, 12, 8));
-	vEntities[0]->getNode()->setScale(0.07, 0.07, 0.07);
-	vEntities[0]->getNode()->translate(0, 315, 0);
-	addInputListener(vEntities[0]);
-	ficticioDronNode->roll(Ogre::Degree(-40));
+	//ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
+	//for (int i = 0; i < 10; i++) {
+		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 12, 8));
+		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(1 * vEntities.size() - 1));
+		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+		vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
+		addInputListener(vEntities[vEntities.size() - 1]);
+	//}
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode));
-	vEntities[1]->getNode()->setScale(0.15, 0.15, 0.15);
-	vEntities[1]->getNode()->translate(0, 330, 0);
-	addInputListener(vEntities[1]);
+	vEntities[vEntities.size() - 1]->getNode()->setScale(0.15, 0.15, 0.15);
+	vEntities[vEntities.size() - 1]->getNode()->translate(0, 330, 0);
+	addInputListener(vEntities[vEntities.size() - 1]);
 
 	vEntities.push_back(new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
 		Plane(Vector3::UNIT_Y, 0),
 		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z));
-	vEntities[2]->getNode()->pitch(Ogre::Degree(90));
-	vEntities[2]->getNode()->translate(0, 0, -1000);
-	vEntities[2]->getNode()->setScale(2, 2, 2);
+	vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(90));
+	vEntities[vEntities.size() - 1]->getNode()->translate(0, 0, -1000);
+	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
 }
 

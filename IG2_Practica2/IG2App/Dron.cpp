@@ -74,8 +74,11 @@ void Dron::frameRendered(const Ogre::FrameEvent& evt)
 			state = (State)(rand() % 2 + 1);
 			myTimer->reset();
 		}
-		else
-			parentNode->roll(Ogre::Degree(-1));
+		else {
+			mNode->translate(0, -315, 0, SceneNode::TS_LOCAL);
+			mNode->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
+			mNode->translate(0, 315, 0, SceneNode::TS_LOCAL);
+		}
 		break;
 	}
 	case State::ROTATING_LEFT: {
@@ -84,7 +87,7 @@ void Dron::frameRendered(const Ogre::FrameEvent& evt)
 			myTimer->reset();
 		}
 		else
-			parentNode->yaw(Ogre::Degree(1));
+			mNode->yaw(Ogre::Degree(1), SceneNode::TS_LOCAL);
 		break;
 	}
 	case State::ROTATING_RIGHT: {
@@ -93,7 +96,7 @@ void Dron::frameRendered(const Ogre::FrameEvent& evt)
 			myTimer->reset();
 		}
 		else
-			parentNode->yaw(Ogre::Degree(-1));
+			mNode->yaw(Ogre::Degree(-1), SceneNode::TS_LOCAL);
 		break;
 	}
 	}
