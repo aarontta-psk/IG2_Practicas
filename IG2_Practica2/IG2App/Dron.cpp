@@ -83,6 +83,9 @@ void Dron::receiveEvent(Message message, EntidadIG* entidad)
 
 void Dron::frameRendered(const Ogre::FrameEvent& evt)
 {
+	for (int i = 0; i < numBrazos; i++)
+		arrayBrazos[i]->frameRendered(evt);
+
 	if (detenido) return;
 	SceneNode* parentNode = mNode->getParentSceneNode();
 

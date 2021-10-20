@@ -35,3 +35,8 @@ bool RotorDron::keyPressed(const OgreBites::KeyboardEvent& evt)
 	mAspas->keyPressed(evt); // --- Apartado 14 ---
 	return true;
 }
+
+void RotorDron::frameRendered(const Ogre::FrameEvent& evt)
+{
+	mAspas->frameRendered(evt);
+}

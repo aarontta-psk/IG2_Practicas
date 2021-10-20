@@ -48,3 +48,8 @@ bool AspasMolino::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 	return true;
 }
+
+void AspasMolino::frameRendered(const Ogre::FrameEvent& evt)
+{
+	aspasNode->roll(Degree(rot)); // -- Apartado 36 --
+}

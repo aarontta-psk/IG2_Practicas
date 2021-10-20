@@ -99,6 +99,9 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 void Avion::frameRendered(const Ogre::FrameEvent& evt)
 {
+	mHeliceDNode->frameRendered(evt);
+	mHeliceINode->frameRendered(evt);
+
 	if (detenido) return;
 
 	SceneNode* parentNode = mNode->getParentSceneNode();

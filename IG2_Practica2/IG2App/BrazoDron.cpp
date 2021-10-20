@@ -35,3 +35,8 @@ bool BrazoDron::keyPressed(const OgreBites::KeyboardEvent& evt)
 	mAspas->keyPressed(evt);
 	return true;
 }
+
+void BrazoDron::frameRendered(const Ogre::FrameEvent& evt)
+{
+	mAspas->frameRendered(evt);
+}

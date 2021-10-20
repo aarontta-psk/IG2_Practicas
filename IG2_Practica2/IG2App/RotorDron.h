@@ -13,6 +13,7 @@ public:
 	~RotorDron();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 private:
 	SceneNode* mEsferaNode;
