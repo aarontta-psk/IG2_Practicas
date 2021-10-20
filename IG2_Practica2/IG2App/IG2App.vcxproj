@@ -131,6 +131,7 @@
     <ClInclude Include="Molino.h" />
     <ClInclude Include="Plano.h" />
     <ClInclude Include="RotorDron.h" />
+    <ClInclude Include="Sinbad.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aspa.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Molino.cpp" />
     <ClCompile Include="Plano.cpp" />
     <ClCompile Include="RotorDron.cpp" />
+    <ClCompile Include="Sinbad.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,6 +14,7 @@
 #include "Dron.h"
 #include "Avion.h"
 #include "Plano.h"
+#include "Sinbad.h"
 
 using namespace Ogre;
 
@@ -291,5 +292,8 @@ void IG2App::setupScene(void)
 	vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(90));
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 0, -1000);
 	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
+
+	// --- Apartado 41 --
+	vEntities.push_back(new Sinbad(mSM->getRootSceneNode()));
 }
 
