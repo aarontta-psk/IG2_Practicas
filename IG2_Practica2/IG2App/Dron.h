@@ -19,6 +19,8 @@ public:
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
+	void disableLight() { light->setVisible(false); };
+
 private:
 	SceneNode* mSphereNode;
 	SceneNode** mBrazosNodes;

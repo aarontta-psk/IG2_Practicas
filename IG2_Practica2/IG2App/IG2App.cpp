@@ -255,19 +255,20 @@ void IG2App::setupScene(void)
 	//planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
 	//planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
 
-	// -- Apartado 26 --
+	//// -- Apartado 26 --
 	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
 	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
 	planetaNode->setScale(3, 3, 3);
 
 	//ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
-	//for (int i = 0; i < 10; i++) {
-		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 12, 8));
-		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(1 * vEntities.size() - 1));
+	for (int i = 0; i < 30; i++) {
+		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+		vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
 		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
 		vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
 		addInputListener(vEntities[vEntities.size() - 1]);
-	//}
+	}
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode));
