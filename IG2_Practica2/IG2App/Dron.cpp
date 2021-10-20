@@ -1,6 +1,6 @@
 #include "Dron.h"
 
-Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(State::MOVING)
+Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(State::MOVING), detenido(false)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();
@@ -66,8 +66,24 @@ bool Dron::keyPressed(const OgreBites::KeyboardEvent& evt)
 	return true;
 }
 
+void Dron::receiveEvent(Message message, EntidadIG* entidad)
+{
+	switch (message.id_)
+	{
+	case DEFAULT:
+		break;
+	case AVION:
+		detenido = true;
+		static_cast<Entity*>(mSphereNode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
+		break;
+	default:
+		break;
+	}
+}
+
 void Dron::frameRendered(const Ogre::FrameEvent& evt)
 {
+	if (detenido) return;
 	SceneNode* parentNode = mNode->getParentSceneNode();
 
 	switch (state) {

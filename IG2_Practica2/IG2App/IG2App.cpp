@@ -49,6 +49,7 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		// -- Apartado 20 ---
 		vEntities[0]->getNode()->yaw(Ogre::Degree(-3), SceneNode::TS_LOCAL);
 	}
+
 	//else if (evt.keysym.sym == SDLK_???)
 
 	return true;
@@ -264,14 +265,14 @@ void IG2App::setupScene(void)
 	planetaNode->setScale(3, 3, 3);
 
 
-	for (int i = 0; i < 30; i++) {
-		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
-		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
-		vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
-		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
-		vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
-		addInputListener(vEntities[vEntities.size() - 1]);
-	}
+	//for (int i = 0; i < 30; i++) {
+	//	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+	//	static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+	//	vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
+	//	vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+	//	vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
+	//	addInputListener(vEntities[vEntities.size() - 1]);
+	//}
 
 	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
 	static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
@@ -279,12 +280,14 @@ void IG2App::setupScene(void)
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
 	vEntities[vEntities.size() - 1]->getNode()->setScale(0.1, 0.1, 0.1);
 	addInputListener(vEntities[vEntities.size() - 1]);
+	EntidadIG::addListener(vEntities[vEntities.size() - 1]);
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode));
 	vEntities[vEntities.size() - 1]->getNode()->setScale(0.15, 0.15, 0.15);
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 330, 0);
 	addInputListener(vEntities[vEntities.size() - 1]);
+	EntidadIG::addListener(vEntities[vEntities.size() - 1]);
 
 	vEntities.push_back(new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
 		Plane(Vector3::UNIT_Y, 0),

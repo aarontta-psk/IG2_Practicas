@@ -2,7 +2,7 @@
 #include "AspasMolino.h"
 #include <iostream>
 
-Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING)
+Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), detenido(false)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
 	mAlaINode = mNode->createChildSceneNode();
@@ -54,7 +54,6 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING)
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
 	mAlaDNode->translate( alasOffset, 0, 0);
-
 	light = mSM->createLight();
 
 	lightNode = mSM->createSceneNode();
@@ -70,15 +69,38 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING)
 	myTimer = new Timer();
 }
 
+void Avion::receiveEvent(Message message, EntidadIG* entidad)
+{
+	switch (message.id_)
+	{
+	case DEFAULT:
+		break;
+	case AVION:
+		detenido = true;
+		static_cast<Entity*>(mAlaDNode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
+		static_cast<Entity*>(mAlaINode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
+		break;
+	default:
+		break;
+	}
+}
+
 inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	mHeliceDNode->keyPressed(evt);
 	mHeliceINode->keyPressed(evt);
+
+
+	if (evt.keysym.sym == SDLK_r)
+		sendEvent({ AVION }, nullptr);
+
 	return true;
 }
 
 void Avion::frameRendered(const Ogre::FrameEvent& evt)
 {
+	if (detenido) return;
+
 	SceneNode* parentNode = mNode->getParentSceneNode();
 
 	switch (state) {

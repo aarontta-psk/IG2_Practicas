@@ -17,6 +17,7 @@ public:
 	virtual ~Dron();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
+	void receiveEvent(Message message, EntidadIG* entidad) override;
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	void disableLight() { light->setVisible(false); };
@@ -25,6 +26,7 @@ private:
 	SceneNode* mSphereNode;
 	SceneNode** mBrazosNodes;
 	BrazoDron** arrayBrazos;
+	bool detenido;
 
 	SceneNode* lightNode;
 	Light* light;

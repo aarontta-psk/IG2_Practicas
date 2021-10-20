@@ -12,6 +12,7 @@ class Avion : public EntidadIG
 
 public:
 	Avion(SceneNode* node);
+	void receiveEvent(Message message, EntidadIG* entidad) override;
 	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
@@ -26,6 +27,7 @@ private:
 
 	SceneNode* lightNode;
 	Light* light;
+	bool detenido;
 
 	Ogre::Timer* myTimer;
 	State state;
