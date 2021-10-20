@@ -7,7 +7,7 @@ Aspa::Aspa(SceneNode* node) : EntidadIG(node)
 	adornoNode = mNode->createChildSceneNode();
 
 	Entity* cube = mSM->createEntity("cube.mesh");
-	cube->setMaterialName("Practica1/Aspa");
+	cube->setMaterialName("Practica1/Cross");
 	tableroNode->attachObject(cube);
 
 	Entity* adorno = mSM->createEntity("Barrel.mesh");

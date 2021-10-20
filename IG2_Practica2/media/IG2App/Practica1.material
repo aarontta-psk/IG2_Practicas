@@ -31,7 +31,18 @@ material Practica1/Brown
     }
 }
 
-material Practica1/Alas
+material Practica1/Cyan
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0 0.845 0.845
+        }
+    }
+}
+
+material Practica1/Wings
 {
     technique
     {
@@ -46,7 +57,7 @@ material Practica1/Alas
     }
 }
 
-material Practica1/Aspa
+material Practica1/Cross
 {
     technique
     {

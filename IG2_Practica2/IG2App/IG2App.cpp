@@ -257,10 +257,12 @@ void IG2App::setupScene(void)
 
 	//// -- Apartado 26 --
 	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
-	planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
+	Entity* planet = mSM->createEntity("sphere.mesh");
+	planet->setMaterialName("Practica1/Cyan");
+	planetaNode->attachObject(planet);
 	planetaNode->setScale(3, 3, 3);
 
-	//ficticioDronNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioDron");
+
 	for (int i = 0; i < 30; i++) {
 		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
 		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();

@@ -44,11 +44,11 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING)
 	float alasScaleZ = 1.5f;
 	float alasOffset = 300.0f;
 	Entity* ala = mSM->createEntity("cube.mesh");
-	ala->setMaterialName("Practica1/Alas");
+	ala->setMaterialName("Practica1/Wings");
 	mAlaINode->attachObject(ala);
 
 	ala = mSM->createEntity("cube.mesh");
-	ala->setMaterialName("Practica1/Alas");
+	ala->setMaterialName("Practica1/Wings");
 	mAlaDNode->attachObject(ala);
 	mAlaINode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
