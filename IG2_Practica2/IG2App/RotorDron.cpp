@@ -6,7 +6,9 @@ RotorDron::RotorDron(SceneNode* node, int nAspas, double rotation) :EntidadIG(no
 	mEsferaNode = mNode->createChildSceneNode();
 	mHelicesNode = mNode->createChildSceneNode();
 
-	mEsferaNode->attachObject(mSM->createEntity("sphere.mesh"));
+	Entity* sphere = mSM->createEntity("sphere.mesh");
+	sphere->setMaterialName("Practica1/Orange");
+	mEsferaNode->attachObject(sphere);
 	mAspas = new AspasMolino(mHelicesNode, nAspas, rotation);
 	mAspas->setAdornosVisibility(false);
 

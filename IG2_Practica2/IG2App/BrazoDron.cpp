@@ -6,7 +6,9 @@ BrazoDron::BrazoDron(SceneNode* node, int nAspas, double rotation) : EntidadIG(n
 	mSphereNode = mNode->createChildSceneNode();
 	mBrazosNode = mNode->createChildSceneNode();
 
-	mSphereNode->attachObject(mSM->createEntity("Barrel.mesh"));
+	Entity* brazo = mSM->createEntity("Barrel.mesh");
+	brazo->setMaterialName("Practica1/Junction");
+	mSphereNode->attachObject(brazo);
 	mAspas = new RotorDron(mBrazosNode, nAspas, rotation);
 
 	//Escalas

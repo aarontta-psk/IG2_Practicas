@@ -23,7 +23,9 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(St
 
 	arrayBrazos[0]->getNode()->setScale(1.2, 1.2, 1.2);
 
-	mSphereNode->attachObject(mSM->createEntity("sphere.mesh"));
+	Entity* sphere = mSM->createEntity("sphere.mesh");
+	sphere->setMaterialName("Practica1/Cursed");
+	mSphereNode->attachObject(sphere);
 	mSphereNode->setScale(2, 2, 2);
 
 	light = mSM->createLight();
