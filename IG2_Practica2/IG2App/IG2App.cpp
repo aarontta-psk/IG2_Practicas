@@ -264,17 +264,18 @@ void IG2App::setupScene(void)
 	planetaNode->attachObject(planet);
 	planetaNode->setScale(3, 3, 3);
 
+	for (int i = 0; i < 30; i++) {
+		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+		vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
+		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(100));
+		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+		vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
+		addInputListener(vEntities[vEntities.size() - 1]);
+		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+	}
 
-	//for (int i = 0; i < 30; i++) {
-	//	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
-	//	static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
-	//	vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
-	//	vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
-	//	vEntities[vEntities.size() - 1]->getNode()->setScale(0.07, 0.07, 0.07);
-	//	addInputListener(vEntities[vEntities.size() - 1]);
-	//}
-
-	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3, true));
 	static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
 	vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(30));
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);

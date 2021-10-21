@@ -1,6 +1,9 @@
 #include "Dron.h"
+#include <iostream>
 
-Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(State::MOVING), detenido(false)
+int Dron::numDrones = 0;
+
+Dron::Dron(SceneNode* node, int nAspas, int nBrazos, bool control) : EntidadIG(node), state(State::MOVING), detenido(false), control(control)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();
@@ -24,7 +27,7 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(St
 	arrayBrazos[0]->getNode()->setScale(1.2, 1.2, 1.2);
 
 	Entity* sphere = mSM->createEntity("sphere.mesh");
-	sphere->setMaterialName("Practica1/Cursed");
+	sphere->setMaterialName(control ? "Practica1/Red" :"Practica1/Cursed");
 	mSphereNode->attachObject(sphere);
 	mSphereNode->setScale(2, 2, 2);
 
@@ -43,19 +46,25 @@ Dron::Dron(SceneNode* node, int nAspas, int nBrazos) : EntidadIG(node), state(St
 	numAspas = nAspas; numBrazos = nBrazos;
 
 	myTimer = new Timer();
+
+	if(!control)numDrones++;
 }
 
 Dron::~Dron()
 {
-	for (int i = 0; i < numBrazos; ++i)
-		delete mBrazosNodes[i];
-	delete[] mBrazosNodes;
+	//for (int i = 0; i < numBrazos; ++i)
+	//	delete mBrazosNodes[i];
+	//delete[] mBrazosNodes;
+	mNode->removeAndDestroyAllChildren();
 
 	for (int i = 0; i < numBrazos; ++i)
 		delete arrayBrazos[i];
 	delete[] arrayBrazos;
 
 	delete myTimer;
+	//mSphereNode->removeAndDestroyAllChildren();
+	//delete mSphereNode;
+	/*delete mNode;*/
 }
 
 bool Dron::keyPressed(const OgreBites::KeyboardEvent& evt)
@@ -75,6 +84,27 @@ void Dron::receiveEvent(Message message, EntidadIG* entidad)
 	case AVION:
 		detenido = true;
 		static_cast<Entity*>(mSphereNode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
+		break;
+	case CHECK_COLLISION:
+	{
+		if (control) return;
+		AxisAlignedBox aab1 = mNode->_getWorldAABB();
+		AxisAlignedBox aab2 = entidad->getNode()->_getWorldAABB();
+
+		if (aab1.intersects(aab2))
+		{
+			//static_cast<Entity*>(mSphereNode->getAttachedObjects()[0])->setMaterialName("Practica1/Yellow");
+			appListeners.erase(std::remove(appListeners.begin(), appListeners.end(), this));
+			numDrones--;
+			std::cout << numDrones << '\n';
+			if (numDrones == 0) sendEvent({ ALLDRONDEAD }, nullptr);
+			delete this;
+		}
+		break;
+	}
+	case ALLDRONDEAD:
+		if (!control) return;
+		static_cast<Entity*>(mSphereNode->getAttachedObjects()[0])->setMaterialName("Practica1/Yellow");
 		break;
 	default:
 		break;

@@ -13,7 +13,7 @@ class Dron : public EntidadIG
 	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT };
 
 public:
-	Dron(SceneNode* node, int numAspas, int nBrazos);
+	Dron(SceneNode* node, int numAspas, int nBrazos, bool control = false);
 	virtual ~Dron();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
@@ -21,12 +21,13 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	void disableLight() { light->setVisible(false); };
-
 private:
+	static int numDrones;
 	SceneNode* mSphereNode;
 	SceneNode** mBrazosNodes;
 	BrazoDron** arrayBrazos;
 	bool detenido;
+	bool control;
 
 	SceneNode* lightNode;
 	Light* light;

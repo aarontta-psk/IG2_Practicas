@@ -93,6 +93,15 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 	if (evt.keysym.sym == SDLK_r)
 		sendEvent({ AVION }, nullptr);
+	else if (evt.keysym.sym == SDLK_h)
+	{
+		mNode->getParentSceneNode()->pitch(Ogre::Degree(5));
+		sendEvent({ CHECK_COLLISION }, this);
+	}
+	else if (evt.keysym.sym == SDLK_m)
+	{
+		mNode->getParentSceneNode()->yaw(Ogre::Degree(3));
+	}
 
 	return true;
 }
@@ -102,36 +111,36 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 	mHeliceDNode->frameRendered(evt);
 	mHeliceINode->frameRendered(evt);
 
-	if (detenido) return;
+	//if (detenido) return;
 
-	SceneNode* parentNode = mNode->getParentSceneNode();
+	//SceneNode* parentNode = mNode->getParentSceneNode();
 
-	switch (state) {
-	case State::MOVING: {
-		if (myTimer->getMilliseconds() >= 2000) {
-			state = (State)(rand() % 2 + 1);
-			myTimer->reset();
-		}
-		break;
-	}
-	case State::ROTATING_LEFT: {
-		if (myTimer->getMilliseconds() >= 1500) {
-			state = State::MOVING;
-			myTimer->reset();
-		}
-		else
-			parentNode->yaw(Ogre::Degree(1));
-		break;
-	}
-	case State::ROTATING_RIGHT: {
-		if (myTimer->getMilliseconds() >= 1500) {
-			state = State::MOVING;
-			myTimer->reset();
-		}
-		else
-			parentNode->yaw(Ogre::Degree(-1));
-		break;
-	}
-	}
-	parentNode->pitch(Ogre::Degree(1));
+	//switch (state) {
+	//case State::MOVING: {
+	//	if (myTimer->getMilliseconds() >= 2000) {
+	//		state = (State)(rand() % 2 + 1);
+	//		myTimer->reset();
+	//	}
+	//	break;
+	//}
+	//case State::ROTATING_LEFT: {
+	//	if (myTimer->getMilliseconds() >= 1500) {
+	//		state = State::MOVING;
+	//		myTimer->reset();
+	//	}
+	//	else
+	//		parentNode->yaw(Ogre::Degree(1));
+	//	break;
+	//}
+	//case State::ROTATING_RIGHT: {
+	//	if (myTimer->getMilliseconds() >= 1500) {
+	//		state = State::MOVING;
+	//		myTimer->reset();
+	//	}
+	//	else
+	//		parentNode->yaw(Ogre::Degree(-1));
+	//	break;
+	//}
+	//}
+	//parentNode->pitch(Ogre::Degree(1));
 }
