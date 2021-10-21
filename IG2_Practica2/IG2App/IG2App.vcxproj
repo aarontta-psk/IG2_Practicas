@@ -130,6 +130,7 @@
     <ClInclude Include="Message.h" />
     <ClInclude Include="Molino.h" />
     <ClInclude Include="Plano.h" />
+    <ClInclude Include="Randomized.h" />
     <ClInclude Include="RotorDron.h" />
     <ClInclude Include="Sinbad.h" />
   </ItemGroup>

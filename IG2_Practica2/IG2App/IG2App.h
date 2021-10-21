@@ -22,6 +22,7 @@ protected:
 	virtual void setup();
 	virtual void shutdown();
 	virtual void setupScene();
+	void createDrones();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 

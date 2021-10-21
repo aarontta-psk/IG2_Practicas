@@ -1,5 +1,8 @@
 #include "Dron.h"
 #include <iostream>
+#include "Randomized.h"
+
+using namespace Randomized;
 
 int Dron::numDrones = 0;
 
@@ -121,19 +124,19 @@ void Dron::frameRendered(const Ogre::FrameEvent& evt)
 
 	switch (state) {
 	case State::MOVING: {
-		if (myTimer->getMilliseconds() >= 2000) {
+		if (myTimer->getMilliseconds() >= GetRandomInt(1000, 2000)) {
 			state = (State)(rand() % 2 + 1);
 			myTimer->reset();
 		}
 		else {
 			mNode->translate(0, -315, 0, SceneNode::TS_LOCAL);
-			mNode->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
+			mNode->roll(Ogre::Degree(-1), SceneNode::TS_LOCAL);
 			mNode->translate(0, 315, 0, SceneNode::TS_LOCAL);
 		}
 		break;
 	}
 	case State::ROTATING_LEFT: {
-		if (myTimer->getMilliseconds() >= 1500) {
+		if (myTimer->getMilliseconds() >= GetRandomInt(800, 1200)) {
 			state = State::MOVING;
 			myTimer->reset();
 		}
@@ -142,7 +145,7 @@ void Dron::frameRendered(const Ogre::FrameEvent& evt)
 		break;
 	}
 	case State::ROTATING_RIGHT: {
-		if (myTimer->getMilliseconds() >= 1500) {
+		if (myTimer->getMilliseconds() >= GetRandomInt(800, 1200)) {
 			state = State::MOVING;
 			myTimer->reset();
 		}
