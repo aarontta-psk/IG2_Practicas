@@ -16,9 +16,9 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 private:
-	SceneNode* mSphereNode;
-	SceneNode* mBrazosNode;
-	RotorDron* mAspas;
+	SceneNode* mCilindroNode;
+	SceneNode* mRotorNode;
+	RotorDron* rotor;
 
 	int numAspas;
 };

@@ -27,7 +27,7 @@ private:
 
 	SceneNode* lightNode;
 	Light* light;
-	bool detenido;
+	bool detenido, manualControl;
 
 	Ogre::Timer* myTimer;
 	State state;

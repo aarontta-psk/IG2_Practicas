@@ -2,7 +2,7 @@
 #include "AspasMolino.h"
 #include <iostream>
 
-Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), detenido(false)
+Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
 	mAlaINode = mNode->createChildSceneNode();
@@ -24,7 +24,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), deten
 	float helicesOffsetX = 350.0f;
 	float helicesOffseZ = 80.0f;
 	mHeliceINode->getNode()->translate(-helicesOffsetX, 0, helicesOffseZ);
-	mHeliceDNode->getNode()->translate( helicesOffsetX, 0, helicesOffseZ);
+	mHeliceDNode->getNode()->translate(helicesOffsetX, 0, helicesOffseZ);
 
 	Entity* cilindro = mSM->createEntity("Barrel.mesh");
 	cilindro->setMaterialName("Practica1/Brown");
@@ -53,7 +53,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), deten
 	mAlaINode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
-	mAlaDNode->translate( alasOffset, 0, 0);
+	mAlaDNode->translate(alasOffset, 0, 0);
 	light = mSM->createLight();
 
 	lightNode = mSM->createSceneNode();
@@ -65,7 +65,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), deten
 	light->setSpotlightInnerAngle(Degree(0));
 	light->setSpotlightOuterAngle(Degree(45));
 	light->setSpotlightFalloff(1.0f);
-	
+
 	myTimer = new Timer();
 }
 
@@ -75,7 +75,7 @@ void Avion::receiveEvent(Message message, EntidadIG* entidad)
 	{
 	case DEFAULT:
 		break;
-	case AVION:
+	case STOP_ALL_ENTITIES:
 		detenido = true;
 		static_cast<Entity*>(mAlaDNode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
 		static_cast<Entity*>(mAlaINode->getAttachedObjects()[0])->setMaterialName("Practica1/Red");
@@ -92,16 +92,15 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 
 	if (evt.keysym.sym == SDLK_r)
-		sendEvent({ AVION }, nullptr);
-	else if (evt.keysym.sym == SDLK_h)
-	{
+		sendEvent({ STOP_ALL_ENTITIES }, nullptr);
+	else if (evt.keysym.sym == SDLK_h && manualControl) {
 		mNode->getParentSceneNode()->pitch(Ogre::Degree(5));
 		sendEvent({ CHECK_COLLISION }, this);
 	}
-	else if (evt.keysym.sym == SDLK_m)
-	{
+	else if (evt.keysym.sym == SDLK_m && manualControl)
 		mNode->getParentSceneNode()->yaw(Ogre::Degree(3));
-	}
+	else if (evt.keysym.sym == SDLK_n)
+		manualControl = !manualControl;
 
 	return true;
 }
@@ -111,36 +110,38 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 	mHeliceDNode->frameRendered(evt);
 	mHeliceINode->frameRendered(evt);
 
-	//if (detenido) return;
+	if (!manualControl) {
+		if (detenido) return;
 
-	//SceneNode* parentNode = mNode->getParentSceneNode();
+		SceneNode* parentNode = mNode->getParentSceneNode();
 
-	//switch (state) {
-	//case State::MOVING: {
-	//	if (myTimer->getMilliseconds() >= 2000) {
-	//		state = (State)(rand() % 2 + 1);
-	//		myTimer->reset();
-	//	}
-	//	break;
-	//}
-	//case State::ROTATING_LEFT: {
-	//	if (myTimer->getMilliseconds() >= 1500) {
-	//		state = State::MOVING;
-	//		myTimer->reset();
-	//	}
-	//	else
-	//		parentNode->yaw(Ogre::Degree(1));
-	//	break;
-	//}
-	//case State::ROTATING_RIGHT: {
-	//	if (myTimer->getMilliseconds() >= 1500) {
-	//		state = State::MOVING;
-	//		myTimer->reset();
-	//	}
-	//	else
-	//		parentNode->yaw(Ogre::Degree(-1));
-	//	break;
-	//}
-	//}
-	//parentNode->pitch(Ogre::Degree(1));
+		switch (state) {
+		case State::MOVING: {
+			if (myTimer->getMilliseconds() >= 2000) {
+				state = (State)(rand() % 2 + 1);
+				myTimer->reset();
+			}
+			break;
+		}
+		case State::ROTATING_LEFT: {
+			if (myTimer->getMilliseconds() >= 1500) {
+				state = State::MOVING;
+				myTimer->reset();
+			}
+			else
+				parentNode->yaw(Ogre::Degree(1));
+			break;
+		}
+		case State::ROTATING_RIGHT: {
+			if (myTimer->getMilliseconds() >= 1500) {
+				state = State::MOVING;
+				myTimer->reset();
+			}
+			else
+				parentNode->yaw(Ogre::Degree(-1));
+			break;
+		}
+		}
+		parentNode->pitch(Ogre::Degree(1));
+	}
 }

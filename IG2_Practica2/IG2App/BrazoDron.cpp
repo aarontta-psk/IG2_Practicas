@@ -3,40 +3,40 @@
 BrazoDron::BrazoDron(SceneNode* node, int nAspas, double rotation) : EntidadIG(node)
 {
 	//Creacion
-	mSphereNode = mNode->createChildSceneNode();
-	mBrazosNode = mNode->createChildSceneNode();
+	mCilindroNode = mNode->createChildSceneNode();
+	mRotorNode = mNode->createChildSceneNode();
 
 	Entity* brazo = mSM->createEntity("Barrel.mesh");
 	brazo->setMaterialName("Practica1/Junction");
-	mSphereNode->attachObject(brazo);
-	mAspas = new RotorDron(mBrazosNode, nAspas, rotation);
+	mCilindroNode->attachObject(brazo);
+	rotor = new RotorDron(mRotorNode, nAspas, rotation);
 
 	//Escalas
 	float cilindroScale = 16.5f;
 	float yScaleMultiplier = 3.0f;
 	float dronScale = 0.55f;
-	mSphereNode->setScale(cilindroScale, cilindroScale * yScaleMultiplier, cilindroScale);
-	mBrazosNode->setScale(dronScale, dronScale, dronScale);
+	mCilindroNode->setScale(cilindroScale, cilindroScale * yScaleMultiplier, cilindroScale);
+	mRotorNode->setScale(dronScale, dronScale, dronScale);
 
 	//Posiciones
-	mSphereNode->pitch(Degree(-90));
-	mSphereNode->setPosition(0, 0, 250);
+	mCilindroNode->pitch(Degree(-90));
+	mCilindroNode->setPosition(0, 0, 250);
 
 	numAspas = nAspas;
 }
 
 BrazoDron::~BrazoDron()
 {
-	delete mAspas;
+	delete rotor;
 }
 
 bool BrazoDron::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
-	mAspas->keyPressed(evt);
+	rotor->keyPressed(evt);
 	return true;
 }
 
 void BrazoDron::frameRendered(const Ogre::FrameEvent& evt)
 {
-	mAspas->frameRendered(evt);
+	rotor->frameRendered(evt);
 }
