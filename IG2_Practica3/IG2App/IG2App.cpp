@@ -289,7 +289,9 @@ void IG2App::setupScene(void)
 	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
 
 	// --- Apartado 41 --
-	vEntities.push_back(new Sinbad(mSM->getRootSceneNode()));
+
+	auto ficticioSimbadNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioSimbad");
+	vEntities.push_back(new Sinbad(ficticioSimbadNode));
 	addInputListener(vEntities[vEntities.size() - 1]);
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 345, 0);
 	vEntities[vEntities.size() - 1]->getNode()->setScale(10, 10, 10);
