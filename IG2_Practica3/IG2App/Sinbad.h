@@ -10,7 +10,11 @@ class Sinbad : public EntidadIG
 public:
 	Sinbad(SceneNode* node);
 	virtual ~Sinbad() {};
+	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 private:
+	Entity* simbad;
+	void InitialiceAnimation(const Ogre::String& animation);
+	void AddTimeToAnimation(const Ogre::String& animation, Ogre::Real offset);
 };
 #endif

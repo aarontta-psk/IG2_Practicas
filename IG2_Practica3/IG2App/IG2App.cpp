@@ -264,22 +264,22 @@ void IG2App::setupScene(void)
 	planetaNode->attachObject(planet);
 	planetaNode->setScale(3, 3, 3);
 
-	createDrones();
+	//createDrones();
 
-	vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3, true));
-	static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
-	vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(30));
-	vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
-	vEntities[vEntities.size() - 1]->getNode()->setScale(0.1, 0.1, 0.1);
-	addInputListener(vEntities[vEntities.size() - 1]);
-	EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+	//vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3, true));
+	//static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+	//vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(30));
+	//vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+	//vEntities[vEntities.size() - 1]->getNode()->setScale(0.1, 0.1, 0.1);
+	//addInputListener(vEntities[vEntities.size() - 1]);
+	//EntidadIG::addListener(vEntities[vEntities.size() - 1]);
 
-	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
-	vEntities.push_back(new Avion(ficticioAvionNode));
-	vEntities[vEntities.size() - 1]->getNode()->setScale(0.15, 0.15, 0.15);
-	vEntities[vEntities.size() - 1]->getNode()->translate(0, 330, 0);
-	addInputListener(vEntities[vEntities.size() - 1]);
-	EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+	//ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
+	//vEntities.push_back(new Avion(ficticioAvionNode));
+	//vEntities[vEntities.size() - 1]->getNode()->setScale(0.15, 0.15, 0.15);
+	//vEntities[vEntities.size() - 1]->getNode()->translate(0, 330, 0);
+	//addInputListener(vEntities[vEntities.size() - 1]);
+	//EntidadIG::addListener(vEntities[vEntities.size() - 1]);
 
 	vEntities.push_back(new Plano(mSM->getRootSceneNode(), "mPlane1080x800",
 		Plane(Vector3::UNIT_Y, 0),
@@ -290,6 +290,10 @@ void IG2App::setupScene(void)
 
 	// --- Apartado 41 --
 	vEntities.push_back(new Sinbad(mSM->getRootSceneNode()));
+	addInputListener(vEntities[vEntities.size() - 1]);
+	vEntities[vEntities.size() - 1]->getNode()->translate(0, 345, 0);
+	vEntities[vEntities.size() - 1]->getNode()->setScale(10, 10, 10);
+
 }
 
 void IG2App::createDrones()

@@ -6,6 +6,7 @@
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
 #include <SDL_keycode.h>
+#include "../OGREsdk/include/OGRE/OgreFrameListener.h"
 
 #include "Message.h"
 
