@@ -9,6 +9,12 @@ Sinbad::Sinbad(SceneNode* node) : EntidadIG(node), state(State::MOVING)
 	InitialiceAnimation("RunTop");
 	myTimer = new Timer();
 
+	leftSword = mSM->createEntity("Sword.mesh");
+	simbad->attachObjectToBone("Handle.L", leftSword);
+
+	rightSword = mSM->createEntity("Sword.mesh");
+	simbad->attachObjectToBone("Handle.R", rightSword);
+
 	//AnimationStateSet* aux = simbad->getAllAnimationStates();
 	//auto it = aux->getAnimationStateIterator().begin();
 	//while (it != aux->getAnimationStateIterator().end())
@@ -65,4 +71,33 @@ void Sinbad::InitialiceAnimation(const Ogre::String& animation)
 void Sinbad::AddTimeToAnimation(const Ogre::String& animation, Ogre::Real offset)
 {
 	simbad->getAnimationState(animation)->addTime(offset);
+}
+
+void Sinbad::arma(bool armado)
+{
+	if (currentArma == 1)
+	{
+		leftSword->setVisible(armado);
+		rightSword->setVisible(!armado);
+	}
+	else
+	{
+		leftSword->setVisible(!armado);
+		rightSword->setVisible(armado);
+	}
+	this->armado = armado;
+}
+
+void Sinbad::cambiaEspada()
+{
+	if (currentArma == 1) currentArma = 0;
+	else currentArma = 1;
+	if (!armado) return;
+	arma(true);
+}
+
+void Sinbad::arma()
+{
+	leftSword->setVisible(true);
+	rightSword->setVisible(true);
 }

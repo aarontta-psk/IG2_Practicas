@@ -17,8 +17,18 @@ public:
 
 private:
 	Entity* simbad;
+	Entity* leftSword;
+	Entity* rightSword;
+
 	void InitialiceAnimation(const Ogre::String& animation);
 	void AddTimeToAnimation(const Ogre::String& animation, Ogre::Real offset);
+	
+	void arma(bool armado);
+	void cambiaEspada();
+	void arma();
+
+	int currentArma; // 1 left, 0 right
+	bool armado;
 	Ogre::Timer* myTimer;
 	State state;
 };
