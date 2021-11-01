@@ -5,8 +5,8 @@
 #include <OgreInput.h>
 #include <OgreSceneNode.h>
 #include <OgreSceneManager.h>
+#include <OgreFrameListener.h>
 #include <SDL_keycode.h>
-#include "../OGREsdk/include/OGRE/OgreFrameListener.h"
 
 #include "Message.h"
 
@@ -29,6 +29,7 @@ public:
 
 protected:
 	static std::vector<EntidadIG*> appListeners;
+
 	SceneNode* mNode;
 	SceneManager* mSM;
 
