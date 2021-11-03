@@ -138,6 +138,35 @@ void IG2App::setupScene(void)
 
 	//Create nodes
 
+}
+
+void IG2App::createDrones()
+{
+	for (int i = 0; i < 20; i++) {
+		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+		vEntities[vEntities.size() - 1]->getNode()->roll(Ogre::Degree(i * 100));
+		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(100));
+		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
+		addInputListener(vEntities[vEntities.size() - 1]);
+		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+	}
+
+	for (int i = 0; i < 20; i++) {
+		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
+		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
+		vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
+		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(100));
+		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
+		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
+		addInputListener(vEntities[vEntities.size() - 1]);
+		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+	}
+}
+
+void IG2App::scene0() {
+
 	//--- Apartado 1 ---
 
 	// Fields
@@ -295,30 +324,4 @@ void IG2App::setupScene(void)
 	addInputListener(vEntities[vEntities.size() - 1]);
 	vEntities[vEntities.size() - 1]->getNode()->translate(0, 348, 0);
 	vEntities[vEntities.size() - 1]->getNode()->setScale(10, 10, 10);
-
-}
-
-void IG2App::createDrones()
-{
-	for (int i = 0; i < 20; i++) {
-		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
-		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
-		vEntities[vEntities.size() - 1]->getNode()->roll(Ogre::Degree(i * 100));
-		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(100));
-		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
-		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
-		addInputListener(vEntities[vEntities.size() - 1]);
-		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
-	}
-
-	for (int i = 0; i < 20; i++) {
-		vEntities.push_back(new Dron(mSM->getRootSceneNode(), 3, 3));
-		static_cast<Dron*>(vEntities[vEntities.size() - 1])->disableLight();
-		vEntities[vEntities.size() - 1]->getNode()->yaw(Ogre::Degree(i * 100));
-		vEntities[vEntities.size() - 1]->getNode()->pitch(Ogre::Degree(100));
-		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
-		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
-		addInputListener(vEntities[vEntities.size() - 1]);
-		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
-	}
 }

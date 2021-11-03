@@ -78,6 +78,7 @@ void Sinbad::resetAnim(const Ogre::String& animation)
 
 	anim->setEnabled(false);
 	anim->setLoop(false);
+	anim->setTimePosition(0);
 }
 
 std::vector<Ogre::String> Sinbad::newAnimsList(const AnimState newAnim)
