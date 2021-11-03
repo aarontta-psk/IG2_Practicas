@@ -1,5 +1,5 @@
-#ifndef ENTIDADIG_H_
-#define ENTIDADIG_H_
+#ifndef ENTITYIG_H_
+#define ENTITYIG_H_
 
 #include <OgreEntity.h>
 #include <OgreInput.h>
@@ -12,23 +12,23 @@
 
 using namespace Ogre;
 
-class EntidadIG : public OgreBites::InputListener
+class EntityIG : public OgreBites::InputListener
 {
 public:
-	EntidadIG(SceneNode* node, std::string name = "");
-	~EntidadIG() {};
+	EntityIG(SceneNode* node, std::string name = "");
+	~EntityIG() {};
 
-	static void addListener(EntidadIG* entidad) { appListeners.push_back(entidad); };
+	static void addListener(EntityIG* entidad) { appListeners.push_back(entidad); };
 
-	void sendEvent(Message message, EntidadIG* entidad);
-	virtual void receiveEvent(Message message, EntidadIG* entidad) {};
+	void sendEvent(Message message, EntityIG* entidad);
+	virtual void receiveEvent(Message message, EntityIG* entidad) {};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt) {};
 
 	inline SceneNode* getNode() { return mNode; };
 
 protected:
-	static std::vector<EntidadIG*> appListeners;
+	static std::vector<EntityIG*> appListeners;
 
 	SceneNode* mNode;
 	SceneManager* mSM;

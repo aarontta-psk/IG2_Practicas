@@ -2,7 +2,7 @@
 #include "AspasMolino.h"
 #include <iostream>
 
-Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
+Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
 	mAlaINode = mNode->createChildSceneNode();
@@ -44,7 +44,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), deten
 	float alasScaleZ = 1.5f;
 	float alasOffset = 300.0f;
 	Entity* ala = mSM->createEntity("cube.mesh");
-	ala->setMaterialName("Practica1/Wings");
+	ala->setMaterialName("Practica1/Checker");
 	mAlaINode->attachObject(ala);
 
 	ala = mSM->createEntity("cube.mesh");
@@ -69,7 +69,7 @@ Avion::Avion(SceneNode* node) : EntidadIG(node, ""), state(State::MOVING), deten
 	myTimer = new Timer();
 }
 
-void Avion::receiveEvent(Message message, EntidadIG* entidad)
+void Avion::receiveEvent(Message message, EntityIG* entidad)
 {
 	switch (message.id_)
 	{

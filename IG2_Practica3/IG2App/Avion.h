@@ -3,16 +3,16 @@
 
 class AspasMolino;
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 #include "OgreTimer.h"
 
-class Avion : public EntidadIG
+class Avion : public EntityIG
 {
 	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT };
 
 public:
 	Avion(SceneNode* node);
-	void receiveEvent(Message message, EntidadIG* entidad) override;
+	void receiveEvent(Message message, EntityIG* entidad) override;
 	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 

@@ -1,11 +1,11 @@
 #ifndef ASPA_H_
 #define ASPA_H_
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 
 using namespace Ogre;
 
-class Aspa : public EntidadIG
+class Aspa : public EntityIG
 {
 public:
 	Aspa(SceneNode* node);

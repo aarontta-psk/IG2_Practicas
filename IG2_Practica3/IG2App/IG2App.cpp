@@ -15,6 +15,7 @@
 #include "Avion.h"
 #include "Plano.h"
 #include "Sinbad.h"
+#include "Bomba.h"
 
 using namespace Ogre;
 
@@ -105,6 +106,10 @@ void IG2App::setupScene(void)
 	mCamNode = mSM->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(cam);
 
+	mCamMgr = new OgreBites::CameraMan(mCamNode);
+	addInputListener(mCamMgr);
+	mCamMgr->setStyle(OgreBites::CS_ORBIT);
+
 	mCamNode->setPosition(0, 0, 1000);
 	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 	//mCamNode->setDirection(Ogre::Vector3(0, 0, -1));  
@@ -137,7 +142,10 @@ void IG2App::setupScene(void)
 	//Ogre::Entity* ent = mSM->createEntity("Sphere", Ogre::SceneManager::PT_SPHERE);
 
 	//Create nodes
-
+	//scene0();
+	vEntities.push_back(new Bomba(mSM->getRootSceneNode(), 16, 100));
+	vEntities[vEntities.size() - 1]->getNode()->setScale(20, 20, 20);
+	EntityIG::addListener(vEntities[vEntities.size() - 1]);
 }
 
 void IG2App::createDrones()
@@ -150,7 +158,7 @@ void IG2App::createDrones()
 		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
 		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
 		addInputListener(vEntities[vEntities.size() - 1]);
-		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+		EntityIG::addListener(vEntities[vEntities.size() - 1]);
 	}
 
 	for (int i = 0; i < 20; i++) {
@@ -161,7 +169,7 @@ void IG2App::createDrones()
 		vEntities[vEntities.size() - 1]->getNode()->translate(0, 315, 0, SceneNode::TS_LOCAL);
 		vEntities[vEntities.size() - 1]->getNode()->setScale(0.04, 0.04, 0.04);
 		addInputListener(vEntities[vEntities.size() - 1]);
-		EntidadIG::addListener(vEntities[vEntities.size() - 1]);
+		EntityIG::addListener(vEntities[vEntities.size() - 1]);
 	}
 }
 
@@ -232,12 +240,6 @@ void IG2App::scene0() {
 
 	// PONER EN TRUE PARA VER EJERCICIOS DEL 1 AL 6
 	mClockNode->setVisible(false);
-
-	//------------------------------------------------------------------------
-
-	mCamMgr = new OgreBites::CameraMan(mCamNode);
-	addInputListener(mCamMgr);
-	mCamMgr->setStyle(OgreBites::CS_ORBIT);
 
 	// --- Apartado 7 ---
 	//Aspa aspa = Aspa(mSM->getRootSceneNode());

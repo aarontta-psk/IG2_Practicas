@@ -1,6 +1,6 @@
 #include "Molino.h"
 
-Molino::Molino(SceneNode* node, int numAspas): EntidadIG(node)
+Molino::Molino(SceneNode* node, int numAspas): EntityIG(node)
 {
 	//Creacion
 	mEsferaTecho = mNode->createChildSceneNode();

@@ -1,7 +1,7 @@
 #include "Sinbad.h"
 #include <iostream>
 
-Sinbad::Sinbad(SceneNode* node) : EntidadIG(node), currentWeapon(SwordStance::NONE), state(MovState::MOVING)
+Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NONE), state(MovState::MOVING)
 {
 	sinbad = mSM->createEntity("Sinbad.mesh");
 	mNode->attachObject(sinbad);

@@ -8,7 +8,7 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	Real uTile, Real vTile, const Vector3& upVector,
 	HardwareBuffer::Usage vertexBufferUsage,
 	HardwareBuffer::Usage indexBufferUsage,
-	bool vertexShadowBuffer, bool indexShadowBuffer) : EntidadIG(node, "")
+	bool vertexShadowBuffer, bool indexShadowBuffer) : EntityIG(node, "")
 {
 	MeshManager::getSingleton().createPlane(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,

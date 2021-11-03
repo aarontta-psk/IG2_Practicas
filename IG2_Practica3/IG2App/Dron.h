@@ -3,12 +3,12 @@
 
 #include "OgreTimer.h"
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 #include "BrazoDron.h"
 
 using namespace Ogre;
 
-class Dron : public EntidadIG
+class Dron : public EntityIG
 {
 	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT };
 
@@ -17,7 +17,7 @@ public:
 	virtual ~Dron();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
-	void receiveEvent(Message message, EntidadIG* entidad) override;
+	void receiveEvent(Message message, EntityIG* entidad) override;
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	void disableLight() { light->setVisible(false); };

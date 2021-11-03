@@ -10,7 +10,7 @@
 
 #include <vector>
 
-class EntidadIG;
+class EntityIG;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
 {
@@ -48,7 +48,7 @@ protected:
 
 	OgreBites::CameraMan* mCamMgr = nullptr;
 
-	std::vector<EntidadIG*> vEntities;
+	std::vector<EntityIG*> vEntities;
 };
 
 #endif

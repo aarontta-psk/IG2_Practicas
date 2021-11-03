@@ -1,7 +1,7 @@
 #pragma once
-#include "EntidadIG.h"
+#include "EntityIG.h"
 
-class Plano : public EntidadIG
+class Plano : public EntityIG
 {
 public:
     Plano(SceneNode* node, const String& name, const Plane& plane,

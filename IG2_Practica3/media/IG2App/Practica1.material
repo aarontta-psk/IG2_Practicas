@@ -64,7 +64,7 @@ material Practica1/Black
     }
 }
 
-material Practica1/Wings
+material Practica1/Checker
 {
     technique
     {

@@ -1,12 +1,12 @@
 #ifndef ROTORDRON_H_
 #define ROTORDRON_H_
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 #include "AspasMolino.h"
 
 using namespace Ogre;
 
-class RotorDron : public EntidadIG
+class RotorDron : public EntityIG
 {
 public:
 	RotorDron(SceneNode* node,int numAspas, double rotation = 2);

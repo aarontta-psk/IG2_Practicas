@@ -1,6 +1,6 @@
 #include "AspasMolino.h"
 
-AspasMolino::AspasMolino(SceneNode* node, int numAspas, double rotation) : EntidadIG(node)
+AspasMolino::AspasMolino(SceneNode* node, int numAspas, double rotation) : EntityIG(node)
 {
 	//Creacion
 	cilindroCentralNode = mNode->createChildSceneNode();

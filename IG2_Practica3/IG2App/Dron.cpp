@@ -6,7 +6,7 @@ using namespace Randomized;
 
 int Dron::numDrones = 0;
 
-Dron::Dron(SceneNode* node, int nAspas, int nBrazos, bool control) : EntidadIG(node), state(State::MOVING), detenido(false), control(control)
+Dron::Dron(SceneNode* node, int nAspas, int nBrazos, bool control) : EntityIG(node), state(State::MOVING), detenido(false), control(control)
 {
 	//Creacion
 	mSphereNode = mNode->createChildSceneNode();
@@ -73,7 +73,7 @@ bool Dron::keyPressed(const OgreBites::KeyboardEvent& evt)
 	return true;
 }
 
-void Dron::receiveEvent(Message message, EntidadIG* entidad)
+void Dron::receiveEvent(Message message, EntityIG* entidad)
 {
 	switch (message.id_)
 	{

@@ -1,12 +1,12 @@
 #ifndef MOLINO_H_
 #define MOLINO_H_
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 #include "AspasMolino.h"
 
 using namespace Ogre;
 
-class Molino : public EntidadIG
+class Molino : public EntityIG
 {
 public:
 	Molino(SceneNode* node, int numAspas);

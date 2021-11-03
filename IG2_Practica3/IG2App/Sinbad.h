@@ -1,14 +1,14 @@
 #ifndef SINBAD_H_
 #define SINBAD_H_
 
-#include "EntidadIG.h"
+#include "EntityIG.h"
 #include "OgreTimer.h"
 
 #include <vector>
 
 using namespace Ogre;
 
-class Sinbad : public EntidadIG
+class Sinbad : public EntityIG
 {
 	// Dance, DrawSwords, HandsClosed, HandsRelaxed, IdleBase, IdleTop, JumpEnd, JumpLoop, 
 	// JumpStart, RunBase, RunTop, SliceHorizontal, SliceVertical
