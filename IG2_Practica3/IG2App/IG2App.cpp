@@ -130,7 +130,7 @@ void IG2App::setupScene(void)
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 
-	mLightNode->setDirection(Ogre::Vector3(0, -0.2, -0.8));  //vec3.normalise();
+	mLightNode->setDirection(Ogre::Vector3(0, -0.8, -0.8));  //vec3.normalise();
 	//lightNode->setPosition(0, 0, 1000);
 
 	//------------------------------------------------------------------------
@@ -148,6 +148,38 @@ void IG2App::setupScene(void)
 	vEntities[vEntities.size() - 1]->getNode()->setInitialState();
 	addInputListener(vEntities[vEntities.size() - 1]);
 	EntityIG::addListener(vEntities[vEntities.size() - 1]);
+
+	auto plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Water",
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(plano);
+	plano->SetMaterialName("Practica1/Water");
+	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
+
+	float sizeX = 540;
+	float sizeY = 400;
+
+	plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Yellow",
+		Plane(Vector3::UNIT_Y, 0),
+		sizeX, sizeY, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(plano);
+	plano->SetMaterialName("Practica1/Yellow");
+	vEntities[vEntities.size() - 1]->getNode()->translate(-sizeX *1.5f, 1, sizeY * 1.5f);
+
+	plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Red",
+		Plane(Vector3::UNIT_Y, 0),
+		sizeX, sizeY, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(plano);
+	plano->SetMaterialName("Practica1/Red");
+	vEntities[vEntities.size() - 1]->getNode()->translate(sizeX * 1.5f, 1, -sizeY * 1.5f);
+
+	auto simbad = new Sinbad(mSM->getRootSceneNode());
+	vEntities.push_back(simbad);
+	addInputListener(vEntities[vEntities.size() - 1]);
+	simbad->getNode()->translate(-sizeX*1.5f, 100, sizeY * 1.5f);
+	simbad->getNode()->setScale(20, 20, 20);
+	simbad->arma();
+	
 }
 
 void IG2App::createDrones()

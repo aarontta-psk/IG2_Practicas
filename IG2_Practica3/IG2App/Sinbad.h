@@ -25,7 +25,10 @@ public:
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
-
+	void cambiaEspada();
+	void arma(bool swHand);
+	void arma();
+	void unarm();
 private:
 	Entity* sinbad;
 	Entity* leftSword;
@@ -43,11 +46,7 @@ private:
 	void resetAnim(const Ogre::String& animation);
 	std::vector<Ogre::String> newAnimsList(const AnimState newAnim);
 	void addTimeAnim(const Ogre::String& animation, Ogre::Real offset);
-	
-	void cambiaEspada();
-	void arma(bool swHand);
-	void arma();
-	void unarm();
+
 	void swordVisibility();
 
 	void sinbadMovement();

@@ -13,7 +13,12 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	MeshManager::getSingleton().createPlane(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
 		vertexBufferUsage, indexBufferUsage, vertexShadowBuffer, indexShadowBuffer);
-	Entity* planeM = mSM->createEntity(name);
-	planeM->setMaterialName("Practica1/Black");
+	planeM = mSM->createEntity(name);
+	SetMaterialName("Practica1/Black");
 	mNode->attachObject(planeM);
+}
+
+void Plano::SetMaterialName(String materialName)
+{
+	planeM->setMaterialName(materialName);
 }

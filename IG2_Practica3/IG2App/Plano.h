@@ -3,6 +3,8 @@
 
 class Plano : public EntityIG
 {
+private:
+    Entity* planeM;
 public:
     Plano(SceneNode* node, const String& name, const Plane& plane,
         Real width, Real height,
@@ -12,6 +14,8 @@ public:
         HardwareBuffer::Usage vertexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY,
         HardwareBuffer::Usage indexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY,
         bool vertexShadowBuffer = false, bool indexShadowBuffer = false);
+
+    void SetMaterialName(String materialName);
 };
 
 
