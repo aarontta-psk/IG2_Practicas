@@ -143,8 +143,10 @@ void IG2App::setupScene(void)
 
 	//Create nodes
 	//scene0();
-	vEntities.push_back(new Bomba(mSM->getRootSceneNode(), 16, 100));
+	vEntities.push_back(new Bomba(mSM->getRootSceneNode(), 16, 20));
 	vEntities[vEntities.size() - 1]->getNode()->setScale(20, 20, 20);
+	vEntities[vEntities.size() - 1]->getNode()->setInitialState();
+	addInputListener(vEntities[vEntities.size() - 1]);
 	EntityIG::addListener(vEntities[vEntities.size() - 1]);
 }
 
