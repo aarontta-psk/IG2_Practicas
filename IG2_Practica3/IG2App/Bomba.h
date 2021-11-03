@@ -15,5 +15,8 @@ public:
 
 private:
 	AnimationState* animationState;
+	bool detenida;
+protected:
+	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
 #endif

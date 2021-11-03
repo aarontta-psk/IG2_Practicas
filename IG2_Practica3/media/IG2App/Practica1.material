@@ -141,3 +141,18 @@ material Practica1/Water
         }
     }
 }
+
+material Practica1/BeachStones
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+            texture_unit
+            {
+                texture BeachStones.jpg
+            }
+        }
+    }
+}

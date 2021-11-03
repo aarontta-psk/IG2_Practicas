@@ -1,10 +1,14 @@
 #pragma once
 #include "EntityIG.h"
+#include "OgreTimer.h"
 
 class Plano : public EntityIG
 {
 private:
     Entity* planeM;
+    Ogre::Timer* myTimer;
+    bool triggered;
+
 public:
     Plano(SceneNode* node, const String& name, const Plane& plane,
         Real width, Real height,
@@ -15,7 +19,10 @@ public:
         HardwareBuffer::Usage indexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY,
         bool vertexShadowBuffer = false, bool indexShadowBuffer = false);
 
+    virtual void frameRendered(const Ogre::FrameEvent& evt);
     void SetMaterialName(String materialName);
+protected:
+    virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
 
 

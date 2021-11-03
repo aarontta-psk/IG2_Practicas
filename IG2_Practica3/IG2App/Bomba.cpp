@@ -5,7 +5,7 @@
 #include <OgreKeyframe.h>
 #include <iostream>
 
-Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node)
+Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(false)
 {
 	std::cout << dur << " " << despl;
 	Entity* ent = mSM->createEntity("Barrel.mesh");
@@ -43,5 +43,14 @@ Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node)
 
 void Bomba::frameRendered(const Ogre::FrameEvent& evt)
 {
+	if (detenida) return;
 	animationState->addTime(evt.timeSinceLastFrame);
+}
+
+inline bool Bomba::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	if (evt.keysym.sym == SDLK_t)
+		detenida = true;
+
+	return true;
 }

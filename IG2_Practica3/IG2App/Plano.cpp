@@ -8,7 +8,7 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	Real uTile, Real vTile, const Vector3& upVector,
 	HardwareBuffer::Usage vertexBufferUsage,
 	HardwareBuffer::Usage indexBufferUsage,
-	bool vertexShadowBuffer, bool indexShadowBuffer) : EntityIG(node, "")
+	bool vertexShadowBuffer, bool indexShadowBuffer) : EntityIG(node, ""), triggered(false)
 {
 	MeshManager::getSingleton().createPlane(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
@@ -16,9 +16,30 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	planeM = mSM->createEntity(name);
 	SetMaterialName("Practica1/Black");
 	mNode->attachObject(planeM);
+
+	myTimer = new Timer();
+}
+
+void Plano::frameRendered(const Ogre::FrameEvent& evt)
+{
+	if (triggered && myTimer->getMilliseconds() > 5000)
+	{
+		SetMaterialName("Practica1/BeachStones");
+		triggered = false;
+	}
 }
 
 void Plano::SetMaterialName(String materialName)
 {
 	planeM->setMaterialName(materialName);
+}
+
+inline bool Plano::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
+	if (evt.keysym.sym == SDLK_t)
+	{
+		triggered = true;
+		myTimer->reset();
+	}
+	return true;
 }
