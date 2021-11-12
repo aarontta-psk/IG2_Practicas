@@ -34,12 +34,16 @@ void Plano::SetMaterialName(String materialName)
 	planeM->setMaterialName(materialName);
 }
 
-inline bool Plano::keyPressed(const OgreBites::KeyboardEvent& evt)
+void Plano::receiveEvent(Message message, EntityIG* entidad)
 {
-	if (evt.keysym.sym == SDLK_t)
+	if (message.id_ == BOMB)
 	{
 		triggered = true;
 		myTimer->reset();
 	}
+}
+
+inline bool Plano::keyPressed(const OgreBites::KeyboardEvent& evt)
+{
 	return true;
 }

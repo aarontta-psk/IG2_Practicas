@@ -156,6 +156,7 @@ void IG2App::setupScene(void)
 	plano->SetMaterialName("Practica1/Water");
 	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
 	addInputListener(vEntities[vEntities.size() - 1]);
+	EntityIG::addListener(plano);
 
 	float sizeX = 540;
 	float sizeY = 400;

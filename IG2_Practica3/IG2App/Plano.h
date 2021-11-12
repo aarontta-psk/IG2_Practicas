@@ -21,6 +21,7 @@ public:
 
     virtual void frameRendered(const Ogre::FrameEvent& evt);
     void SetMaterialName(String materialName);
+    virtual void receiveEvent(Message message, EntityIG* entidad);
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };

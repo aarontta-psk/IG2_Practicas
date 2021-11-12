@@ -50,7 +50,10 @@ void Bomba::frameRendered(const Ogre::FrameEvent& evt)
 inline bool Bomba::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_t)
+	{
+		sendEvent({ BOMB }, this);
 		detenida = true;
+	}
 
 	return true;
 }
