@@ -1,4 +1,7 @@
 #include "Sinbad.h"
+#include <OgreAnimation.h>
+#include <OgreAnimationTrack.h>
+#include <OgreKeyframe.h>
 #include <iostream>
 
 Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NONE), state(MovState::MOVING)
@@ -26,10 +29,42 @@ Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NON
 		auto s = it->first; ++it;
 		std::cout << "\n" << s << "\n";
 	}*/
+
+	float dur = 8;
+	Animation* anim = mSM->createAnimation("AnimWalkSinbad", dur);
+
+	NodeAnimationTrack* track = anim->createNodeTrack(0);
+	track->setAssociatedNode(mNode);
+
+	Vector3 src(0, 0, 1);
+	float despl = 1300;
+	Real durPaso = dur / 4.0;
+
+	TransformKeyFrame* kf;
+	kf = track->createNodeKeyFrame(durPaso * 0); // Keyframe 1: rota en origin
+	kf->setRotation(src.getRotationTo(Vector3(1, 0, -2)));
+
+	kf = track->createNodeKeyFrame(durPaso * 1); // Keyframe 2: llega a la otra plataforma
+	kf->setTranslate({despl * 1.25f,0, -despl});
+	kf->setRotation(src.getRotationTo(Vector3(1, 0, -2)));
+
+	kf = track->createNodeKeyFrame(durPaso * 2); // Keyframe 3: roto en la otra plataforma
+	kf->setRotation(src.getRotationTo(Vector3(-1, 0, 2)));
+	kf->setTranslate({ despl * 1.25f,0, -despl });
+
+	kf = track->createNodeKeyFrame(durPaso * 3); // Keyframe 1: rota en origin
+	kf->setRotation(src.getRotationTo(Vector3(-1, 0, 2)));
+
+	walkAnim = mSM->createAnimationState("AnimWalkSinbad");
+
+	walkAnim->setLoop(true);
+	walkAnim->setEnabled(true);
 }
 
 void Sinbad::frameRendered(const Ogre::FrameEvent& evt)
 {
+	walkAnim->addTime(evt.timeSinceLastFrame);
+
 	for (auto anim : currentAnims)
 		addTimeAnim(anim, evt.timeSinceLastFrame);
 

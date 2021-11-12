@@ -37,6 +37,7 @@ private:
 	std::vector<Ogre::String> currentAnims;
 	
 	SwordStance currentWeapon; 
+	AnimationState* walkAnim;
 
 	MovState state;
 	Ogre::Timer* myTimer;

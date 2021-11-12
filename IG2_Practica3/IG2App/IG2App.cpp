@@ -180,6 +180,7 @@ void IG2App::setupScene(void)
 	addInputListener(vEntities[vEntities.size() - 1]);
 	simbad->getNode()->translate(-sizeX*1.5f, 100, sizeY * 1.5f);
 	simbad->getNode()->setScale(20, 20, 20);
+	simbad->getNode()->setInitialState();
 	simbad->arma();
 	
 }
