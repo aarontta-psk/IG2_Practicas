@@ -166,7 +166,7 @@ void IG2App::setupScene(void)
 		sizeX, sizeY, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	vEntities.push_back(plano);
 	plano->SetMaterialName("Practica1/Yellow");
-	vEntities[vEntities.size() - 1]->getNode()->translate(-sizeX *1.5f, 1, sizeY * 1.5f);
+	vEntities[vEntities.size() - 1]->getNode()->translate(-sizeX * 1.5f, 1, sizeY * 1.5f);
 
 	plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Red",
 		Plane(Vector3::UNIT_Y, 0),
@@ -178,11 +178,26 @@ void IG2App::setupScene(void)
 	auto simbad = new Sinbad(mSM->getRootSceneNode());
 	vEntities.push_back(simbad);
 	addInputListener(vEntities[vEntities.size() - 1]);
-	simbad->getNode()->translate(-sizeX*1.5f, 100, sizeY * 1.5f);
+	simbad->getNode()->translate(-sizeX * 1.5f, 100, sizeY * 1.5f);
 	simbad->getNode()->setScale(20, 20, 20);
 	simbad->getNode()->setInitialState();
 	simbad->arma();
-	
+
+	//Apartado 52
+	Entity* sphere = mSM->createEntity("sphere.mesh");
+	sphere->setMaterialName("Practica1/Cursed");
+	SceneNode* sphereNode = mSM->getRootSceneNode()->createChildSceneNode();
+	sphereNode->attachObject(sphere);
+	float sphereScale = 0.25;
+	sphereNode->setScale(sphereScale, sphereScale, sphereScale);
+	float pos = 800;
+	sphereNode->setPosition({ pos, 20, -pos * 0.75f });
+
+	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
+	vEntities.push_back(new Avion(ficticioAvionNode));
+	vEntities[vEntities.size() - 1]->getNode()->setScale(0.25, 0.25, 0.25);
+	vEntities[vEntities.size() - 1]->getNode()->translate(-350, 330, 0);
+	addInputListener(vEntities[vEntities.size() - 1]);
 }
 
 void IG2App::createDrones()

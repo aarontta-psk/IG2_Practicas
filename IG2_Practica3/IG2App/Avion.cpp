@@ -48,7 +48,7 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	mAlaINode->attachObject(ala);
 
 	ala = mSM->createEntity("cube.mesh");
-	ala->setMaterialName("Practica1/Wings");
+	ala->setMaterialName("Practica1/Checker");
 	mAlaDNode->attachObject(ala);
 	mAlaINode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
@@ -109,6 +109,8 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 {
 	mHeliceDNode->frameRendered(evt);
 	mHeliceINode->frameRendered(evt);
+
+	mNode->getParentSceneNode()->yaw(Degree(1));
 
 	if (!manualControl) {
 		if (detenido) return;
