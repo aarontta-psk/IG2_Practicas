@@ -198,6 +198,14 @@ void IG2App::setupScene(void)
 	vEntities[vEntities.size() - 1]->getNode()->setScale(0.25, 0.25, 0.25);
 	vEntities[vEntities.size() - 1]->getNode()->translate(-350, 330, 0);
 	addInputListener(vEntities[vEntities.size() - 1]);
+
+	//APARTADO 55
+	BillboardSet* bbSet = mSM->createBillboardSet("Smokescreen", 1);
+	bbSet->setDefaultDimensions(4000, 1500);
+	bbSet->setMaterialName("Practica1/Smoke");
+	mSM->getRootSceneNode()->attachObject(bbSet);
+
+	bbSet->createBillboard(Vector3(700, 500, -100));
 }
 
 void IG2App::createDrones()
