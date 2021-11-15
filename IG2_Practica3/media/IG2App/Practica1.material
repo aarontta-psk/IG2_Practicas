@@ -71,6 +71,7 @@ material Practica1/Checker
         pass
         {
             diffuse 1 1 1
+
             texture_unit
             {
                 texture checker.png
@@ -86,6 +87,7 @@ material Practica1/Cross
         pass
         {
             diffuse 1 1 1
+
             texture_unit
             {
                 texture WoodPallet.png
@@ -101,6 +103,7 @@ material Practica1/Junction
         pass
         {
             diffuse 1 1 0.1
+
             texture_unit
             {
                 texture BumpyMetal.jpg
@@ -117,6 +120,7 @@ material Practica1/Cursed
         pass
         {
             diffuse 1 1 1
+
             texture_unit
             {
                 texture spotlight_image.png
@@ -133,6 +137,7 @@ material Practica1/Water
         pass
         {
             diffuse 1 1 1
+
             texture_unit
             {
                 texture Water02.jpg
@@ -149,6 +154,7 @@ material Practica1/BeachStones
         pass
         {
             diffuse 1 1 1
+
             texture_unit
             {
                 texture BeachStones.jpg
@@ -164,6 +170,7 @@ material Practica1/10Panel
         pass
         {
             lighting off
+
             texture_unit
             {
                 texture 10points.png
@@ -183,6 +190,7 @@ material Practica1/Smoke
             scene_blend alpha_blend
             depth_write off
             diffuse vertexcolour
+
             texture_unit
             {
                 texture smoke.png
