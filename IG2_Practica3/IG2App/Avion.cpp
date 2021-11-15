@@ -1,6 +1,6 @@
 #include "Avion.h"
+
 #include "AspasMolino.h"
-#include <iostream>
 
 Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
@@ -65,6 +65,13 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	light->setSpotlightInnerAngle(Degree(0));
 	light->setSpotlightOuterAngle(Degree(45));
 	light->setSpotlightFalloff(1.0f);
+
+	BillboardSet* bbSet = mSM->createBillboardSet("10PointsBb", 1);
+	bbSet->setDefaultDimensions(250, 125);
+	bbSet->setMaterialName("Practica1/10Panel");
+	mNode->attachObject(bbSet);
+
+    bbSet->createBillboard(Vector3(0, 0, -330));
 
 	myTimer = new Timer();
 }

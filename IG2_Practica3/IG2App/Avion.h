@@ -4,7 +4,8 @@
 class AspasMolino;
 
 #include "EntityIG.h"
-#include "OgreTimer.h"
+#include <OgreTimer.h>
+#include <OgreBillboardSet.h>
 
 class Avion : public EntityIG
 {

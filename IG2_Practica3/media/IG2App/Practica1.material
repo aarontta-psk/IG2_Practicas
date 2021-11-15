@@ -156,3 +156,19 @@ material Practica1/BeachStones
         }
     }
 }
+
+material Practica1/10Panel
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            texture_unit
+            {
+                texture 10points.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
