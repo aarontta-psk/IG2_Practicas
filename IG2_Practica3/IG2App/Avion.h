@@ -6,6 +6,7 @@ class AspasMolino;
 #include "EntityIG.h"
 #include <OgreTimer.h>
 #include <OgreBillboardSet.h>
+#include <OgreParticleSystem.h>
 
 class Avion : public EntityIG
 {

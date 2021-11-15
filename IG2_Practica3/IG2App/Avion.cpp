@@ -73,6 +73,10 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 
     bbSet->createBillboard(Vector3(0, 0, -330));
 
+	ParticleSystem* pSys = mSM->createParticleSystem("psSmoke", "Practica1/psSmoke");
+	pSys->setEmitting(false);
+	mNode->attachObject(pSys);
+
 	myTimer = new Timer();
 }
 
