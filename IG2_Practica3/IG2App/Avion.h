@@ -26,6 +26,7 @@ private:
 	AspasMolino* mHeliceDNode;
 	SceneNode* mFrenteNode;
 	SceneNode* mPilotoNode;
+	ParticleSystem* explosionParticle;
 
 	SceneNode* lightNode;
 	Light* light;

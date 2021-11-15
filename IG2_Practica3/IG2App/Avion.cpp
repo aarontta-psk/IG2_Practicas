@@ -77,6 +77,10 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	pSys->setEmitting(true);
 	mNode->attachObject(pSys);
 
+	explosionParticle = mSM->createParticleSystem("psExplosion", "Practica1/Explosion");
+	explosionParticle->setEmitting(false);
+	mNode->attachObject(explosionParticle);
+
 	myTimer = new Timer();
 }
 
@@ -103,7 +107,12 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 
 	if (evt.keysym.sym == SDLK_r)
+	{
 		sendEvent({ STOP_ALL_ENTITIES }, nullptr);
+		detenido = true;
+		//mNode->setVisible(false);
+		explosionParticle->setEmitting(true);
+	}
 	else if (evt.keysym.sym == SDLK_h && manualControl) {
 		mNode->getParentSceneNode()->pitch(Ogre::Degree(5));
 		sendEvent({ CHECK_COLLISION }, this);
@@ -121,7 +130,7 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 	mHeliceDNode->frameRendered(evt);
 	mHeliceINode->frameRendered(evt);
 
-	mNode->getParentSceneNode()->yaw(Degree(1));
+	if(!detenido)mNode->getParentSceneNode()->yaw(Degree(1));
 
 	if (!manualControl) {
 		if (detenido) return;

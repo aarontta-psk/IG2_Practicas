@@ -199,3 +199,23 @@ material Practica1/Smoke
         }
     }
 }
+
+material Practica1/Explosion
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            diffuse 0.3 0.3 0.3
+
+            texture_unit
+            {
+                texture smoke.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
