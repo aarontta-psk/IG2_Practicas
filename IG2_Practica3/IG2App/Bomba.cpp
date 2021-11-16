@@ -39,18 +39,35 @@ Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(fal
 
 	animationState->setLoop(true);
 	animationState->setEnabled(true);
+
+	mExplosionNode = node->createChildSceneNode();
+	mExplosionNode->setVisible(false);
+	myTimer = new Timer();
+
+	explosionParticles = mSM->createParticleSystem("psSmokeBomb", "Practica1/BombExplosion");
+	explosionParticles->setEmitting(false);
+	mExplosionNode->attachObject(explosionParticles);
 }
 
 void Bomba::frameRendered(const Ogre::FrameEvent& evt)
 {
+	if (explosionParticles->getEmitting() && myTimer->getMilliseconds() >= 5000)
+		explosionParticles->setEmitting(false);
+
 	if (detenida) return;
 	animationState->addTime(evt.timeSinceLastFrame);
 }
 
 void Bomba::receiveEvent(Message message, EntityIG* entidad)
 {
-	if (message.id_ == BOMB)
+	if (message.id_ == BOMB && entidad != this)
+	{
 		detenida == true;
+		mExplosionNode->setVisible(true);
+		mNode->setVisible(false);
+		explosionParticles->setEmitting(true);
+		myTimer->reset();
+	}
 }
 
 inline bool Bomba::keyPressed(const OgreBites::KeyboardEvent& evt)

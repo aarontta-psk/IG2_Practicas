@@ -54,3 +54,46 @@ particle_system Practica1/Explosion
         alpha -0.2
     }
 }
+
+particle_system Practica1/BombExplosion
+{ // p. s. attributes
+    renderer billboard
+    billboard_type point
+    particle_width 50
+    particle_height 200
+    quota 500
+    material Practica1/Smoke
+
+    emitter Point
+    { // e. attributes
+        direction 0 1 0
+        angle 30
+        emission_rate 50
+        time_to_live 3
+        velocity_min 150
+        velocity_max 200
+    }
+
+    affector Scaler
+    { // a. attributes
+        rate 50
+    }
+
+    affector Rotator // the texture
+    { // a. attributes
+        rotation_range_start 0
+        rotation_range_end 360
+        rotation_speed_range_start -60
+        rotation_speed_range_end 200
+    }
+
+    affector DirectionRandomiser
+    {
+        rate 50
+    }
+
+    affector ColourImage
+    {
+        image smokecolors.png
+    }
+}

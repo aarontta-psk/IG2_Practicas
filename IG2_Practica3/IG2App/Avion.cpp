@@ -112,6 +112,7 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		if (state != State::DEATH && state != State::EXPLOSION) {
 			sendEvent({ STOP_ALL_ENTITIES }, nullptr);
+			sendEvent({ SIMBAD_DIES_YAY }, nullptr);
 			detenido = true;
 			state = State::EXPLOSION;
 

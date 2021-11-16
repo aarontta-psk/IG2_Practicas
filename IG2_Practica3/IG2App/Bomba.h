@@ -2,6 +2,8 @@
 #define BOMBA_H_
 
 #include "EntityIG.h"
+#include <OgreTimer.h>
+#include <OgreParticleSystem.h>
 
 using namespace Ogre;
 
@@ -16,6 +18,10 @@ public:
 
 private:
 	AnimationState* animationState;
+	SceneNode* mExplosionNode;
+	ParticleSystem* explosionParticles;
+
+	Ogre::Timer* myTimer;
 	bool detenida;
 protected:
 	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
