@@ -10,14 +10,14 @@ particle_system Practica1/Trail
     emitter Point
     { // e. attributes
         position 0 0 -200
-        colour 0.8 0.8 0.8 0.5
+        colour 0.9 0.9 0.9 0.5
         emission_rate 15
-        time_to_live 3
+        time_to_live 4
     }
 
     affector ColourFader
     { // a. attributes
-        alpha -0.17
+        alpha -0.125
     }
 }
 
@@ -32,21 +32,13 @@ particle_system Practica1/Explosion
 
     emitter Point
     { // e. attributes
-        position 0 0 -250
         direction 0 1 0
-        angle 35
+        angle 180
+        colour 0.7 0.7 0.7 0.6
         emission_rate 25
-        time_to_live 2
+        time_to_live 3
         velocity_min 100
         velocity_max 150
-    }
-
-    affector Rotator
-    { // a. attributes
-        rotation_range_start 0
-        rotation_range_end 360
-        rotation_speed_range_start -60
-        rotation_speed_range_end 200
     }
 
     affector Scaler
@@ -54,20 +46,11 @@ particle_system Practica1/Explosion
         rate 20
     }
 
-    affector DirectionRandomiser
+    affector ColourFader
     { // a. attributes
-        randomness 5
-    }
-
-    affector ColourInterpolator
-    {
-        time0 0
-        colour0 0.3 0.3 0.3 1
-
-        time1 0.5
-        colour1 0.3 0.3 0.3 1
-
-        time2 1
-        colour2 1 1 1 0
+        red 0.1
+        green 0.1
+        blue 0.1
+        alpha -0.2
     }
 }

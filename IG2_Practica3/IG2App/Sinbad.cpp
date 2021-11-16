@@ -88,8 +88,8 @@ bool Sinbad::keyPressed(const OgreBites::KeyboardEvent& evt)
 		unarm();
 	else if (evt.keysym.sym == SDLK_c)
 		changeAnim((currentAnims.size() <= 1) ? newAnimsList(AnimState::RUN) : newAnimsList(AnimState::DANCE));
-	else if (evt.keysym.sym == SDLK_r)
-		changeAnim(newAnimsList((AnimState)(std::rand() % 9)));
+	/*else if (evt.keysym.sym == SDLK_r)
+		changeAnim(newAnimsList((AnimState)(std::rand() % 9)));*/
 
 	return true;
 }

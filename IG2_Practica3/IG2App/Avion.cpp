@@ -71,15 +71,17 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	bbSet->setMaterialName("Practica1/10Panel");
 	mNode->attachObject(bbSet);
 
-    bbSet->createBillboard(Vector3(0, 0, -330));
+	bbSet->createBillboard(Vector3(0, 0, -330));
 
 	ParticleSystem* pSys = mSM->createParticleSystem("psSmoke", "Practica1/Trail");
 	pSys->setEmitting(true);
 	mNode->attachObject(pSys);
 
+	mPSNode = mNode->createChildSceneNode();
+
 	explosionParticle = mSM->createParticleSystem("psExplosion", "Practica1/Explosion");
 	explosionParticle->setEmitting(false);
-	mNode->attachObject(explosionParticle);
+	mPSNode->attachObject(explosionParticle);
 
 	myTimer = new Timer();
 }
@@ -108,10 +110,17 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 	if (evt.keysym.sym == SDLK_r)
 	{
-		sendEvent({ STOP_ALL_ENTITIES }, nullptr);
-		detenido = true;
-		//mNode->setVisible(false);
-		explosionParticle->setEmitting(true);
+		if (state != State::DEATH && state != State::EXPLOSION) {
+			sendEvent({ STOP_ALL_ENTITIES }, nullptr);
+			detenido = true;
+			state = State::EXPLOSION;
+
+			mNode->setVisible(false);
+			mPSNode->setVisible(true);
+			explosionParticle->setEmitting(true);
+
+			myTimer->reset();
+		}
 	}
 	else if (evt.keysym.sym == SDLK_h && manualControl) {
 		mNode->getParentSceneNode()->pitch(Ogre::Degree(5));
@@ -130,9 +139,16 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 	mHeliceDNode->frameRendered(evt);
 	mHeliceINode->frameRendered(evt);
 
-	if(!detenido)mNode->getParentSceneNode()->yaw(Degree(1));
+	if (!detenido)
+		mNode->getParentSceneNode()->yaw(Degree(1));
+
+	if (state == State::EXPLOSION && myTimer->getMilliseconds() >= 300) {
+		explosionParticle->setEmitting(false);
+		state = State::DEATH;
+	}
 
 	if (!manualControl) {
+
 		if (detenido) return;
 
 		SceneNode* parentNode = mNode->getParentSceneNode();

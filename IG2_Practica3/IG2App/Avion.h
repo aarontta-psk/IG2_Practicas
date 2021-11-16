@@ -10,7 +10,7 @@ class AspasMolino;
 
 class Avion : public EntityIG
 {
-	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT };
+	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT, EXPLOSION, DEATH };
 
 public:
 	Avion(SceneNode* node);
@@ -26,11 +26,13 @@ private:
 	AspasMolino* mHeliceDNode;
 	SceneNode* mFrenteNode;
 	SceneNode* mPilotoNode;
-	ParticleSystem* explosionParticle;
 
 	SceneNode* lightNode;
 	Light* light;
 	bool detenido, manualControl;
+
+	SceneNode* mPSNode;
+	ParticleSystem* explosionParticle;
 
 	Ogre::Timer* myTimer;
 	State state;
