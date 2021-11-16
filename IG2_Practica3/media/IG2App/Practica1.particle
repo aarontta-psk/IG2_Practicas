@@ -1,4 +1,4 @@
-particle_system Practica1/Smoke
+particle_system Practica1/Trail
 { // p. s. attributes
     renderer billboard
     billboard_type point
@@ -9,36 +9,15 @@ particle_system Practica1/Smoke
 
     emitter Point
     { // e. attributes
-        position 0 0 -250
-        direction 0 1 0
-        angle 35
-        emission_rate 25
-        time_to_live 1.5
-        // velocity_min 50
-        // velocity_max 80
+        position 0 0 -200
+        colour 0.8 0.8 0.8 0.5
+        emission_rate 15
+        time_to_live 3
     }
 
-    // affector ColourImage
-    // { // a. attributes
-    //     image smokecolors.png
-    // }
-
-    affector Rotator
+    affector ColourFader
     { // a. attributes
-        rotation_range_start 0
-        rotation_range_end 360
-        rotation_speed_range_start -60
-        rotation_speed_range_end 200
-    }
-
-    affector Scaler
-    { // a. attributes
-        rate -20
-    }
-
-    affector DirectionRandomiser
-    { // a. attributes
-        randomness 5
+        alpha -0.17
     }
 }
 
@@ -49,7 +28,7 @@ particle_system Practica1/Explosion
     particle_width 200
     particle_height 200
     quota 500
-    material Practica1/Explosion
+    material Practica1/Smoke
 
     emitter Point
     { // e. attributes
@@ -59,7 +38,7 @@ particle_system Practica1/Explosion
         emission_rate 25
         time_to_live 2
         velocity_min 100
-        /velocity_max 150
+        velocity_max 150
     }
 
     affector Rotator
