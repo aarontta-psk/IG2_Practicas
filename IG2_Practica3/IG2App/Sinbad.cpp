@@ -30,7 +30,7 @@ Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NON
 		std::cout << "\n" << s << "\n";
 	}*/
 
-	float dur = 8;
+	float dur = 10;
 	Animation* anim = mSM->createAnimation("AnimWalkSinbad", dur);
 
 	NodeAnimationTrack* track = anim->createNodeTrack(0);
@@ -38,22 +38,29 @@ Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NON
 
 	Vector3 src(0, 0, 1);
 	float despl = 1300;
-	Real durPaso = dur / 4.0;
+	Real durPaso = dur / 6.0;
 
 	TransformKeyFrame* kf;
-	kf = track->createNodeKeyFrame(durPaso * 0); // Keyframe 1: rota en origin
+	kf = track->createNodeKeyFrame(durPaso * 0); // Keyframe 1: Mira el frente
+	kf->setRotation(Quaternion::IDENTITY);
+
+	kf = track->createNodeKeyFrame(durPaso * 1); // Keyframe 2: rota en origin
 	kf->setRotation(src.getRotationTo(Vector3(1, 0, -2)));
 
-	kf = track->createNodeKeyFrame(durPaso * 1); // Keyframe 2: llega a la otra plataforma
+	kf = track->createNodeKeyFrame(durPaso * 2); // Keyframe 3: llega a la otra plataforma
 	kf->setTranslate({despl * 1.25f,0, -despl});
 	kf->setRotation(src.getRotationTo(Vector3(1, 0, -2)));
 
-	kf = track->createNodeKeyFrame(durPaso * 2); // Keyframe 3: roto en la otra plataforma
+	kf = track->createNodeKeyFrame(durPaso * 3); // Keyframe 4: roto en la otra plataforma
 	kf->setRotation(src.getRotationTo(Vector3(-1, 0, 2)));
 	kf->setTranslate({ despl * 1.25f,0, -despl });
 
-	kf = track->createNodeKeyFrame(durPaso * 3); // Keyframe 1: rota en origin
+	kf = track->createNodeKeyFrame(durPaso * 4); // Keyframe 5: rota en origin
 	kf->setRotation(src.getRotationTo(Vector3(-1, 0, 2)));
+
+	kf = track->createNodeKeyFrame(durPaso * 5); // Keyframe 6: Mira el frente
+	kf->setRotation(Quaternion::IDENTITY);
+
 
 	walkAnim = mSM->createAnimationState("AnimWalkSinbad");
 
