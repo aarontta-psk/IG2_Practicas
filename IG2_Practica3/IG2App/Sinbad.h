@@ -23,6 +23,7 @@ public:
 	virtual ~Sinbad() {};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
+	virtual void receiveEvent(Message message, EntityIG* entidad);
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);
 	void cambiaEspada();
@@ -33,6 +34,8 @@ private:
 	Entity* sinbad;
 	Entity* leftSword;
 	Entity* rightSword;
+	bool isDed;
+	float aux;
 
 	std::vector<Ogre::String> currentAnims;
 	

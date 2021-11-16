@@ -12,6 +12,7 @@ public:
 	~Bomba() {};
 
 	virtual void frameRendered(const Ogre::FrameEvent& evt);
+	virtual void receiveEvent(Message message, EntityIG* entidad);
 
 private:
 	AnimationState* animationState;

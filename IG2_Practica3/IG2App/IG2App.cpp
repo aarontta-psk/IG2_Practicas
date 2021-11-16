@@ -143,11 +143,12 @@ void IG2App::setupScene(void)
 
 	//Create nodes
 	//scene0();
-	vEntities.push_back(new Bomba(mSM->getRootSceneNode(), 16, 20));
-	vEntities[vEntities.size() - 1]->getNode()->setScale(20, 20, 20);
-	vEntities[vEntities.size() - 1]->getNode()->setInitialState();
-	addInputListener(vEntities[vEntities.size() - 1]);
-	EntityIG::addListener(vEntities[vEntities.size() - 1]);
+	auto bomba = new Bomba(mSM->getRootSceneNode(), 16, 20);
+	vEntities.push_back(bomba);
+	bomba->getNode()->setScale(20, 20, 20);
+	bomba->getNode()->setInitialState();
+	EntityIG::addListener(bomba);
+	addInputListener(bomba);
 
 	auto plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Water",
 		Plane(Vector3::UNIT_Y, 0),
@@ -178,6 +179,7 @@ void IG2App::setupScene(void)
 	auto simbad = new Sinbad(mSM->getRootSceneNode());
 	vEntities.push_back(simbad);
 	addInputListener(vEntities[vEntities.size() - 1]);
+	EntityIG::addListener(simbad);
 	simbad->getNode()->translate(-sizeX * 1.5f, 100, sizeY * 1.5f);
 	simbad->getNode()->setScale(20, 20, 20);
 	simbad->getNode()->setInitialState();

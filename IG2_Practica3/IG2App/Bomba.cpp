@@ -47,6 +47,12 @@ void Bomba::frameRendered(const Ogre::FrameEvent& evt)
 	animationState->addTime(evt.timeSinceLastFrame);
 }
 
+void Bomba::receiveEvent(Message message, EntityIG* entidad)
+{
+	if (message.id_ == BOMB)
+		detenida == true;
+}
+
 inline bool Bomba::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_t)

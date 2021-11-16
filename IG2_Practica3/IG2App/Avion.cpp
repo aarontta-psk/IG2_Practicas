@@ -109,6 +109,7 @@ inline bool Avion::keyPressed(const OgreBites::KeyboardEvent& evt)
 	if (evt.keysym.sym == SDLK_r)
 	{
 		sendEvent({ STOP_ALL_ENTITIES }, nullptr);
+		sendEvent({ SIMBAD_DIES_YAY }, nullptr);
 		detenido = true;
 		//mNode->setVisible(false);
 		explosionParticle->setEmitting(true);

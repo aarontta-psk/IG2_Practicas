@@ -75,7 +75,27 @@ void Sinbad::frameRendered(const Ogre::FrameEvent& evt)
 	for (auto anim : currentAnims)
 		addTimeAnim(anim, evt.timeSinceLastFrame);
 
+	aux = myTimer->getMilliseconds();
+	if (isDed && myTimer->getMilliseconds() >= 5000)
+	{
+		sendEvent({ BOMB }, this);
+		isDed = false;
+	}
 	//sinbadMovement();
+}
+
+void Sinbad::receiveEvent(Message message, EntityIG* entidad)
+{
+	if (message.id_ == SIMBAD_DIES_YAY)
+	{
+		walkAnim->setEnabled(false);
+		myTimer->reset();
+		changeAnim(newAnimsList(AnimState::IDLE));
+		mNode->roll(Degree(90));
+		mNode->yaw(Degree(90));
+		mNode->translate(0, -75, 0);
+		isDed = true;
+	}
 }
 
 bool Sinbad::keyPressed(const OgreBites::KeyboardEvent& evt)
