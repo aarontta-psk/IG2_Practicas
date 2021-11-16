@@ -206,6 +206,8 @@ void IG2App::setupScene(void)
 	mSM->getRootSceneNode()->attachObject(bbSet);
 
 	bbSet->createBillboard(Vector3(700, 500, -100));
+	bbSet->createBillboard(Vector3(900, 500, -100));
+	bbSet->createBillboard(Vector3(1100, 500, -100));
 }
 
 void IG2App::createDrones()
