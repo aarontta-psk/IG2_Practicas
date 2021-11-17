@@ -90,8 +90,7 @@ void Sinbad::receiveEvent(Message message, EntityIG* entidad)
 		walkAnim->setEnabled(false);
 		myTimer->reset();
 		changeAnim(newAnimsList(AnimState::IDLE));
-		mNode->roll(Degree(90));
-		mNode->yaw(Degree(90));
+		mNode->pitch(Degree(-90));
 		mNode->translate(0, -75, 0);
 		isDed = true;
 	}

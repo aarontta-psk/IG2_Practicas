@@ -54,6 +54,5 @@ private:
 	void swordVisibility();
 
 	void sinbadMovement();
-
 };
 #endif
