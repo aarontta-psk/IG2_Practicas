@@ -143,37 +143,37 @@ void IG2App::setupScene(void)
 
 	//Create nodes
 	//scene0();
-	auto bomba = new Bomba(mSM->getRootSceneNode(), 16, 20);
+	auto bomba = new Bomba(mSM->getRootSceneNode(), 8, 30);
 	vEntities.push_back(bomba);
 	bomba->getNode()->setScale(20, 20, 20);
 	bomba->getNode()->setInitialState();
 	EntityIG::addListener(bomba);
 	addInputListener(bomba);
 
-	auto plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Water",
+	auto plano = new Plano(mSM->getRootSceneNode(), "mPlaneWater",
 		Plane(Vector3::UNIT_Y, 0),
-		1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+		1080, 1080, 30, 30, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	vEntities.push_back(plano);
-	plano->SetMaterialName("Practica1/Water");
+	plano->setMaterialName("Practica1/Water");
 	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
 	addInputListener(vEntities[vEntities.size() - 1]);
 	EntityIG::addListener(plano);
 
 	float sizeX = 540;
-	float sizeY = 400;
+	float sizeY = 540;
 
-	plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Yellow",
+	plano = new Plano(mSM->getRootSceneNode(), "mPlaneYellow",
 		Plane(Vector3::UNIT_Y, 0),
-		sizeX, sizeY, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+		sizeX, sizeY, 2, 2, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	vEntities.push_back(plano);
-	plano->SetMaterialName("Practica1/Yellow");
+	plano->setMaterialName("Practica1/Yellow");
 	vEntities[vEntities.size() - 1]->getNode()->translate(-sizeX * 1.5f, 1, sizeY * 1.5f);
 
-	plano = new Plano(mSM->getRootSceneNode(), "mPlane1080x800Red",
+	plano = new Plano(mSM->getRootSceneNode(), "mPlaneRed",
 		Plane(Vector3::UNIT_Y, 0),
-		sizeX, sizeY, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+		sizeX, sizeY, 2, 2, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	vEntities.push_back(plano);
-	plano->SetMaterialName("Practica1/Red");
+	plano->setMaterialName("Practica1/Red");
 	vEntities[vEntities.size() - 1]->getNode()->translate(sizeX * 1.5f, 1, -sizeY * 1.5f);
 
 	auto simbad = new Sinbad(mSM->getRootSceneNode());
@@ -193,7 +193,7 @@ void IG2App::setupScene(void)
 	float sphereScale = 0.25;
 	sphereNode->setScale(sphereScale, sphereScale, sphereScale);
 	float pos = 800;
-	sphereNode->setPosition({ pos, 20, -pos * 0.75f });
+	sphereNode->setPosition({ pos, 20, -pos });
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode));
@@ -202,14 +202,27 @@ void IG2App::setupScene(void)
 	addInputListener(vEntities[vEntities.size() - 1]);
 
 	//APARTADO 55
-	BillboardSet* bbSet = mSM->createBillboardSet("Smokescreen", 1);
-	bbSet->setDefaultDimensions(4000, 1500);
+	//createSmokeScreen();
+}
+
+void IG2App::createSmokeScreen() {
+	BillboardSet* bbSet = mSM->createBillboardSet("Smokescreen", 9);
+	bbSet->setDefaultDimensions(1500, 1500);
 	bbSet->setMaterialName("Practica1/Smoke");
 	mSM->getRootSceneNode()->attachObject(bbSet);
+	
+	bbSet->createBillboard(Vector3(300, 500, -500));
+	bbSet->createBillboard(Vector3(700, 500, -500));
+	bbSet->createBillboard(Vector3(1100, 500, -500));
 
+	bbSet->createBillboard(Vector3(300, 500, -100));
 	bbSet->createBillboard(Vector3(700, 500, -100));
-	bbSet->createBillboard(Vector3(900, 500, -100));
 	bbSet->createBillboard(Vector3(1100, 500, -100));
+
+	bbSet->createBillboard(Vector3(300, 500, 400));
+	bbSet->createBillboard(Vector3(700, 500, 400));
+	bbSet->createBillboard(Vector3(1100, 500, 400));
+
 }
 
 void IG2App::createDrones()

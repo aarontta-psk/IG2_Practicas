@@ -20,8 +20,10 @@ public:
         bool vertexShadowBuffer = false, bool indexShadowBuffer = false);
 
     virtual void frameRendered(const Ogre::FrameEvent& evt);
-    void SetMaterialName(String materialName);
     virtual void receiveEvent(Message message, EntityIG* entidad);
+
+    void setMaterialName(String materialName);
+
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };

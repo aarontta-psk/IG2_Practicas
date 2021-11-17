@@ -14,7 +14,7 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
 		vertexBufferUsage, indexBufferUsage, vertexShadowBuffer, indexShadowBuffer);
 	planeM = mSM->createEntity(name);
-	SetMaterialName("Practica1/Black");
+	setMaterialName("Practica1/Black");
 	mNode->attachObject(planeM);
 
 	myTimer = new Timer();
@@ -24,12 +24,12 @@ void Plano::frameRendered(const Ogre::FrameEvent& evt)
 {
 	if (triggered && myTimer->getMilliseconds() > 5000)
 	{
-		SetMaterialName("Practica1/BeachStones");
+		setMaterialName("Practica1/BeachStones");
 		triggered = false;
 	}
 }
 
-void Plano::SetMaterialName(String materialName)
+void Plano::setMaterialName(String materialName)
 {
 	planeM->setMaterialName(materialName);
 }

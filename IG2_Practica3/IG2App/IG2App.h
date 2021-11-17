@@ -25,6 +25,7 @@ protected:
 
 	void createDrones();
 	void scene0();
+	void createSmokeScreen();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 
