@@ -79,7 +79,7 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 
 	mPSNode = mNode->createChildSceneNode();
 
-	explosionParticle = mSM->createParticleSystem("psExplosion", "Practica1/Explosion");
+	explosionParticle = mSM->createParticleSystem("psExplosion", "Practica1/PlaneExplosion");
 	explosionParticle->setEmitting(false);
 	mPSNode->attachObject(explosionParticle);
 
@@ -143,7 +143,7 @@ void Avion::frameRendered(const Ogre::FrameEvent& evt)
 	if (!detenido)
 		mNode->getParentSceneNode()->yaw(Degree(1));
 
-	if (state == State::EXPLOSION && myTimer->getMilliseconds() >= 300) {
+	if (state == State::EXPLOSION && myTimer->getMilliseconds() >= 1000) {
 		explosionParticle->setEmitting(false);
 		state = State::DEATH;
 	}

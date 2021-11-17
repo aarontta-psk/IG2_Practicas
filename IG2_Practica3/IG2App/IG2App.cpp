@@ -116,7 +116,7 @@ void IG2App::setupScene(void)
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.2, 0.2, 0.2));
+	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
 
 	//------------------------------------------------------------------------
 
@@ -202,7 +202,7 @@ void IG2App::setupScene(void)
 	addInputListener(vEntities[vEntities.size() - 1]);
 
 	//APARTADO 55
-	//createSmokeScreen();
+	createSmokeScreen();
 }
 
 void IG2App::createSmokeScreen() {

@@ -21,7 +21,7 @@ particle_system Practica1/Trail
     }
 }
 
-particle_system Practica1/Explosion
+particle_system Practica1/PlaneExplosion
 { // p. s. attributes
     renderer billboard
     billboard_type point
@@ -34,11 +34,11 @@ particle_system Practica1/Explosion
     { // e. attributes
         direction 0 1 0
         angle 180
-        colour 0.7 0.7 0.7 0.6
-        emission_rate 25
-        time_to_live 3
-        velocity_min 100
-        velocity_max 150
+        colour 0.4 0.4 0.4 0.7
+        emission_rate 20
+        time_to_live 4.5
+        velocity_min 30
+        velocity_max 60
     }
 
     affector Scaler
@@ -48,10 +48,10 @@ particle_system Practica1/Explosion
 
     affector ColourFader
     { // a. attributes
-        red 0.1
-        green 0.1
-        blue 0.1
-        alpha -0.2
+        red 0.05
+        green 0.05
+        blue 0.05
+        alpha -0.156
     }
 }
 
