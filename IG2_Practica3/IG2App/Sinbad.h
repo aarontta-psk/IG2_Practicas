@@ -35,7 +35,6 @@ private:
 	Entity* leftSword;
 	Entity* rightSword;
 	bool isDed;
-	float aux;
 
 	std::vector<Ogre::String> currentAnims;
 	

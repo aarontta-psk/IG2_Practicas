@@ -74,7 +74,6 @@ void Sinbad::frameRendered(const Ogre::FrameEvent& evt)
 	for (auto anim : currentAnims)
 		addTimeAnim(anim, evt.timeSinceLastFrame);
 
-	aux = myTimer->getMilliseconds();
 	if (isDed && myTimer->getMilliseconds() >= 5000)
 	{
 		sendEvent({ BOMB }, this);

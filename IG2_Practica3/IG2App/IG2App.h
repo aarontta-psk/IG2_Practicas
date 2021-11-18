@@ -23,8 +23,12 @@ protected:
 	virtual void shutdown();
 	virtual void setupScene();
 
+	void EscenaReloj();
+	void EscenaMolino();
+	void EscenaDrones();
+	void EscenaSimbad();
+
 	void createDrones();
-	void scene0();
 	void createSmokeScreen();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
@@ -34,6 +38,7 @@ protected:
 
 	Ogre::SceneNode* mLightNode = nullptr;
 	Ogre::SceneNode* mCamNode = nullptr;
+
 	Ogre::SceneNode* mClockHours = nullptr;
 	Ogre::SceneNode* mClockMinutes = nullptr;
 	Ogre::SceneNode* mClockSeconds = nullptr;
