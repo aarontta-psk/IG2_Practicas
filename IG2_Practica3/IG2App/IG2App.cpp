@@ -390,7 +390,6 @@ void IG2App::createSmokeScreen() {
 	bbSet->createBillboard(Vector3(300, 500, 400));
 	bbSet->createBillboard(Vector3(700, 500, 400));
 	bbSet->createBillboard(Vector3(1100, 500, 400));
-
 }
 
 void IG2App::createDrones()
