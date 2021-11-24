@@ -1,0 +1,201 @@
+material Practica1/Red
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 0.1 0.1
+        }
+    }
+}
+
+material Practica1/Yellow
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0.92 0.88 0.11
+        }
+    }
+}
+
+material Practica1/Brown
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0.89 0.58 0.11
+        }
+    }
+}
+
+material Practica1/Cyan
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0 0.845 0.845
+        }
+    }
+}
+
+material Practica1/Orange
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0.92 0.5 0
+        }
+    }
+}
+
+material Practica1/Black
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0 0 0
+        }
+    }
+}
+
+material Practica1/Checker
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture checker.png
+            }
+        }
+    }
+}
+
+material Practica1/Cross
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture WoodPallet.png
+            }
+        }
+    }
+}
+
+material Practica1/Junction
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 0.1
+
+            texture_unit
+            {
+                texture BumpyMetal.jpg
+				colour_op modulate
+            }
+        }
+    }
+}
+
+material Practica1/Cursed
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture spotlight_image.png
+				env_map spherical
+            }
+        }
+    }
+}
+
+material Practica1/Water
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture Water02.jpg
+                scroll_anim 0.1 0.1
+            }
+        }
+    }
+}
+
+material Practica1/BeachStones
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture BeachStones.jpg
+            }
+        }
+    }
+}
+
+material Practica1/10Panel
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+
+            texture_unit
+            {
+                texture 10points.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+
+material Practica1/Smoke
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+            diffuse vertexcolour
+
+            texture_unit
+            {
+                texture smoke.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
