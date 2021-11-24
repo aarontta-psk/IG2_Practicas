@@ -13,7 +13,7 @@ class Avion : public EntityIG
 	enum class State { MOVING, ROTATING_LEFT, ROTATING_RIGHT, EXPLOSION, DEATH };
 
 public:
-	Avion(SceneNode* node);
+	Avion(SceneNode* node, bool focoOn = true);
 	void receiveEvent(Message message, EntityIG* entidad) override;
 	virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt) override;
 	virtual void frameRendered(const Ogre::FrameEvent& evt);

@@ -27,6 +27,7 @@ protected:
 	void EscenaMolino();
 	void EscenaDrones();
 	void EscenaSimbad();
+	void EscenaTexturas();
 
 	void createDrones();
 	void createSmokeScreen();

@@ -2,7 +2,7 @@
 
 #include "AspasMolino.h"
 
-Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
+Avion::Avion(SceneNode* node, bool focoOn) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
 	mAlaINode = mNode->createChildSceneNode();
@@ -54,17 +54,21 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	mAlaDNode->setScale(alasScaleX, alasScaleY, alasScaleZ);
 	mAlaINode->translate(-alasOffset, 0, 0);
 	mAlaDNode->translate(alasOffset, 0, 0);
-	light = mSM->createLight();
 
-	lightNode = mSM->createSceneNode();
-	mNode->addChild(lightNode);
-	lightNode->attachObject(light);
+	if (focoOn)
+	{
+		light = mSM->createLight();
 
-	light->setType(Light::LT_SPOTLIGHT);
-	light->setDirection(Vector3(0, -1, 0));
-	light->setSpotlightInnerAngle(Degree(0));
-	light->setSpotlightOuterAngle(Degree(45));
-	light->setSpotlightFalloff(1.0f);
+		lightNode = mSM->createSceneNode();
+		mNode->addChild(lightNode);
+		lightNode->attachObject(light);
+
+		light->setType(Light::LT_SPOTLIGHT);
+		light->setDirection(Vector3(0, -1, 0));
+		light->setSpotlightInnerAngle(Degree(0));
+		light->setSpotlightOuterAngle(Degree(45));
+		light->setSpotlightFalloff(1.0f);
+	}
 
 	BillboardSet* bbSet = mSM->createBillboardSet("10PointsBb", 1);
 	bbSet->setDefaultDimensions(250, 125);

@@ -124,13 +124,13 @@ void IG2App::setupScene(void)
 
 	Light* luz = mSM->createLight("Luz");
 	luz->setType(Ogre::Light::LT_DIRECTIONAL);
-	luz->setDiffuseColour(0.75, 0.75, 0.75);
+	luz->setDiffuseColour(1, 1, 1);
 
 	mLightNode = mSM->getRootSceneNode()->createChildSceneNode("nLuz");
 	//mLightNode = mCamNode->createChildSceneNode("nLuz");
 	mLightNode->attachObject(luz);
 
-	mLightNode->setDirection(Ogre::Vector3(0, -0.8, -0.8));  //vec3.normalise();
+	mLightNode->setDirection(Ogre::Vector3(0, -1, -1));  //vec3.normalise();
 	//lightNode->setPosition(0, 0, 1000);
 
 	//------------------------------------------------------------------------
@@ -141,7 +141,8 @@ void IG2App::setupScene(void)
 	//EscenaReloj();
 	//EscenaMolino();
 	//EscenaDrones();
-	EscenaSimbad();
+	//EscenaSimbad(); 
+	EscenaTexturas();
 }
 
 
@@ -236,15 +237,15 @@ void IG2App::EscenaDrones()
 	// -- Apartado 13 ---
 	//RotorDron* rotorDron = new RotorDron(mSM->getRootSceneNode(), 6);
 	//addInputListener(rotorDron);
-	
+
 	// -- Apartado 15 ---
 	//BrazoDron* brazoDron = new BrazoDron(mSM->getRootSceneN-+-ode(), 6);
 	//addInputListener(brazoDron);
-	
+
 	// -- Apartado 16 ---
 	//Dron* dron = new Dron(mSM->getRootSceneNode(), 12, 8);
 	//addInputListener(dron);
-	
+
 	// -- Apartado 17 ---
 	//planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
 	//planetaNode->attachObject(mSM->createEntity("sphere.mesh"));
@@ -256,11 +257,11 @@ void IG2App::EscenaDrones()
 	//dron->getNode()->translate(0, 540, 0);
 	//
 	//addInputListener(dron);
-	
+
 	//Apartado 21
 	//Avion* avion = new Avion(mSM->getRootSceneNode());
 	//addInputListener(avion);
-	
+
 	// -- Apartado 23 ---
 	//MeshManager::getSingleton().createPlane("mPlane1080x800",
 	//	ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -268,7 +269,7 @@ void IG2App::EscenaDrones()
 	//	1080, 800, 27, 20, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
 	//planeNode = mSM->getRootSceneNode()->createChildSceneNode("nPlano");
 	//planeNode->attachObject(mSM->createEntity("mPlane1080x800"));
-	
+
 	//// -- Apartado 26 --
 	planetaNode = mSM->getRootSceneNode()->createChildSceneNode("nPlaneta");
 	Entity* planet = mSM->createEntity("sphere.mesh");
@@ -371,6 +372,60 @@ void IG2App::EscenaSimbad()
 
 	//APARTADO 55
 	createSmokeScreen();
+}
+
+void IG2App::EscenaTexturas()
+{
+	auto bomba = new Bomba(mSM->getRootSceneNode(), 8, 30);
+	vEntities.push_back(bomba);
+	bomba->getNode()->setScale(20, 20, 20);
+	bomba->getNode()->setInitialState();
+	EntityIG::addListener(bomba);
+	addInputListener(bomba);
+
+	auto plano = new Plano(mSM->getRootSceneNode(), "mPlaneWater",
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 1080, 30, 30, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(plano);
+	plano->setMaterialName("Practica1/Water");
+	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
+	addInputListener(vEntities[vEntities.size() - 1]);
+	EntityIG::addListener(plano);
+
+	float sizeX = 540;
+	float sizeY = 540;
+
+	plano = new Plano(mSM->getRootSceneNode(), "mPlaneYellow",
+		Plane(Vector3::UNIT_Y, 0),
+		sizeX, sizeY, 2, 2, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(plano);
+	plano->setMaterialName("Practica1/Yellow");
+	vEntities[vEntities.size() - 1]->getNode()->translate(-sizeX * 1.5f, 1.2, sizeY * 1.5f);
+
+	auto simbad = new Sinbad(mSM->getRootSceneNode());
+	vEntities.push_back(simbad);
+	addInputListener(vEntities[vEntities.size() - 1]);
+	EntityIG::addListener(simbad);
+	simbad->getNode()->translate(-sizeX * 1.5f, 100, sizeY * 1.5f);
+	simbad->getNode()->setScale(20, 20, 20);
+	simbad->getNode()->setInitialState();
+	simbad->arma();
+
+	//Apartado 52
+	Entity* sphere = mSM->createEntity("sphere.mesh");
+	sphere->setMaterialName("Practica1/Cursed");
+	SceneNode* sphereNode = mSM->getRootSceneNode()->createChildSceneNode();
+	sphereNode->attachObject(sphere);
+	float sphereScale = 0.25;
+	sphereNode->setScale(sphereScale, sphereScale, sphereScale);
+	float pos = 800;
+	sphereNode->setPosition({ pos, 20, -pos });
+
+	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
+	vEntities.push_back(new Avion(ficticioAvionNode, false));
+	vEntities[vEntities.size() - 1]->getNode()->setScale(0.25, 0.25, 0.25);
+	vEntities[vEntities.size() - 1]->getNode()->translate(-350, 330, 0);
+	addInputListener(vEntities[vEntities.size() - 1]);
 }
 
 void IG2App::createSmokeScreen() {
