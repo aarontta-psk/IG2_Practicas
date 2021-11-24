@@ -426,6 +426,10 @@ void IG2App::EscenaTexturas()
 	vEntities[vEntities.size() - 1]->getNode()->setScale(0.25, 0.25, 0.25);
 	vEntities[vEntities.size() - 1]->getNode()->translate(-350, 330, 0);
 	addInputListener(vEntities[vEntities.size() - 1]);
+
+	// Apartado 1 
+	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -100),
+		"Practica2/Space", 1, 1, true, 0.0, 100, 100);
 }
 
 void IG2App::createSmokeScreen() {
