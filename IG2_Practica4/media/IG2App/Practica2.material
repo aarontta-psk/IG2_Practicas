@@ -9,14 +9,16 @@ material Practica2/Space
 
             texture_unit 
             {
+                tex_coord_set 0
                 texture lightMap.jpg
                 colour_op modulate
             }
             texture_unit 
             {
-                texture spaceSky.jpg
+                tex_coord_set 0
                 colour_op modulate 
-                rotate 1.57
+                rotate_anim 0.01
+                texture spaceSky.jpg
             }
         }
     }
