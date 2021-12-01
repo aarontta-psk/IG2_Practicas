@@ -116,7 +116,7 @@ void IG2App::setupScene(void)
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
+	vp->setBackgroundColour(Ogre::ColourValue(0., 0., 0.));
 
 	//------------------------------------------------------------------------
 
@@ -427,9 +427,11 @@ void IG2App::EscenaTexturas()
 	vEntities[vEntities.size() - 1]->getNode()->translate(-350, 330, 0);
 	addInputListener(vEntities[vEntities.size() - 1]);
 
-	// Apartado 1 
+	// Apartado 2
 	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -100),
 		"Practica2/Space", 1, 1, true, 0.0, 100, 100);
+
+	// Apartado 4
 }
 
 void IG2App::createSmokeScreen() {

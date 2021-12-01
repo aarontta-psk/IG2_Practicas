@@ -13,8 +13,9 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	MeshManager::getSingleton().createPlane(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
 		vertexBufferUsage, indexBufferUsage, vertexShadowBuffer, indexShadowBuffer);
+
 	planeM = mSM->createEntity(name);
-	setMaterialName("Practica1/Black");
+	setMaterialName("Practica1/White");
 	mNode->attachObject(planeM);
 
 	myTimer = new Timer();
@@ -32,6 +33,14 @@ void Plano::frameRendered(const Ogre::FrameEvent& evt)
 void Plano::setMaterialName(String materialName)
 {
 	planeM->setMaterialName(materialName);
+}
+
+void Plano::setReflejo(Camera* cam)
+{
+}
+
+void Plano::setEspejo(Camera* cam)
+{
 }
 
 void Plano::receiveEvent(Message message, EntityIG* entidad)

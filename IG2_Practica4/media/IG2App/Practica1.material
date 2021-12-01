@@ -64,6 +64,17 @@ material Practica1/Black
     }
 }
 
+material Practica1/White
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+        }
+    }
+}
+
 material Practica1/Checker
 {
     technique
@@ -142,6 +153,12 @@ material Practica1/Water
             {
                 texture Water02.jpg
                 scroll_anim 0.1 0.1
+                colour_op modulate 
+            }
+            texture_unit
+            {
+                texture BeachStones.jpg
+                colour_op modulate 
             }
         }
     }

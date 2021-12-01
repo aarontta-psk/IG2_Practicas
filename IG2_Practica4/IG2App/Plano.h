@@ -2,7 +2,17 @@
 #include "EntityIG.h"
 #include "OgreTimer.h"
 
-class Plano : public EntityIG
+#include <OgreMovablePlane.h>
+#include <OgreViewport.h>
+#include <OgreRenderTargetListener.h>
+
+#include <OgreRenderTexture.h>
+#include <OgreTextureManager.h>
+#include <OgreHardwarePixelBuffer.h>
+#include <OgreSubEntity.h>
+#include <OgreTechnique.h>
+
+class Plano : public EntityIG, Ogre::Viewport::Listener, RenderTargetListener
 {
 private:
     Entity* planeM;
@@ -23,6 +33,10 @@ public:
     virtual void receiveEvent(Message message, EntityIG* entidad);
 
     void setMaterialName(String materialName);
+
+    void setReflejo(Camera* cam);
+
+    void setEspejo(Camera* cam);
 
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
