@@ -38,7 +38,7 @@ public:
 
     void setMaterialName(String materialName);
 
-    void setReflejo(Camera* cam, Vector3 normalDir = Vector3::UNIT_Y, int width = 100, int height = 100);
+    void setReflejo(Camera* cam, Vector3 normalDir = Vector3::UNIT_Y, int width = 200, int height = 200);
     void setEspejo(Camera* cam);
 
 protected:

@@ -62,11 +62,11 @@ void Plano::setReflejo(Camera* cam, Vector3 normalDir, int width, int height)
 	RenderTexture* renderTexture = rttTex->getBuffer()->getRenderTarget();
 	Viewport* viewPort = renderTexture->addViewport(cam);
 	viewPort->setClearEveryFrame(true);
-	viewPort->setBackgroundColour(ColourValue::White); //En las diapositivas pone Black pero con White se ve mejor      
+	viewPort->setBackgroundColour(ColourValue::Black); //En las diapositivas pone Black pero con White se ve mejor      
 
 	// Anyadimos la nueva unidad de textura al material del reflejo-espejo
 	TextureUnitState* tu = planeM->getSubEntities()[0]->getMaterial()->getTechniques()[0]->getPasses()[0]->createTextureUnitState("textReflejo");
-	tu->setColourOperation(LBO_MODULATE);                  
+	tu->setColourOperation(LBO_ADD);
 	tu->setTextureAddressingMode(TextureUnitState::TAM_CLAMP);
 	tu->setProjectiveTexturing(true, cam);
 
