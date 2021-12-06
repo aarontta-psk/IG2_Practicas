@@ -392,6 +392,19 @@ void IG2App::EscenaTexturas()
 	addInputListener(vEntities[vEntities.size() - 1]);
 	EntityIG::addListener(plano);
 
+
+	//Reflejo
+										// spherojo nombre único
+	Camera* camReflejo = mSM->createCamera("CamReflejo");    // Añadimos una nueva camara para el reflejo 
+	camReflejo->setNearClipDistance(1);						 // Configurar frustum igual que camara de la escena
+	camReflejo->setFarClipDistance(10000);						       
+	camReflejo->setAutoAspectRatio(true);
+	mCamNode->attachObject(camReflejo);
+
+	plano->setReflejo(camReflejo);
+
+	/// Fin reflejo
+
 	float sizeX = 540;
 	float sizeY = 540;
 

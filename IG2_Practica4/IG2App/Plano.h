@@ -12,12 +12,15 @@
 #include <OgreSubEntity.h>
 #include <OgreTechnique.h>
 
+#include <OgreCameraMan.h>
+
 class Plano : public EntityIG, Ogre::Viewport::Listener, RenderTargetListener
 {
 private:
     Entity* planeM;
     Ogre::Timer* myTimer;
     bool triggered;
+    MovablePlane* movablePlane; //Plano del reflejo de la nueva camara
 
 public:
     Plano(SceneNode* node, const String& name, const Plane& plane,
@@ -29,13 +32,13 @@ public:
         HardwareBuffer::Usage indexBufferUsage = HardwareBuffer::HBU_STATIC_WRITE_ONLY,
         bool vertexShadowBuffer = false, bool indexShadowBuffer = false);
 
+    virtual ~Plano();
     virtual void frameRendered(const Ogre::FrameEvent& evt);
     virtual void receiveEvent(Message message, EntityIG* entidad);
 
     void setMaterialName(String materialName);
 
-    void setReflejo(Camera* cam);
-
+    void setReflejo(Camera* cam, Vector3 normalDir = Vector3::UNIT_Y, int width = 100, int height = 100);
     void setEspejo(Camera* cam);
 
 protected:
