@@ -14,7 +14,7 @@
 
 #include <OgreCameraMan.h>
 
-class Plano : public EntityIG, Ogre::Viewport::Listener, RenderTargetListener
+class Plano : public EntityIG, Viewport::Listener, RenderTargetListener
 {
 private:
     Entity* planeM;
@@ -38,8 +38,11 @@ public:
 
     void setMaterialName(String materialName);
 
-    void setReflejo(Camera* cam, Vector3 normalDir = Vector3::UNIT_Y, int width = 200, int height = 200);
-    void setEspejo(Camera* cam);
+    void setReflejo(Camera* cam, int width, int height);
+    void setEspejo(Camera* cam, int width, int height);
+
+    virtual void preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
+    virtual void postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt);
 
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);

@@ -8,8 +8,9 @@
 Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(false)
 {
 	std::cout << dur << " " << despl;
-	Entity* ent = mSM->createEntity("Barrel.mesh");
+	Entity* ent = mSM->createEntity("uv_sphere.mesh");
 	mNode->attachObject(ent);
+	//mNode->setScale(0.01, 0.01, 0.01);
 	ent->setMaterialName("Practica1/Checker");
 
 	Animation* anim = mSM->createAnimation("AnimVV", dur);

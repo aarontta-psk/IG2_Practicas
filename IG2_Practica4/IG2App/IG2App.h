@@ -11,6 +11,7 @@
 #include <vector>
 
 class EntityIG;
+using namespace Ogre;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
 {
@@ -23,16 +24,18 @@ protected:
 	virtual void shutdown();
 	virtual void setupScene();
 
-	void EscenaReloj();
-	void EscenaMolino();
-	void EscenaDrones();
-	void EscenaSimbad();
-	void EscenaTexturas();
+	void escenaReloj();
+	void escenaMolino();
+	void escenaDrones();
+	void escenaSimbad();
+	void escenaTexturas();
 
 	void createDrones();
 	void createSmokeScreen();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
+
+	Camera* cam = nullptr;
 
 	Ogre::SceneManager* mSM = nullptr;
 	OgreBites::TrayManager* mTrayMgr = nullptr;

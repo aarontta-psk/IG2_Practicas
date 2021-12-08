@@ -17,8 +17,6 @@
 #include "Sinbad.h"
 #include "Bomba.h"
 
-using namespace Ogre;
-
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_ESCAPE)
@@ -97,7 +95,7 @@ void IG2App::setup(void)
 void IG2App::setupScene(void)
 {
 	// create the camera
-	Camera* cam = mSM->createCamera("Cam");
+	cam = mSM->createCamera("Cam");
 	cam->setNearClipDistance(1);
 	cam->setFarClipDistance(10000);
 	cam->setAutoAspectRatio(true);
@@ -142,11 +140,11 @@ void IG2App::setupScene(void)
 	//EscenaMolino();
 	//EscenaDrones();
 	//EscenaSimbad(); 
-	EscenaTexturas();
+	escenaTexturas();
 }
 
 
-void IG2App::EscenaReloj()
+void IG2App::escenaReloj()
 {
 	// COMENTARIO SOBRE FORMAS DE CREAR LAS ESFERAS
 	//Ogre::Entity* ent = mSM->createEntity("sphere.mesh");
@@ -218,7 +216,7 @@ void IG2App::EscenaReloj()
 	//mClockNode->setVisible(false);
 }
 
-void IG2App::EscenaMolino()
+void IG2App::escenaMolino()
 {
 	// --- Apartado 7 ---
 	//Aspa aspa = Aspa(mSM->getRootSceneNode());
@@ -232,7 +230,7 @@ void IG2App::EscenaMolino()
 	addInputListener(molino);
 }
 
-void IG2App::EscenaDrones()
+void IG2App::escenaDrones()
 {
 	// -- Apartado 13 ---
 	//RotorDron* rotorDron = new RotorDron(mSM->getRootSceneNode(), 6);
@@ -302,7 +300,7 @@ void IG2App::EscenaDrones()
 	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
 }
 
-void IG2App::EscenaSimbad()
+void IG2App::escenaSimbad()
 {
 	// --- Apartado 41 --
 
@@ -374,11 +372,10 @@ void IG2App::EscenaSimbad()
 	createSmokeScreen();
 }
 
-void IG2App::EscenaTexturas()
+void IG2App::escenaTexturas()
 {
 	auto bomba = new Bomba(mSM->getRootSceneNode(), 8, 30);
 	vEntities.push_back(bomba);
-	bomba->getNode()->setScale(20, 20, 20);
 	bomba->getNode()->setInitialState();
 	EntityIG::addListener(bomba);
 	addInputListener(bomba);
@@ -392,16 +389,34 @@ void IG2App::EscenaTexturas()
 	addInputListener(vEntities[vEntities.size() - 1]);
 	EntityIG::addListener(plano);
 
+	auto espejo = new Plano(mSM->getRootSceneNode(), "mirror",
+		Plane(Vector3::UNIT_Y, 0),
+		1080, 1080, 30, 30, true, 1, 1.0, 1.0, Vector3::UNIT_Z);
+	vEntities.push_back(espejo);
+	espejo->setMaterialName("Practica1/White");
+	vEntities[vEntities.size() - 1]->getNode()->setScale(2, 2, 2);
+	vEntities[vEntities.size() - 1]->getNode()->roll(Degree(90));
+	vEntities[vEntities.size() - 1]->getNode()->translate(1080, 590, 0);
+	addInputListener(vEntities[vEntities.size() - 1]);
+	EntityIG::addListener(espejo);
 
 	//Reflejo
-										// spherojo nombre único
-	Camera* camReflejo = mSM->createCamera("CamReflejo");    // Añadimos una nueva camara para el reflejo 
-	camReflejo->setNearClipDistance(1);						 // Configurar frustum igual que camara de la escena
-	camReflejo->setFarClipDistance(10000);						       
-	camReflejo->setAutoAspectRatio(true);
-	mCamNode->attachObject(camReflejo);
+										 // spherojo nombre único
+	Camera* camReflex = mSM->createCamera("CamReflex");    // Añadimos una nueva camara para el reflejo 
+	camReflex->setNearClipDistance(1);						 // Configurar frustum igual que camara de la escena
+	camReflex->setFarClipDistance(10000);						       
+	camReflex->setAutoAspectRatio(true);
+	mCamNode->attachObject(camReflex);
 
-	plano->setReflejo(camReflejo);
+	// spherojo nombre único
+	Camera* camMirror = mSM->createCamera("CamMirror");    // Añadimos una nueva camara para el reflejo 
+	camMirror->setNearClipDistance(1);						 // Configurar frustum igual que camara de la escena
+	camMirror->setFarClipDistance(10000);
+	camMirror->setAutoAspectRatio(true);
+	mCamNode->attachObject(camMirror);
+
+	plano->setReflejo(camReflex, cam->getViewport()->getActualWidth(), cam->getViewport()->getActualHeight());
+	espejo->setEspejo(camMirror, cam->getViewport()->getActualWidth(), cam->getViewport()->getActualHeight());
 
 	/// Fin reflejo
 

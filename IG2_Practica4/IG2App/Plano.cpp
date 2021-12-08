@@ -41,21 +41,22 @@ void Plano::setMaterialName(String materialName)
 	planeM->setMaterialName(materialName);
 }
 
-void Plano::setReflejo(Camera* cam, Vector3 normalDir, int width, int height)
+void Plano::setReflejo(Camera* cam, int width, int height)
 {
 	// Configuramos el plano sobre el que se quiere el reflejo - espejo con la
 	// misma orientacion que la malla de la entidad
-	movablePlane = new MovablePlane(normalDir, 0);   
-	mNode->attachObject(movablePlane);                          
+	movablePlane = new MovablePlane(Vector3::UNIT_Y, 0);
+	mNode->attachObject(movablePlane);
 
 	// Configuramos la camara para el reflejo-espejo sobre el plano
-	cam->enableReflection(movablePlane);                          
+	cam->enableReflection(movablePlane);
 	cam->enableCustomNearClipPlane(movablePlane);
 
 	//Anyadimos una textura, en el mismo grupo de recursos que la malla
 	//del reflejo - espejo, para usarla de RenderTarget y de textura del
 	//reflejo - espejo
-	TexturePtr rttTex = TextureManager::getSingleton().createManual("textReflejo", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D,
+	TexturePtr rttTex = TextureManager::getSingleton().createManual("textReflejo",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D,
 		width, height, 0, PF_R8G8B8, TU_RENDERTARGET);
 
 	// Anyadimos un puerto de vista al RenderTarget con la nueva camara
@@ -65,7 +66,8 @@ void Plano::setReflejo(Camera* cam, Vector3 normalDir, int width, int height)
 	viewPort->setBackgroundColour(ColourValue::Black); //En las diapositivas pone Black pero con White se ve mejor      
 
 	// Anyadimos la nueva unidad de textura al material del reflejo-espejo
-	TextureUnitState* tu = planeM->getSubEntities()[0]->getMaterial()->getTechniques()[0]->getPasses()[0]->createTextureUnitState("textReflejo");
+	TextureUnitState* tu =
+		planeM->getSubEntities()[0]->getMaterial()->getTechniques()[0]->getPasses()[0]->createTextureUnitState("textReflejo");
 	tu->setColourOperation(LBO_ADD);
 	tu->setTextureAddressingMode(TextureUnitState::TAM_CLAMP);
 	tu->setProjectiveTexturing(true, cam);
@@ -74,8 +76,49 @@ void Plano::setReflejo(Camera* cam, Vector3 normalDir, int width, int height)
 	renderTexture->addListener(this);
 }
 
-void Plano::setEspejo(Camera* cam)
+void Plano::setEspejo(Camera* cam, int width, int height)
 {
+	// Configuramos el plano sobre el que se quiere el reflejo - espejo con la
+	// misma orientacion que la malla de la entidad
+	movablePlane = new MovablePlane(Vector3::UNIT_Y, 0);
+	mNode->attachObject(movablePlane);
+
+	// Configuramos la camara para el reflejo-espejo sobre el plano
+	cam->enableReflection(movablePlane);
+	cam->enableCustomNearClipPlane(movablePlane);
+
+	//Anyadimos una textura, en el mismo grupo de recursos que la malla
+	//del reflejo - espejo, para usarla de RenderTarget y de textura del
+	//reflejo - espejo
+	TexturePtr rttTex = TextureManager::getSingleton().createManual("textEspejo",
+		ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D,
+		width, height, 0, PF_R8G8B8, TU_RENDERTARGET);
+
+	// Anyadimos un puerto de vista al RenderTarget con la nueva camara
+	RenderTexture* renderTexture = rttTex->getBuffer()->getRenderTarget();
+	Viewport* viewPort = renderTexture->addViewport(cam);
+	viewPort->setClearEveryFrame(true);
+	viewPort->setBackgroundColour(ColourValue::Black); //En las diapositivas pone Black pero con White se ve mejor      
+
+	// Anyadimos la nueva unidad de textura al material del reflejo-espejo
+	TextureUnitState* tu =
+		planeM->getSubEntities()[0]->getMaterial()->getTechniques()[0]->getPasses()[0]->createTextureUnitState("textEspejo");
+	tu->setColourOperation(LBO_REPLACE);
+	tu->setTextureAddressingMode(TextureUnitState::TAM_CLAMP);
+	tu->setProjectiveTexturing(true, cam);
+
+	// Y anyadir al objeto de observador del RenderTarget
+	renderTexture->addListener(this);
+}
+
+// nos avisa antes del renderizado
+void Plano::preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
+	planeM->setVisible(false);
+}
+
+// nos avisa despues del renderizado
+void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
+	planeM->setVisible(true);
 }
 
 void Plano::receiveEvent(Message message, EntityIG* entidad)
