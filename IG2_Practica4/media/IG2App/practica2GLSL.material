@@ -159,3 +159,46 @@ material Practica2/SpaceZoomGLSL
         }
     }
 }
+
+fragment_program HolesBombVS glsl
+{
+    source HolesFS.glsl
+    default_params 
+    {  
+        param_named textBumpyMetal int 0
+        param_named textBeachStones int 1
+        param_named textCorrosion int 2
+    }
+}
+
+material Practica2/BombaAgujeros
+{
+    technique 
+    {
+        pass
+        {
+            cull_software none
+            cull_hardware none
+            depth_write off
+
+            vertex_program_ref TesellatedBombVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref HolesBombVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture BeachStones.jpg 2d
+            }
+            texture_unit // unit 2
+            {
+                texture corrosion.jpg 2d
+            }
+        }
+    }
+}
