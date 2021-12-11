@@ -104,7 +104,7 @@ void Plano::setEspejo(Camera* cam, int width, int height)
 	TextureUnitState* tu =
 		planeM->getSubEntities()[0]->getMaterial()->getTechniques()[0]->getPasses()[0]->createTextureUnitState("textEspejo");
 	tu->setColourOperation(LBO_REPLACE);
-	tu->setTextureAddressingMode(TextureUnitState::TAM_CLAMP);
+	tu->setTextureAddressingMode(TextureUnitState::TAM_WRAP);
 	tu->setProjectiveTexturing(true, cam);
 
 	// Y anyadir al objeto de observador del RenderTarget
@@ -114,11 +114,13 @@ void Plano::setEspejo(Camera* cam, int width, int height)
 // nos avisa antes del renderizado
 void Plano::preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 	planeM->setVisible(false);
+	movablePlane->setVisible(false);
 }
 
 // nos avisa despues del renderizado
 void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 	planeM->setVisible(true);
+	movablePlane->setVisible(true);
 }
 
 void Plano::receiveEvent(Message message, EntityIG* entidad)

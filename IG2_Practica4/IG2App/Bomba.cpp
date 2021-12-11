@@ -11,7 +11,7 @@ Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(fal
 	Entity* ent = mSM->createEntity("uv_sphere.mesh");
 	mNode->attachObject(ent);
 	//mNode->setScale(0.01, 0.01, 0.01);
-	ent->setMaterialName("Practica1/Checker");
+	ent->setMaterialName("Practica2/TesellatedBomb");
 
 	Animation* anim = mSM->createAnimation("AnimVV", dur);
 
