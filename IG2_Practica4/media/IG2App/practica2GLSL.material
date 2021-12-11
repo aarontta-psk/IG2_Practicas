@@ -122,7 +122,7 @@ vertex_program SpaceZoomVS glsl
     default_params 
     {
         param_named_auto modelViewProjMat worldviewproj_matrix
-        param_named ZF float 0.5
+        param_named_auto sintime sintime_0_2pi 5
     }
 }
 

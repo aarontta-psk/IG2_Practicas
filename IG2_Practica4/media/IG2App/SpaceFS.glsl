@@ -13,7 +13,7 @@ out vec4 fFragColor; // out del fragment shader
 
 void main() {
     vec3 colorLightmap = vec3(texture(textLightmap, vUv0)); // configuración!
-    vec3 colorSpace = vec3(texture(textSpace, vUv1) * 1.5); // acceso a téxel
+    vec3 colorSpace = vec3(texture(textSpace, vUv1)); // acceso a téxel
 
     fFragColor = vec4(colorSpace * colorLightmap, 1.0);
 }
