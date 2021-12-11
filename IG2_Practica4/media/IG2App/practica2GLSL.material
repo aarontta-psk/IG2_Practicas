@@ -160,7 +160,7 @@ material Practica2/SpaceZoomGLSL
     }
 }
 
-fragment_program HolesBombVS glsl
+fragment_program HolesBombFS glsl
 {
     source HolesFS.glsl
     default_params 
@@ -179,12 +179,62 @@ material Practica2/BombaAgujeros
         {
             cull_software none
             cull_hardware none
-            depth_write off
 
             vertex_program_ref TesellatedBombVS
             { // these brackets are for initialising params, if you define them as default_params this should be empty
             }
-            fragment_program_ref HolesBombVS
+            fragment_program_ref HolesBombFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture BeachStones.jpg 2d
+            }
+            texture_unit // unit 2
+            {
+                texture corrosion.jpg 2d
+            }
+        }
+    }
+}
+
+fragment_program HolesLighningBombFS glsl
+{
+    source HolesAndLightingFS.glsl
+    default_params 
+    {  
+        param_named textBumpyMetal int 0
+        param_named textBeachStones int 1
+        param_named textCorrosion int 2
+    }
+}
+
+vertex_program HolesLighningBombVS glsl
+{
+    source HolesAndLightingVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+material Practica2/BombaAgujerosLuz
+{
+    technique 
+    {
+        pass
+        {
+            cull_software none
+            cull_hardware none
+
+            vertex_program_ref HolesLighningBombVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref HolesLighningBombFS
             { // these brackets are for initialising params, if you define them as default_params this should be empty
             }
             texture_unit // unit 0

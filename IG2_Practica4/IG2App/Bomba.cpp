@@ -12,7 +12,7 @@ Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(fal
 	mNode->attachObject(ent);
 	//mNode->setScale(0.01, 0.01, 0.01);
 	//ent->setMaterialName("Practica2/TesellatedBomb");
-	ent->setMaterialName("Practica2/BombaAgujeros");
+	ent->setMaterialName("Practica2/BombaAgujerosLuz");
 
 	Animation* anim = mSM->createAnimation("AnimVV", dur);
 
