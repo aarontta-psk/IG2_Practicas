@@ -72,3 +72,46 @@ material Practica2/TesellatedBomb
         }
     }
 }
+
+vertex_program SpaceSkyVS glsl
+{
+    source SpaceSkyVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+fragment_program SpaceSkyFS glsl
+{
+    source SpaceSkyFS.glsl
+    default_params 
+    {  
+        param_named textLightmap int 0
+        param_named textSpace int 1
+    }
+}
+
+material Practica2/SpaceGLSL
+{
+    technique 
+    {
+        pass
+        {
+            vertex_program_ref SpaceSkyVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref SpaceSkyFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture lightMap.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture spaceSky.jpg 2d
+            }
+        }
+    }
+}

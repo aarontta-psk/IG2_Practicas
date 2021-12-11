@@ -457,7 +457,7 @@ void IG2App::escenaTexturas()
 
 	// Apartado 2
 	mSM->setSkyPlane(true, Plane(Vector3::UNIT_Z, -100),
-		"Practica2/Space", 1, 1, true, 0.0, 100, 100);
+		"Practica2/SpaceGLSL", 1, 1, true, 0.0, 100, 100);
 
 	// Apartado 4
 }
