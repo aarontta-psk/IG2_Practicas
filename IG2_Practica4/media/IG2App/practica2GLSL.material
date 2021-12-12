@@ -202,7 +202,7 @@ material Practica2/BombaAgujeros
     }
 }
 
-fragment_program HolesLighningBombFS glsl
+fragment_program HolesAndLightingFS glsl
 {
     source HolesAndLightingFS.glsl
     default_params 
@@ -210,15 +210,27 @@ fragment_program HolesLighningBombFS glsl
         param_named textBumpyMetal int 0
         param_named textBeachStones int 1
         param_named textCorrosion int 2
+
+        param_named ocreSiena float3 0.72 0.57 0.35
+        param_named azulCeruleo float3 0.0 0.6 0.83
+
+        // dirección/posición en coordenadas de la cámara (view space) de la luz 0
+        // param_named_auto lightPosition light_position_view_space 0 
+        param_named_auto lightPosition light_position 0 
+        param_named_auto lightDiffuse light_diffuse_colour 0
+
+        // param_named materialDiffuse float3 0.5 0.5 0.5
     }
 }
 
-vertex_program HolesLighningBombVS glsl
+vertex_program HolesAndLightingVS glsl
 {
     source HolesAndLightingVS.glsl
     default_params 
     {
         param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix
+        // param_named_auto modelViewMat worldview_matrix
     }
 }
 
@@ -228,15 +240,16 @@ material Practica2/BombaAgujerosLuz
     {
         pass
         {
-            cull_software none
             cull_hardware none
-
-            vertex_program_ref HolesLighningBombVS
-            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            cull_software none
+            
+            vertex_program_ref HolesAndLightingVS
+            { // params ‐> default_params
             }
-            fragment_program_ref HolesLighningBombFS
-            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            fragment_program_ref HolesAndLightingFS
+            { // params ‐> default_params
             }
+            
             texture_unit // unit 0
             {
                 texture BumpyMetal.jpg 2d
