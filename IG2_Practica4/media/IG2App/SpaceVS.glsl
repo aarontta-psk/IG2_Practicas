@@ -14,7 +14,7 @@ void main() {
     //Como st está entre -1 y 1, y queremos valores entre 1.5 y 1, tenemos estas ecuaciones
     // -a + b = 1.5
     //  a + b = 1
-    //  a = 1.25, b = 0.25
+    //  a = 0.25, b = 1.25
 
     float ZF = sintime * 0.25 + 1.25;
     vUv1.s = (uv0.s - 0.5) * ZF + 0.5; 
