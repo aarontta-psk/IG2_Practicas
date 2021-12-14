@@ -8,7 +8,7 @@
 Bomba::Bomba(SceneNode* node, int dur, int despl) : EntityIG(node), detenida(false)
 {
 	std::cout << dur << " " << despl;
-	Entity* ent = mSM->createEntity("uv_sphere.mesh");
+	ent = mSM->createEntity("uv_sphere.mesh");
 	mNode->attachObject(ent);
 	//mNode->setScale(0.01, 0.01, 0.01);
 	//ent->setMaterialName("Practica2/TesellatedBomb");
@@ -78,6 +78,18 @@ inline bool Bomba::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		sendEvent({ BOMB }, this);
 		detenida = true;
+	}
+	else if(evt.keysym.sym == SDLK_1)
+	{
+		ent->setMaterialName("Practica2/TesellatedBomb");
+	}
+	else if (evt.keysym.sym == SDLK_2)
+	{
+		ent->setMaterialName("Practica2/BombaAgujerosLuz");
+	}
+	else if (evt.keysym.sym == SDLK_3)
+	{
+		ent->setMaterialName("Practica2/BombaAgujeros");
 	}
 
 	return true;

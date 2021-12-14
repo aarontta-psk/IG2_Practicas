@@ -126,6 +126,7 @@
     <ClInclude Include="BrazoDron.h" />
     <ClInclude Include="Dron.h" />
     <ClInclude Include="EntityIG.h" />
+    <ClInclude Include="EsferaCursed.h" />
     <ClInclude Include="IG2ApplicationContext.h" />
     <ClInclude Include="IG2App.h" />
     <ClInclude Include="Message.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="BrazoDron.cpp" />
     <ClCompile Include="Dron.cpp" />
     <ClCompile Include="EntityIG.cpp" />
+    <ClCompile Include="EsferaCursed.cpp" />
     <ClCompile Include="IG2ApplicationContext.cpp" />
     <ClCompile Include="IG2Main.cpp" />
     <ClCompile Include="IG2App.cpp" />

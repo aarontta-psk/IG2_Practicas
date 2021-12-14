@@ -115,12 +115,14 @@ void Plano::setEspejo(Camera* cam, int width, int height)
 void Plano::preRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 	planeM->setVisible(false);
 	movablePlane->setVisible(false);
+	sendEvent({ PRE_REFLECTION }, this);
 }
 
 // nos avisa despues del renderizado
 void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 	planeM->setVisible(true);
 	movablePlane->setVisible(true);
+	sendEvent({ POST_REFLECTION }, this);
 }
 
 void Plano::receiveEvent(Message message, EntityIG* entidad)

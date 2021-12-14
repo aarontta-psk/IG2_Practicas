@@ -141,6 +141,23 @@ material Practica1/Cursed
     }
 }
 
+material Practica1/Desruc
+{
+    technique
+    {
+        pass
+        {
+            diffuse 1 1 1
+
+            texture_unit
+            {
+                texture spotlight_image_reversed.png
+				env_map spherical
+            }
+        }
+    }
+}
+
 material Practica1/Water
 {
     technique

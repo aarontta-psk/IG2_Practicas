@@ -16,6 +16,7 @@
 #include "Plano.h"
 #include "Sinbad.h"
 #include "Bomba.h"
+#include "EsferaCursed.h"
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
@@ -440,14 +441,8 @@ void IG2App::escenaTexturas()
 	simbad->arma();
 
 	//Apartado 52
-	Entity* sphere = mSM->createEntity("sphere.mesh");
-	sphere->setMaterialName("Practica1/Cursed");
-	SceneNode* sphereNode = mSM->getRootSceneNode()->createChildSceneNode();
-	sphereNode->attachObject(sphere);
-	float sphereScale = 0.25;
-	sphereNode->setScale(sphereScale, sphereScale, sphereScale);
-	float pos = 800;
-	sphereNode->setPosition({ pos, 20, -pos });
+	EsferaCursed* esferaCursed = new EsferaCursed(mSM->getRootSceneNode(), Vector3(0.25), Vector3(800, 20, -800));
+	EntityIG::addListener(esferaCursed);
 
 	ficticioAvionNode = mSM->getRootSceneNode()->createChildSceneNode("nFicticioAvion");
 	vEntities.push_back(new Avion(ficticioAvionNode, false));

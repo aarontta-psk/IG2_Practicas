@@ -20,6 +20,7 @@ private:
 	AnimationState* animationState;
 	SceneNode* mExplosionNode;
 	ParticleSystem* explosionParticles;
+	Entity* ent = nullptr;
 
 	Ogre::Timer* myTimer;
 	bool detenida;
