@@ -1,0 +1,107 @@
+particle_system Practica1/Trail
+{ // p. s. attributes
+    renderer billboard
+    billboard_type point
+    particle_width 50
+    particle_height 50
+    quota 500
+    material Practica1/Smoke
+    sorted false // sorting camera
+
+    emitter Point
+    { // e. attributes
+        position 0 0 -200
+        colour 0.9 0.9 0.9 0.5
+        emission_rate 15
+        time_to_live 3
+        duration 0 // duration emission
+    }
+
+    affector ColourFader
+    { // a. attributes
+        alpha -0.167
+    }
+}
+
+particle_system Practica1/PlaneExplosion
+{ // p. s. attributes
+    renderer billboard
+    billboard_type point
+    particle_width 200
+    particle_height 200
+    quota 500
+    material Practica1/Smoke
+
+    emitter Point
+    { // e. attributes
+        direction 0 1 0
+        angle 180
+        colour 0.4 0.4 0.4 0.7
+        emission_rate 20
+        time_to_live 4.5
+        velocity_min 30
+        velocity_max 60
+    }
+
+    affector Scaler
+    { // a. attributes
+        rate 20
+    }
+
+    affector ColourFader
+    { // a. attributes
+        red 0.05
+        green 0.05
+        blue 0.05
+        alpha -0.156
+    }
+}
+
+particle_system Practica1/BombExplosion
+{ // p. s. attributes
+    renderer billboard
+    billboard_type point
+    particle_width 50
+    particle_height 200
+    quota 500
+    material Practica1/Smoke
+
+    emitter Point
+    { // e. attributes
+        direction 0 1 0
+        angle 30
+        emission_rate 50
+        time_to_live 3
+        velocity_min 150
+        velocity_max 200
+    }
+
+    // affector LinearForce
+    // {
+    //     force_vector 10 10 10
+    //     force_application average
+    // }
+
+    affector Scaler
+    { // a. attributes
+        rate 50
+    }
+
+    affector Rotator 
+    { // a. attributes
+        rotation_range_start 0
+        rotation_range_end 360
+        rotation_speed_range_start -60
+        rotation_speed_range_end 200
+    }
+
+    affector DirectionRandomiser
+    {
+        rate 50
+    }
+
+    affector ColourImage
+    {
+        image smokecolors.png
+    }
+}

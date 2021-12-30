@@ -1,0 +1,268 @@
+material Practica2/Space
+{
+    technique 
+    {
+        pass
+        {
+            lighting off 
+            diffuse 1 1 1
+
+            texture_unit 
+            {
+                tex_coord_set 0
+                texture lightMap.jpg
+                colour_op modulate
+            }
+            texture_unit 
+            {
+                tex_coord_set 0
+                colour_op modulate 
+                rotate_anim 0.01
+                texture spaceSky.jpg
+            }
+        }
+    }
+}
+
+
+fragment_program TesellatedBombFS glsl
+{
+    source BombaTeseladaFS.glsl
+    default_params 
+    {  
+        param_named textChecker int 0
+        param_named textSpace int 1
+        param_named textMetal int 2
+    }
+}
+
+vertex_program TesellatedBombVS glsl
+{
+    source BombaTeseladaVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+material Practica2/TesellatedBomb
+{
+    technique 
+    {
+        pass
+        {
+            vertex_program_ref TesellatedBombVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref TesellatedBombFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture checker.png 2d
+            }
+            texture_unit // unit 1
+            {
+                texture spaceSky.jpg 2d
+            }
+            texture_unit // unit 2
+            {
+                texture BumpyMetal.jpg 2d
+            }
+        }
+    }
+}
+
+vertex_program SpaceSkyVS glsl
+{
+    source SpaceSkyVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+    }
+}
+
+fragment_program SpaceSkyFS glsl
+{
+    source SpaceSkyFS.glsl
+    default_params 
+    {  
+        param_named textLightmap int 0
+        param_named textSpace int 1
+    }
+}
+
+material Practica2/SpaceGLSL
+{
+    technique 
+    {
+        pass
+        {
+            vertex_program_ref SpaceSkyVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref SpaceSkyFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture lightMap.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture spaceSky.jpg 2d
+            }
+        }
+    }
+}
+
+vertex_program SpaceZoomVS glsl
+{
+    source SpaceVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto sintime sintime_0_2pi 5
+    }
+}
+
+fragment_program SpaceZoomFS glsl
+{
+    source SpaceFS.glsl
+    default_params 
+    {  
+        param_named textLightmap int 0
+        param_named textSpace int 1
+    }
+}
+
+material Practica2/SpaceZoomGLSL
+{
+    technique 
+    {
+        pass
+        {
+            vertex_program_ref SpaceZoomVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref SpaceZoomFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture lightMap.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture spaceSky.jpg 2d
+            }
+        }
+    }
+}
+
+fragment_program HolesBombFS glsl
+{
+    source HolesFS.glsl
+    default_params 
+    {  
+        param_named textBumpyMetal int 0
+        param_named textBeachStones int 1
+        param_named textCorrosion int 2
+    }
+}
+
+material Practica2/BombaAgujeros
+{
+    technique 
+    {
+        pass
+        {
+            cull_software none
+            cull_hardware none
+
+            vertex_program_ref TesellatedBombVS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            fragment_program_ref HolesBombFS
+            { // these brackets are for initialising params, if you define them as default_params this should be empty
+            }
+            texture_unit // unit 0
+            {
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture BeachStones.jpg 2d
+            }
+            texture_unit // unit 2
+            {
+                texture corrosion.jpg 2d
+            }
+        }
+    }
+}
+
+fragment_program HolesAndLightingFS glsl
+{
+    source HolesAndLightingFS.glsl
+    default_params 
+    {  
+        param_named textBumpyMetal int 0
+        param_named textBeachStones int 1
+        param_named textCorrosion int 2
+
+        param_named ocreSiena float3 0.72 0.57 0.35
+        param_named azulCeruleo float3 0.0 0.6 0.83
+
+        // dirección/posición en coordenadas de la cámara (view space) de la luz 0
+        // param_named_auto lightPosition light_position_view_space 0 
+        param_named_auto lightPosition light_position 0 
+        param_named_auto lightDiffuse light_diffuse_colour 0
+        param_named lightAmbient float3 1.0 1.0 1.0
+
+        param_named materialDiffuse float3 0.5 0.5 0.5
+    }
+}
+
+vertex_program HolesAndLightingVS glsl
+{
+    source HolesAndLightingVS.glsl
+    default_params 
+    {
+        param_named_auto modelViewProjMat worldviewproj_matrix
+        param_named_auto normalMat inverse_transpose_world_matrix
+        param_named_auto modelViewMat worldview_matrix
+    }
+}
+
+material Practica2/BombaAgujerosLuz
+{
+    technique 
+    {
+        pass
+        {
+            cull_hardware none
+            cull_software none
+            
+            vertex_program_ref HolesAndLightingVS
+            { // params ‐> default_params
+            }
+            fragment_program_ref HolesAndLightingFS
+            { // params ‐> default_params
+            }
+            
+            texture_unit // unit 0
+            {
+                texture BumpyMetal.jpg 2d
+            }
+            texture_unit // unit 1
+            {
+                texture BeachStones.jpg 2d
+            }
+            texture_unit // unit 2
+            {
+                texture corrosion.jpg 2d
+            }
+        }
+    }
+}
