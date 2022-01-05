@@ -6,6 +6,7 @@ particle_system Practica1/Trail
     particle_height 50
     quota 500
     material Practica1/Smoke
+    sorted false // sorting camera
 
     emitter Point
     { // e. attributes
@@ -13,6 +14,7 @@ particle_system Practica1/Trail
         colour 0.9 0.9 0.9 0.5
         emission_rate 15
         time_to_live 3
+        duration 0 // duration emission
     }
 
     affector ColourFader
@@ -74,12 +76,18 @@ particle_system Practica1/BombExplosion
         velocity_max 200
     }
 
+    // affector LinearForce
+    // {
+    //     force_vector 10 10 10
+    //     force_application average
+    // }
+
     affector Scaler
     { // a. attributes
         rate 50
     }
 
-    affector Rotator // the texture
+    affector Rotator 
     { // a. attributes
         rotation_range_start 0
         rotation_range_end 360

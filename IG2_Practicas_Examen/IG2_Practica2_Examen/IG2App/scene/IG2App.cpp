@@ -8,6 +8,11 @@
 #include "./entities/p02_sinbad/Sinbad.h"
 #include "./entities/p02_sinbad/EsferaCursed.h"
 
+// Rotaciones:
+//		X -> pitch();
+//		Y -> yaw();
+//		Z -> roll();
+
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_ESCAPE)

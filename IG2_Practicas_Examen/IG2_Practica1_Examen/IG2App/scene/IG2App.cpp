@@ -15,6 +15,11 @@
 #include "./entities/s04_sinbad/Sinbad.h"
 #include "./entities/s04_sinbad/Bomba.h"
 
+// Rotaciones:
+//		X -> pitch();
+//		Y -> yaw();
+//		Z -> roll();
+
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {
 	if (evt.keysym.sym == SDLK_ESCAPE)
@@ -103,7 +108,7 @@ void IG2App::setupScene(void)
 
 	mCamMgr = new OgreBites::CameraMan(mCamNode);
 	addInputListener(mCamMgr);
-	mCamMgr->setStyle(OgreBites::CS_ORBIT);
+	mCamMgr->setStyle(OgreBites::CS_ORBIT); // CS_FREELOOK control tanque
 
 	mCamNode->setPosition(0, 0, 1000);
 	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
@@ -111,7 +116,12 @@ void IG2App::setupScene(void)
 
 	// and tell it to render into the main window
 	Viewport* vp = getRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
+	//vp->setDimensions(0, 0, 0.5, 1);
+	vp->setBackgroundColour(Ogre::ColourValue(0., 0., 0.));
+
+	//vp = getRenderWindow()->addViewport(cam, 1);
+	//vp->setDimensions(0.5, 0, 0.5, 1);
+	//vp->setBackgroundColour(Ogre::ColourValue(0.5, 0.5, 0.5));
 
 	//------------------------------------------------------------------------
 
