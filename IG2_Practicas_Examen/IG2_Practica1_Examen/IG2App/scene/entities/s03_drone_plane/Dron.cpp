@@ -1,7 +1,6 @@
 #include "Dron.h"
-#include <iostream>
-#include "Randomized.h"
 
+#include "../../../utils/Randomized.h"
 using namespace Randomized;
 
 int Dron::numDrones = 0;

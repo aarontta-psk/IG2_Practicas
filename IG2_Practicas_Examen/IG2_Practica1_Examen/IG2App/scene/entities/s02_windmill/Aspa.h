@@ -1,7 +1,7 @@
 #ifndef ASPA_H_
 #define ASPA_H_
 
-#include "EntityIG.h"
+#include "../EntityIG.h"
 
 using namespace Ogre;
 

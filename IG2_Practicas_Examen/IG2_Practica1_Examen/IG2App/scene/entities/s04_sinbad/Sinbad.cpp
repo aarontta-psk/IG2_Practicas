@@ -1,8 +1,4 @@
 #include "Sinbad.h"
-#include <OgreAnimation.h>
-#include <OgreAnimationTrack.h>
-#include <OgreKeyframe.h>
-#include <iostream>
 
 Sinbad::Sinbad(SceneNode* node) : EntityIG(node), currentWeapon(SwordStance::NONE), state(MovState::MOVING)
 {

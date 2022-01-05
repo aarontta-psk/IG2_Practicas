@@ -1,7 +1,8 @@
 #ifndef ASPASMOLINO_H_
 #define ASPASMOLINO_H_
 
-#include "EntityIG.h"
+#include "../EntityIG.h"
+
 #include "Aspa.h"
 
 using namespace Ogre;

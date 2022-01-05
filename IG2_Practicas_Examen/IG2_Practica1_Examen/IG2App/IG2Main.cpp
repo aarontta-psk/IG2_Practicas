@@ -1,4 +1,4 @@
-#include "IG2App.h"
+#include "./scene/IG2App.h"
 
 int main(int argc, char* argv[])
 {

@@ -6,16 +6,20 @@
 #include <OgreMeshManager.h>
 #include <iostream>
 
-#include "Aspa.h"
-#include "AspasMolino.h"
-#include "Molino.h"
-#include "RotorDron.h"
-#include "BrazoDron.h"
-#include "Dron.h"
-#include "Avion.h"
-#include "Plano.h"
-#include "Sinbad.h"
-#include "Bomba.h"
+#include "./entities/EntityIG.h"
+
+#include "./entities/s02_windmill/Aspa.h"
+#include "./entities/s02_windmill/AspasMolino.h"
+#include "./entities/s02_windmill/Molino.h"
+
+#include "./entities/s03_drone_plane/RotorDron.h"
+#include "./entities/s03_drone_plane/BrazoDron.h"
+#include "./entities/s03_drone_plane/Dron.h"
+#include "./entities/s03_drone_plane/Avion.h"
+
+#include "./entities/s04_sinbad/Plano.h"
+#include "./entities/s04_sinbad/Sinbad.h"
+#include "./entities/s04_sinbad/Bomba.h"
 
 using namespace Ogre;
 
@@ -25,12 +29,12 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 	{
 		getRoot()->queueEndRendering();
 	}
-	else if (evt.keysym.sym == SDLK_g)
+	else if (evt.keysym.sym == SDLK_g) // comentar si no escena Reloj
 	{
-		//--- Apartado 4 ---
+		//--- Apartado 4 --- 
 		//mClockNode->roll(Ogre::Degree(3));
 	}
-	else if (evt.keysym.sym == SDLK_h)
+	else if (evt.keysym.sym == SDLK_h)  // comentar si no escena Reloj ó Dron
 	{
 		//--- Apartado 5 ---
 		//mSphereNode->roll(Ogre::Degree(3));
@@ -43,7 +47,8 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 		vEntities[0]->getNode()->roll(Ogre::Degree(-3), SceneNode::TS_LOCAL);
 		vEntities[0]->getNode()->translate(0, 540, 0, SceneNode::TS_LOCAL);
 	}
-	else if (evt.keysym.sym == SDLK_j) {
+	else if (evt.keysym.sym == SDLK_j) // comentar si no escena Dron
+	{ 
 		// -- Apartado 19 ---
 		//ficticioDronNode->yaw(Ogre::Degree(-3));
 
@@ -56,6 +61,10 @@ bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 
 void IG2App::shutdown()
 {
+	for (size_t i = 0; i < vEntities.size(); i++)
+		delete vEntities[i];
+	vEntities.clear();
+	
 	mShaderGenerator->removeSceneManager(mSM);
 	mSM->removeRenderQueueListener(mOverlaySystem);
 
@@ -63,10 +72,6 @@ void IG2App::shutdown()
 
 	delete mTrayMgr;  mTrayMgr = nullptr;
 	delete mCamMgr; mCamMgr = nullptr;
-
-	/*for (size_t i = 0; i < vEntities.size(); i++)
-		delete vEntities[i];
-	vEntities.clear();*/
 
 	// do not forget to call the base 
 	IG2ApplicationContext::shutdown();
@@ -136,10 +141,10 @@ void IG2App::setupScene(void)
 	// finally something to render
 
 	//Create nodes
-	//EscenaReloj();
-	//EscenaMolino();
-	//EscenaDron();
-	//EscenaDronesAvion();
+	//escenaReloj();
+	//escenaMolino();
+	//escenaDron();
+	//escenaDronesAvion();
 	escenaSinbad();
 }
 

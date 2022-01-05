@@ -1,12 +1,13 @@
 #ifndef AVION_H_
 #define AVION_H_
 
-class AspasMolino;
-
-#include "EntityIG.h"
 #include <OgreTimer.h>
 #include <OgreBillboardSet.h>
 #include <OgreParticleSystem.h>
+
+#include "../EntityIG.h"
+
+#include "../s02_windmill/AspasMolino.h"
 
 class Avion : public EntityIG
 {

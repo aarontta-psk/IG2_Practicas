@@ -1,108 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Archivos de encabezado">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    <ClCompile Include="IG2Main.cpp" />
+    <ClCompile Include="scene\IG2App.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\IG2ApplicationContext.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\EntityIG.cpp">
+      <Filter>scene\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s02_windmill\Aspa.cpp">
+      <Filter>scene\entities\s02_windmill</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s02_windmill\AspasMolino.cpp">
+      <Filter>scene\entities\s02_windmill</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s02_windmill\Molino.cpp">
+      <Filter>scene\entities\s02_windmill</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s03_drone_plane\Avion.cpp">
+      <Filter>scene\entities\s03_drone_plane</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s03_drone_plane\BrazoDron.cpp">
+      <Filter>scene\entities\s03_drone_plane</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s03_drone_plane\Dron.cpp">
+      <Filter>scene\entities\s03_drone_plane</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s03_drone_plane\RotorDron.cpp">
+      <Filter>scene\entities\s03_drone_plane</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s04_sinbad\Bomba.cpp">
+      <Filter>scene\entities\s04_sinbad</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s04_sinbad\Plano.cpp">
+      <Filter>scene\entities\s04_sinbad</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\entities\s04_sinbad\Sinbad.cpp">
+      <Filter>scene\entities\s04_sinbad</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="scene">
+      <UniqueIdentifier>{bb5369f7-b0be-478c-ac38-2df66d988af5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de recursos">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="scene\entities">
+      <UniqueIdentifier>{9be049f9-99c8-419b-a410-6b1deeea707d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de código fuente">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="scene\entities\s03_drone_plane">
+      <UniqueIdentifier>{760f198b-e11e-4593-bf79-f7d5c9e39e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\entities\s04_sinbad">
+      <UniqueIdentifier>{2cfc062c-7ce4-47e9-a979-9672e831c576}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene\entities\s02_windmill">
+      <UniqueIdentifier>{c5893328-e735-4cd8-b65c-73adc1ed93e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{655d47f2-b401-4e09-97f7-0408bca74d97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IG2ApplicationContext.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\IG2App.h">
+      <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="IG2App.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\IG2ApplicationContext.h">
+      <Filter>scene</Filter>
     </ClInclude>
-    <ClInclude Include="Aspa.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\EntityIG.h">
+      <Filter>scene\entities</Filter>
     </ClInclude>
-    <ClInclude Include="AspasMolino.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\Message.h">
+      <Filter>scene\entities</Filter>
     </ClInclude>
-    <ClInclude Include="Molino.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s02_windmill\Aspa.h">
+      <Filter>scene\entities\s02_windmill</Filter>
     </ClInclude>
-    <ClInclude Include="RotorDron.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s02_windmill\AspasMolino.h">
+      <Filter>scene\entities\s02_windmill</Filter>
     </ClInclude>
-    <ClInclude Include="BrazoDron.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s02_windmill\Molino.h">
+      <Filter>scene\entities\s02_windmill</Filter>
     </ClInclude>
-    <ClInclude Include="Dron.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s03_drone_plane\Avion.h">
+      <Filter>scene\entities\s03_drone_plane</Filter>
     </ClInclude>
-    <ClInclude Include="EntityIG.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s03_drone_plane\BrazoDron.h">
+      <Filter>scene\entities\s03_drone_plane</Filter>
     </ClInclude>
-    <ClInclude Include="Message.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s03_drone_plane\Dron.h">
+      <Filter>scene\entities\s03_drone_plane</Filter>
     </ClInclude>
-    <ClInclude Include="Avion.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s03_drone_plane\RotorDron.h">
+      <Filter>scene\entities\s03_drone_plane</Filter>
     </ClInclude>
-    <ClInclude Include="Plano.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s04_sinbad\Bomba.h">
+      <Filter>scene\entities\s04_sinbad</Filter>
     </ClInclude>
-    <ClInclude Include="Sinbad.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s04_sinbad\Plano.h">
+      <Filter>scene\entities\s04_sinbad</Filter>
     </ClInclude>
-    <ClInclude Include="Randomized.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scene\entities\s04_sinbad\Sinbad.h">
+      <Filter>scene\entities\s04_sinbad</Filter>
     </ClInclude>
-    <ClInclude Include="Bomba.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="utils\Randomized.h">
+      <Filter>utils</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="IG2ApplicationContext.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="IG2App.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="IG2Main.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityIG.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Aspa.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="AspasMolino.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Molino.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Dron.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="RotorDron.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="BrazoDron.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Avion.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Plano.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Sinbad.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="Bomba.cpp">
-      <Filter>Archivos de código fuente</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

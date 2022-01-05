@@ -14,7 +14,7 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
 		vertexBufferUsage, indexBufferUsage, vertexShadowBuffer, indexShadowBuffer);
 	planeM = mSM->createEntity(name);
-	setMaterialName("Practica1/Black"); // comenta rsi escena Dron/DronesAvion
+	setMaterialName("Practica1/Black"); // comentar si escena Dron/DronesAvion
 	mNode->attachObject(planeM);
 
 	myTimer = new Timer();

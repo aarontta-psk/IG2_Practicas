@@ -1,7 +1,8 @@
 #ifndef MOLINO_H_
 #define MOLINO_H_
 
-#include "EntityIG.h"
+#include "../EntityIG.h"
+
 #include "AspasMolino.h"
 
 using namespace Ogre;

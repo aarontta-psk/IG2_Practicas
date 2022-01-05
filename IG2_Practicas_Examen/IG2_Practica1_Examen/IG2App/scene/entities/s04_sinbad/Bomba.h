@@ -1,9 +1,10 @@
 #ifndef BOMBA_H_
 #define BOMBA_H_
 
-#include "EntityIG.h"
 #include <OgreTimer.h>
 #include <OgreParticleSystem.h>
+
+#include "../EntityIG.h"
 
 using namespace Ogre;
 

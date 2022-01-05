@@ -1,6 +1,9 @@
-#pragma once
-#include "EntityIG.h"
-#include "OgreTimer.h"
+#ifndef PLANO_H_
+#define PLANO_H_
+
+#include <OgreTimer.h>
+
+#include "../EntityIG.h"
 
 class Plano : public EntityIG
 {
@@ -27,6 +30,4 @@ public:
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
-
-
-
+#endif

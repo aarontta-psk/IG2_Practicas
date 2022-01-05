@@ -119,37 +119,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Aspa.h" />
-    <ClInclude Include="AspasMolino.h" />
-    <ClInclude Include="Avion.h" />
-    <ClInclude Include="Bomba.h" />
-    <ClInclude Include="BrazoDron.h" />
-    <ClInclude Include="Dron.h" />
-    <ClInclude Include="EntityIG.h" />
-    <ClInclude Include="IG2ApplicationContext.h" />
-    <ClInclude Include="IG2App.h" />
-    <ClInclude Include="Message.h" />
-    <ClInclude Include="Molino.h" />
-    <ClInclude Include="Plano.h" />
-    <ClInclude Include="Randomized.h" />
-    <ClInclude Include="RotorDron.h" />
-    <ClInclude Include="Sinbad.h" />
+    <ClCompile Include="IG2Main.cpp" />
+    <ClCompile Include="scene\entities\EntityIG.cpp" />
+    <ClCompile Include="scene\entities\s02_windmill\Aspa.cpp" />
+    <ClCompile Include="scene\entities\s02_windmill\AspasMolino.cpp" />
+    <ClCompile Include="scene\entities\s02_windmill\Molino.cpp" />
+    <ClCompile Include="scene\entities\s03_drone_plane\Avion.cpp" />
+    <ClCompile Include="scene\entities\s03_drone_plane\BrazoDron.cpp" />
+    <ClCompile Include="scene\entities\s03_drone_plane\Dron.cpp" />
+    <ClCompile Include="scene\entities\s03_drone_plane\RotorDron.cpp" />
+    <ClCompile Include="scene\entities\s04_sinbad\Bomba.cpp" />
+    <ClCompile Include="scene\entities\s04_sinbad\Plano.cpp" />
+    <ClCompile Include="scene\entities\s04_sinbad\Sinbad.cpp" />
+    <ClCompile Include="scene\IG2App.cpp" />
+    <ClCompile Include="scene\IG2ApplicationContext.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Aspa.cpp" />
-    <ClCompile Include="AspasMolino.cpp" />
-    <ClCompile Include="Avion.cpp" />
-    <ClCompile Include="Bomba.cpp" />
-    <ClCompile Include="BrazoDron.cpp" />
-    <ClCompile Include="Dron.cpp" />
-    <ClCompile Include="EntityIG.cpp" />
-    <ClCompile Include="IG2ApplicationContext.cpp" />
-    <ClCompile Include="IG2Main.cpp" />
-    <ClCompile Include="IG2App.cpp" />
-    <ClCompile Include="Molino.cpp" />
-    <ClCompile Include="Plano.cpp" />
-    <ClCompile Include="RotorDron.cpp" />
-    <ClCompile Include="Sinbad.cpp" />
+    <ClInclude Include="scene\entities\EntityIG.h" />
+    <ClInclude Include="scene\entities\Message.h" />
+    <ClInclude Include="scene\entities\s02_windmill\Aspa.h" />
+    <ClInclude Include="scene\entities\s02_windmill\AspasMolino.h" />
+    <ClInclude Include="scene\entities\s02_windmill\Molino.h" />
+    <ClInclude Include="scene\entities\s03_drone_plane\Avion.h" />
+    <ClInclude Include="scene\entities\s03_drone_plane\BrazoDron.h" />
+    <ClInclude Include="scene\entities\s03_drone_plane\Dron.h" />
+    <ClInclude Include="scene\entities\s03_drone_plane\RotorDron.h" />
+    <ClInclude Include="scene\entities\s04_sinbad\Bomba.h" />
+    <ClInclude Include="scene\entities\s04_sinbad\Plano.h" />
+    <ClInclude Include="scene\entities\s04_sinbad\Sinbad.h" />
+    <ClInclude Include="scene\IG2App.h" />
+    <ClInclude Include="scene\IG2ApplicationContext.h" />
+    <ClInclude Include="utils\Randomized.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,5 @@
 #include "Avion.h"
 
-#include "AspasMolino.h"
-
 Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
 	mCuerpoNode = mNode->createChildSceneNode();
@@ -66,12 +64,12 @@ Avion::Avion(SceneNode* node) : EntityIG(node, ""), state(State::MOVING), deteni
 	light->setSpotlightOuterAngle(Degree(45));
 	light->setSpotlightFalloff(1.0f);
 
-	// comentar cuando escena DronesAvion
 	BillboardSet* bbSet = mSM->createBillboardSet("10PointsBb", 1);
 	bbSet->setDefaultDimensions(250, 125);
 	bbSet->setMaterialName("Practica1/10Panel");
 	mNode->attachObject(bbSet);
 
+	// comentar cuando escena DronesAvion
 	bbSet->createBillboard(Vector3(0, 0, -330));
 
 	ParticleSystem* pSys = mSM->createParticleSystem("psSmoke", "Practica1/Trail");
