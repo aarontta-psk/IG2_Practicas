@@ -1,9 +1,10 @@
-#ifndef EsferaCursed_H_
-#define EsferaCursed_H_
+#ifndef ESFERACURSED_H_
+#define ESFERACURSED_H_
 
-#include "EntityIG.h"
 #include <OgreTimer.h>
 #include <OgreParticleSystem.h>
+
+#include "../EntityIG.h"
 
 using namespace Ogre;
 

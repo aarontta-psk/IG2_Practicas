@@ -1,7 +1,6 @@
 #include "Dron.h"
-#include <iostream>
-#include "Randomized.h"
 
+#include "../../../../utils/Randomized.h"
 using namespace Randomized;
 
 int Dron::numDrones = 0;
@@ -110,6 +109,7 @@ void Dron::receiveEvent(Message message, EntityIG* entidad)
 
 void Dron::frameRendered(const Ogre::FrameEvent& evt)
 {
+	// comentar esto si escena Dron
 	for (int i = 0; i < numBrazos; i++)
 		arrayBrazos[i]->frameRendered(evt);
 

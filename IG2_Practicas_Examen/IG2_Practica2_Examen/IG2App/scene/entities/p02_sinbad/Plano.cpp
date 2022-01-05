@@ -1,5 +1,4 @@
 #include "Plano.h"
-#include <OgreMeshManager.h>
 
 Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	Real width, Real height,

@@ -1,9 +1,11 @@
 #ifndef DRON_H_
 #define DRON_H_
 
-#include "OgreTimer.h"
+#include <iostream>
+#include <OgreTimer.h>
 
-#include "EntityIG.h"
+#include "../../EntityIG.h"
+
 #include "BrazoDron.h"
 
 using namespace Ogre;

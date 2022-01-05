@@ -1,8 +1,9 @@
 #ifndef ROTORDRON_H_
 #define ROTORDRON_H_
 
-#include "EntityIG.h"
-#include "AspasMolino.h"
+#include "../../EntityIG.h"
+
+#include "../s02_windmill/AspasMolino.h"
 
 using namespace Ogre;
 

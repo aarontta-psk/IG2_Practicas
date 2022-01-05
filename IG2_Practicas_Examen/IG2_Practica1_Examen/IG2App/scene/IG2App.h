@@ -3,12 +3,20 @@
 
 #include "IG2ApplicationContext.h"
 
-#include <OgreSceneManager.h>
-#include <OgreSceneNode.h>
-#include <OgreTrays.h>
-#include <OgreCameraMan.h>
-
 #include <vector>
+#include <iostream>
+
+#include <SDL_keycode.h>
+
+#include <OgreInput.h>
+#include <OgreTrays.h>
+#include <OgreEntity.h>
+#include <OgreSceneNode.h>
+#include <OgreCameraMan.h>
+#include <OgreSceneManager.h>
+#include <OgreMeshManager.h>
+
+using namespace Ogre;
 
 class EntityIG;
 
@@ -35,27 +43,26 @@ protected:
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 
 	Ogre::SceneManager* mSM = nullptr;
+	OgreBites::CameraMan* mCamMgr = nullptr;
 	OgreBites::TrayManager* mTrayMgr = nullptr;
 
-	Ogre::SceneNode* mLightNode = nullptr;
 	Ogre::SceneNode* mCamNode = nullptr;
+	Ogre::SceneNode* mLightNode = nullptr;
 
+	Ogre::SceneNode* mClockNode = nullptr;
 	Ogre::SceneNode* mClockHours = nullptr;
 	Ogre::SceneNode* mClockMinutes = nullptr;
 	Ogre::SceneNode* mClockSeconds = nullptr;
-	Ogre::SceneNode* mClockNode = nullptr;
+	Ogre::SceneNode** mHourNode = nullptr;
+
 	Ogre::SceneNode* mSphereNode = nullptr;
+	Ogre::SceneNode* planeNode = nullptr;
 	Ogre::SceneNode* planetaNode = nullptr;
 	Ogre::SceneNode* ficticioDronNode = nullptr;
-	Ogre::SceneNode* planeNode = nullptr;
 	Ogre::SceneNode* ficticioAvionNode = nullptr;
 
-	Ogre::SceneNode** mHourNode = nullptr;
 	Ogre::SceneNode* mSinbadNode = nullptr;
-
-	OgreBites::CameraMan* mCamMgr = nullptr;
 
 	std::vector<EntityIG*> vEntities;
 };
-
 #endif

@@ -1,18 +1,22 @@
-#pragma once
-#include "EntityIG.h"
-#include "OgreTimer.h"
+#ifndef PLANO_H_
+#define PLANO_H_
 
-#include <OgreMovablePlane.h>
+
 #include <OgreViewport.h>
 #include <OgreRenderTargetListener.h>
 
+#include <OgreSubEntity.h>
+#include <OgreTechnique.h>
+#include <OgreCameraMan.h>
+#include <OgreMeshManager.h>
+#include <OgreMovablePlane.h>
 #include <OgreRenderTexture.h>
 #include <OgreTextureManager.h>
 #include <OgreHardwarePixelBuffer.h>
-#include <OgreSubEntity.h>
-#include <OgreTechnique.h>
 
-#include <OgreCameraMan.h>
+#include <OgreTimer.h>
+
+#include "../EntityIG.h"
 
 class Plano : public EntityIG, Viewport::Listener, RenderTargetListener
 {
@@ -47,6 +51,4 @@ public:
 protected:
     virtual inline bool keyPressed(const OgreBites::KeyboardEvent& evt);
 };
-
-
-
+#endif

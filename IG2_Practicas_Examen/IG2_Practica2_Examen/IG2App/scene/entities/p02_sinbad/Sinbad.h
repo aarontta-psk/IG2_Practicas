@@ -1,10 +1,14 @@
 #ifndef SINBAD_H_
 #define SINBAD_H_
 
-#include "EntityIG.h"
-#include "OgreTimer.h"
-
 #include <vector>
+#include <iostream>
+#include <OgreTimer.h>
+#include <OgreAnimation.h>
+#include <OgreAnimationTrack.h>
+#include <OgreKeyframe.h>
+
+#include "../EntityIG.h"
 
 using namespace Ogre;
 

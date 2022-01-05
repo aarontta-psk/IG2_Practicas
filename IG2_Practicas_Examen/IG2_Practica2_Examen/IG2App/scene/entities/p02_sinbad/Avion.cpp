@@ -1,7 +1,5 @@
 #include "Avion.h"
 
-#include "AspasMolino.h"
-
 Avion::Avion(SceneNode* node, bool focoOn) : EntityIG(node, ""), state(State::MOVING), detenido(false), manualControl(true)
 {
 	mCuerpoNode = mNode->createChildSceneNode();

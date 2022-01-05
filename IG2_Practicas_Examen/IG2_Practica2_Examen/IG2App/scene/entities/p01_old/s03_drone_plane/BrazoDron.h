@@ -1,7 +1,8 @@
 #ifndef BRAZODRON_H_
 #define BRAZODRON_H_
 
-#include "EntityIG.h"
+#include "../../EntityIG.h"
+
 #include "RotorDron.h"
 
 using namespace Ogre;

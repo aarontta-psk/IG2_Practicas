@@ -1,11 +1,5 @@
 #include "IG2App.h"
 
-#include <OgreEntity.h>
-#include <OgreInput.h>
-#include <SDL_keycode.h>
-#include <OgreMeshManager.h>
-#include <iostream>
-
 #include "./entities/EntityIG.h"
 
 #include "./entities/s02_windmill/Aspa.h"
@@ -20,8 +14,6 @@
 #include "./entities/s04_sinbad/Plano.h"
 #include "./entities/s04_sinbad/Sinbad.h"
 #include "./entities/s04_sinbad/Bomba.h"
-
-using namespace Ogre;
 
 bool IG2App::keyPressed(const OgreBites::KeyboardEvent& evt)
 {

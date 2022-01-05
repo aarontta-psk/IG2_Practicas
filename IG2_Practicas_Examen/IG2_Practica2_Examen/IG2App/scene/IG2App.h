@@ -3,15 +3,22 @@
 
 #include "IG2ApplicationContext.h"
 
-#include <OgreSceneManager.h>
-#include <OgreSceneNode.h>
-#include <OgreTrays.h>
-#include <OgreCameraMan.h>
-
 #include <vector>
+#include <iostream>
+
+#include <SDL_keycode.h>
+
+#include <OgreInput.h>
+#include <OgreTrays.h>
+#include <OgreEntity.h>
+#include <OgreSceneNode.h>
+#include <OgreCameraMan.h>
+#include <OgreSceneManager.h>
+#include <OgreMeshManager.h>
+
+using namespace Ogre;
 
 class EntityIG;
-using namespace Ogre;
 
 class IG2App : public  OgreBites::IG2ApplicationContext, OgreBites::InputListener
 {
@@ -24,41 +31,21 @@ protected:
 	virtual void shutdown();
 	virtual void setupScene();
 
-	void escenaReloj();
-	void escenaMolino();
-	void escenaDrones();
-	void escenaSimbad();
 	void escenaTexturas();
-
-	void createDrones();
-	void createSmokeScreen();
 
 	virtual bool keyPressed(const OgreBites::KeyboardEvent& evt);  // InputListener
 
 	Camera* cam = nullptr;
 
 	Ogre::SceneManager* mSM = nullptr;
+	OgreBites::CameraMan* mCamMgr = nullptr;
 	OgreBites::TrayManager* mTrayMgr = nullptr;
 
-	Ogre::SceneNode* mLightNode = nullptr;
 	Ogre::SceneNode* mCamNode = nullptr;
+	Ogre::SceneNode* mLightNode = nullptr;
 
-	Ogre::SceneNode* mClockHours = nullptr;
-	Ogre::SceneNode* mClockMinutes = nullptr;
-	Ogre::SceneNode* mClockSeconds = nullptr;
-	Ogre::SceneNode* mClockNode = nullptr;
-	Ogre::SceneNode* mSphereNode = nullptr;
-	Ogre::SceneNode* planetaNode = nullptr;
-	Ogre::SceneNode* ficticioDronNode = nullptr;
-	Ogre::SceneNode* planeNode = nullptr;
 	Ogre::SceneNode* ficticioAvionNode = nullptr;
-
-	Ogre::SceneNode** mHourNode = nullptr;
-	Ogre::SceneNode* mSinbadNode = nullptr;
-
-	OgreBites::CameraMan* mCamMgr = nullptr;
 
 	std::vector<EntityIG*> vEntities;
 };
-
 #endif
