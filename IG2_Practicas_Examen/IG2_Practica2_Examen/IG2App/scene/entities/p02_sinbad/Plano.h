@@ -22,8 +22,9 @@ class Plano : public EntityIG, Viewport::Listener, RenderTargetListener
 {
 private:
     Entity* planeM;
-    Ogre::Timer* myTimer;
+    std::string pName;
     bool triggered;
+    Ogre::Timer* myTimer;
     MovablePlane* movablePlane; //Plano del reflejo de la nueva camara
 
 public:

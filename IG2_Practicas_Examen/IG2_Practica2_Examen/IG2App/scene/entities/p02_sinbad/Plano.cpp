@@ -7,7 +7,7 @@ Plano::Plano(SceneNode* node, const String& name, const Plane& plane,
 	Real uTile, Real vTile, const Vector3& upVector,
 	HardwareBuffer::Usage vertexBufferUsage,
 	HardwareBuffer::Usage indexBufferUsage,
-	bool vertexShadowBuffer, bool indexShadowBuffer) : EntityIG(node, ""), triggered(false)
+	bool vertexShadowBuffer, bool indexShadowBuffer) : EntityIG(node, ""), triggered(false), pName(name)
 {
 	MeshManager::getSingleton().createPlane(name, ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
 		width, height, xsegments, ysegments, normals, numTexCoordSets, uTile, vTile, upVector,
@@ -126,7 +126,7 @@ void Plano::postRenderTargetUpdate(const Ogre::RenderTargetEvent& evt) {
 
 void Plano::receiveEvent(Message message, EntityIG* entidad)
 {
-	if (message.id_ == BOMB)
+	if (message.id_ == BOMB && pName == "mPlaneWater")
 	{
 		triggered = true;
 		myTimer->reset();
